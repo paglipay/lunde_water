@@ -4,11 +4,13 @@
   "description": "A work order API for Lunde Water",
   "main": "index.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node index.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,23 +19,25 @@
   "author": "Kat Yeary, Paul Aglipay, Mahmoud Hijazi",
   "license": "ISC",
   "dependencies": {
-    "@babel/plugin-syntax-jsx": "^7.12.13",
     "axios": "^0.21.0",
-    "babel-jest": "^26.6.3",
     "bcryptjs": "^2.4.3",
     "client": "0.0.1",
     "config": "^3.3.3",
-    "enzyme": "^3.11.0",
     "express": "^4.17.1",
     "express-validator": "^6.8.0",
-    "jest": "^26.6.3",
+    "jest": "^26.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.6",
     "stripe": "^8.127.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^26.6.3",
+    "babel-preset-env": "^1.7.0",
     "concurrently": "^5.3.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.3"
   },
   "homepage": "https://github.com/DataSlate/lunde_water#readme"
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './features/app/App';
 
-import { Provider } from 'react-redux';
+//import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
+  
       <App />
-    </Provider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
