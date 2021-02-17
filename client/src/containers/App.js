@@ -1,17 +1,24 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NavBar from '../components/navbar/NavBar'
+import Footer from '../components/footer/Footer'
+import Questionaire from '../containers/questionaire/Questionaire'
+import './App.css';
+
+
 
 const App = () => {
   return (
     <Router>
       <Fragment>
-        <div>
-          <h1>Hello, world</h1>
-        </div>
+        <NavBar />
         <Switch>
-          {/* Routes go here */}
-          <Route />
+          {/* Routes go here */}          
+          <Route exact path={["/questionaire"]}>
+              <Questionaire />
+            </Route>
         </Switch>
+        <Footer />
       </Fragment>
     </Router>
   );
