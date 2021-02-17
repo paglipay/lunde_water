@@ -27,14 +27,14 @@
     "express-validator": "^6.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.6",
+    "react-router-dom": "^5.2.0",
     "stripe": "^8.127.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-jest": "^26.6.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "concurrently": "^5.3.0",
-    "jest": "^26.6.3",
     "nodemon": "^2.0.6",
     "request": "^2.88.2",
     "superagent": "^6.1.0",
@@ -57,8 +57,13 @@
     ]
   },
   "jest": {
-    "collectCoverageFrom": ["src/**/*.js", "!src/index.js"],
-    "coverageReporters": ["text"]
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "coverageReporters": [
+      "text"
+    ]
   },
   "homepage": "https://github.com/DataSlate/lunde_water#readme"
 }
