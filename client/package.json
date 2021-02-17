@@ -45,5 +45,21 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "i": "^0.3.6",
     "npm": "^7.5.4"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "babel-plugin-transform-class-properties"
+    ]
   }
 }
