@@ -1,9 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import Form from '../Form';
 
 describe('<Form/>', () => {
-    it('should render in modal container', () => {
+    it('should render a form with four fields without crashing', () => {
         render(<Form/>);
+        const tree = renderer.create(<Form/>);
+
+        expect(tree).toMatchSnapshot();
     });
+
 });

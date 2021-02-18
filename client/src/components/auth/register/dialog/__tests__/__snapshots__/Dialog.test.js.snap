@@ -1,5 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Modal /> should display a modal that contains a form 1`] = `
+<div
+  className="ui page modals dimmer transition visible active"
+>
+  <div
+    className="ui modal transition visible active"
+    style={Object {}}
+  >
+    <div>
+      <div
+        className="field"
+      >
+        <label>
+          Email
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            onChange={[Function]}
+            placeholder="Email"
+            type="text"
+          />
+        </div>
+        <div
+          className="field"
+        >
+          <label>
+            Username
+          </label>
+          <div
+            className="ui input"
+          >
+            <input
+              onChange={[Function]}
+              placeholder="Username"
+              type="text"
+            />
+          </div>
+          <div
+            className="field"
+          >
+            <label>
+              Password
+            </label>
+            <div
+              className="ui input"
+            >
+              <input
+                onChange={[Function]}
+                placeholder="Password"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <label>
+              Repeat Password
+            </label>
+            <div
+              className="ui input"
+            >
+              <input
+                onChange={[Function]}
+                placeholder="Repeat Password"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<Modal /> snapshot 1`] = `
 <div
   className="ui page modals dimmer transition visible active"
@@ -8,7 +86,72 @@ exports[`<Modal /> snapshot 1`] = `
     className="ui modal transition visible active"
     style={Object {}}
   >
-    Inside my modal!
+    <div>
+      <div
+        className="field"
+      >
+        <label>
+          Email
+        </label>
+        <div
+          className="ui input"
+        >
+          <input
+            onChange={[Function]}
+            placeholder="Email"
+            type="text"
+          />
+        </div>
+        <div
+          className="field"
+        >
+          <label>
+            Username
+          </label>
+          <div
+            className="ui input"
+          >
+            <input
+              onChange={[Function]}
+              placeholder="Username"
+              type="text"
+            />
+          </div>
+          <div
+            className="field"
+          >
+            <label>
+              Password
+            </label>
+            <div
+              className="ui input"
+            >
+              <input
+                onChange={[Function]}
+                placeholder="Password"
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            className="field"
+          >
+            <label>
+              Repeat Password
+            </label>
+            <div
+              className="ui input"
+            >
+              <input
+                onChange={[Function]}
+                placeholder="Repeat Password"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

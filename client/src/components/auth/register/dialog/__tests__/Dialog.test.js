@@ -4,6 +4,7 @@ import Dialog from '../Dialog';
 import renderer from 'react-test-renderer';
 import Portal from 'semantic-ui-react/dist/commonjs/addons/Portal/Portal';
 import { Modal } from 'semantic-ui-react';
+import Form from '../../form/Form';
 
 
 describe('Register dialog component', () => {
@@ -22,8 +23,8 @@ describe('Register dialog component', () => {
 jest.mock('semantic-ui-react/dist/commonjs/addons/Portal/Portal', () => ({ children }) => children);
 
 describe('<Modal />', () => {
-  test('snapshot', () => {
-    const tree = renderer.create(<Modal open>Inside my modal!</Modal>).toJSON();
+  it('should display a modal that contains a form', () => {
+    const tree = renderer.create(<Modal open><Form/></Modal>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

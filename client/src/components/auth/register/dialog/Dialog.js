@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Form from '../form/Form';
 import { Button, Header, Modal } from 'semantic-ui-react';
 
 const Dialog = () => {
@@ -16,7 +17,7 @@ const Dialog = () => {
       <Modal.Content>
         <Modal.Description>
           <Header>Register with Lunde Water</Header>
-          <p>Form</p>
+          <Form/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
