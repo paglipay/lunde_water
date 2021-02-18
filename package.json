@@ -23,11 +23,8 @@
     "bcryptjs": "^2.4.3",
     "client": "0.0.1",
     "config": "^3.3.3",
-<<<<<<< HEAD
     "dotenv": "^8.2.0",
-=======
     "env": "^0.0.2",
->>>>>>> f9815c6108c3ccb4ccde5571bef7c3651f931e05
     "express": "^4.17.1",
     "express-validator": "^6.8.0",
     "if-env": "^1.0.4",
