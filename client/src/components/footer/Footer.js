@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { Button } from '../navbar/Button';
+import { Button } from '../button/Button';
 import { Link } from 'react-router-dom';
 import {
   FaFacebook,

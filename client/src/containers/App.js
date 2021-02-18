@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar'
 import Footer from '../components/footer/Footer'
 import Questionaire from '../containers/questionaire/Questionaire'
+import Orders from '../containers/orders/OrderForm'
+import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
 import './App.css';
 
 
@@ -16,7 +18,13 @@ const App = () => {
           {/* Routes go here */}          
           <Route exact path={["/questionaire"]}>
               <Questionaire />
-            </Route>
+            </Route>        
+          <Route exact path={["/orders"]}>
+              <Orders />
+          </Route>       
+          <Route exact path={["/homepagelayout"]}>
+              <HomepageLayout />
+          </Route>
         </Switch>
         <Footer />
       </Fragment>

@@ -20,8 +20,7 @@ import { Form } from 'react-bootstrap';
 
 
 const questions = [
-  { question: 'What is your Zip Code?', type: "text" },
-  { question: 'What is your City?', type: "text" },
+  { question: 'What is your Zip Code?', type: "text" }
 
 ]
 
@@ -60,11 +59,11 @@ const questions4 = [
 
 ]
 
-const questions5 = [
-  { question: 'Do we fill your water tank by connecting to a hydrant or by connecting directly to the tank through the top hole or a valve that is connected to the tank?', type: "textarea" },
-  { question: 'How close can our tanker truck get to the tank or hydrant?', type: "textarea" },
+// const questions5 = [
+//   { question: 'Do we fill your water tank by connecting to a hydrant or by connecting directly to the tank through the top hole or a valve that is connected to the tank?', type: "textarea" },
+//   { question: 'How close can our tanker truck get to the tank or hydrant?', type: "textarea" },
 
-]
+// ]
 
 export const dynamicForm = (questions, setPostData, postData) => <>
   <Form>
@@ -123,8 +122,7 @@ export const dynamicForm = (questions, setPostData, postData) => <>
           <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
             <Form.Label>{q.question} </Form.Label>
             <Form.Control onChange={(e) => {
-              console.log(e.target.name, e.target.value)
-              
+              console.log(e.target.name, e.target.value)              
               setPostData({...postData, [e.target.name]:e.target.value})
               }} name={q.question} type="time" placeholder="Enter Date" />
             <Form.Text className="">
