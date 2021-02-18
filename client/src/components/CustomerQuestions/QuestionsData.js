@@ -21,6 +21,7 @@ import { Form } from 'react-bootstrap';
 
 const questions = [
   { question: 'What is your Zip Code?', type: "text" },
+  { question: 'What is your City?', type: "text" },
 
 ]
 
