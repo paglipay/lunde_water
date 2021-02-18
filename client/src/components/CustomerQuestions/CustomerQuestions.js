@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HeroSection from '../hero/HeroSection';
-import { homeObjOne, questions_arry, dynamicForm } from './QuestionsData';
+import { homeObjOne, questions_arry } from './QuestionsData';
+import { dynamicForm } from '../dynamicform/dynamicform'
 
 function CustomerQuestions() {
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -23,9 +24,13 @@ function CustomerQuestions() {
       // lightBg: homeObjOneD.lightBg ? false : true,
       // lightText: homeObjOneD.lightText ? false : true,
       // lightTextDesc: homeObjOneD.lightTextDesc ? false : true,
+<<<<<<< HEAD
       imgStart:''
+=======
+      imgStart: 'start'
+>>>>>>> 64e56faa4a311cbafcce1598882316d9455fc066
     })
-    
+
     console.log('questionsPost: ', questionsPost)
   }, [questionIndex, questionsPost]);
 
