@@ -1,9 +1,13 @@
 const express = require('express');
-
 const app = express();
+
 
 // Middleware
 app.use(express.json());
+
+
+const PORT = process.env.PORT || 5000;
+
 
 
 // Serve static assets in production
@@ -16,6 +20,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+app.listen(PORT, () => console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`));
