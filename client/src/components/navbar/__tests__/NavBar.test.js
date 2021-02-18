@@ -27,7 +27,7 @@ describe("When a location is passed to it", () => {
     });
 
     it("displays the Products link", () => {
-        const productName = mountedNavBar.find(".products");
-        expect(productName.text()).toEqual("Products");
+        const productName = mountedNavBar.find(".order");
+        expect(productName.text()).toEqual("Order");
     });
 });

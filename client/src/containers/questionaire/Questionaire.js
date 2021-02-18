@@ -1,10 +1,8 @@
 import React from 'react'
-
+import CustomerQuestions from '../../components/CustomerQuestions/CustomerQuestions'
 function Questionaire() {
     return (
-        <div>
-            Questionaire
-        </div>
+        < CustomerQuestions/>
     )
 }
 
