@@ -24,11 +24,7 @@ function CustomerQuestions() {
       // lightBg: homeObjOneD.lightBg ? false : true,
       // lightText: homeObjOneD.lightText ? false : true,
       // lightTextDesc: homeObjOneD.lightTextDesc ? false : true,
-<<<<<<< HEAD
-      imgStart:''
-=======
       imgStart: 'start'
->>>>>>> 64e56faa4a311cbafcce1598882316d9455fc066
     })
 
     console.log('questionsPost: ', questionsPost)
