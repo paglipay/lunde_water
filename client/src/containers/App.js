@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import Dialog from '../components/auth/register/dialog/Dialog';
 const App = () => {
   return (
     <Router>
@@ -8,9 +8,9 @@ const App = () => {
         <div>
           <h1>Hello, world</h1>
         </div>
+        <Dialog/>
         <Switch>
-          {/* Routes go here */}
-          <Route />
+          <Route path = '/auth' component={Dialog} />
         </Switch>
       </Fragment>
     </Router>
