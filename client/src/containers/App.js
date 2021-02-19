@@ -10,8 +10,7 @@ const App = () => {
         </div>
         <Dialog/>
         <Switch>
-          {/* Routes go here */}
-          <Route />
+          <Route path = '/auth' component={Dialog} />
         </Switch>
       </Fragment>
     </Router>
