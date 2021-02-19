@@ -6,7 +6,7 @@ import Form from '../Form';
 describe('<Form/>', () => {
     it('should render a form with four fields without crashing', () => {
         render(<Form/>);
-        const tree = renderer.create(<Form/>);
+        const tree = renderer.create(<Form/>).toJSON();
 
         expect(tree).toMatchSnapshot();
     });
