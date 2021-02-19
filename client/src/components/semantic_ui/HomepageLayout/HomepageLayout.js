@@ -16,6 +16,8 @@ import {
   Menu,
   Segment,
   Sidebar,
+  Tab,
+  Table,
   Visibility,
 } from 'semantic-ui-react'
 
@@ -189,6 +191,44 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
+const panes = [
+    { menuItem: 'Tab 1', render: () => <Tab.Pane>
+        <Table singleLine>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell>Name</Table.HeaderCell>
+        <Table.HeaderCell>Registration Date</Table.HeaderCell>
+        <Table.HeaderCell>E-mail address</Table.HeaderCell>
+        <Table.HeaderCell>Premium Plan</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell>John Lilki</Table.Cell>
+        <Table.Cell>September 14, 2013</Table.Cell>
+        <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
+        <Table.Cell>No</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>Jamie Harington</Table.Cell>
+        <Table.Cell>January 11, 2014</Table.Cell>
+        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
+        <Table.Cell>Yes</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>Jill Lewis</Table.Cell>
+        <Table.Cell>May 11, 2014</Table.Cell>
+        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
+        <Table.Cell>Yes</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+    </Tab.Pane> },
+    { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+    { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+  ]
+
 const HomepageLayout = () => (
   <ResponsiveContainer>
     <Segment style={{ padding: '8em 0em' }} vertical>
@@ -211,7 +251,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
+            <Image bordered rounded size='large' src='/images/LundeTruck.png' />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -257,7 +297,7 @@ const HomepageLayout = () => (
         <Button as='a' size='large'>
           Read More
         </Button>
-
+        <Tab panes={panes} />
         <Divider
           as='h4'
           className='header'
