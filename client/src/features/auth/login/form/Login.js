@@ -53,8 +53,10 @@ const Login = ({ login, isAuthenticated }) => {
               <Input
                 type='text'
                 placeholder='Password'
+                name='password'
                 value={password}
                 onChange={onChange}
+                required
               />
             </div>
           </div>
