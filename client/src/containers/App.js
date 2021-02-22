@@ -12,6 +12,7 @@ import './App.css';
 
 
 
+import Dialog from '../components/auth/register/dialog/Dialog';
 const App = () => {
   return (
     <Router>
@@ -37,6 +38,8 @@ const App = () => {
           <Route exact path={["/orders"]}>
             <Orders />
           </Route>
+          <Dialog />
+          <Route path='/auth' component={Dialog} />
         </Switch>
         <Footer />
       </Fragment>

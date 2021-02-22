@@ -38,7 +38,6 @@ const style = {
 const ResponsiveLayout = () => (
     <Container>
 
-
         <Container style={style.last}>
             <Step.Group fluid>
                 <Step icon='plane' title='Shipping' description='Choose your shipping options' />
