@@ -19,27 +19,14 @@ const App = () => {
       <Fragment>
         <NavBar />
         <Switch>
-          {/* Routes go here */}
-          <Route exact path={["/homepagelayout"]}>
-            <HomepageLayout />
-          </Route>
-          <Route exact path={["/responsivelayout"]}>
-            <ResponsiveLayout />
-          </Route>
-          <Route exact path={["/responsivelayout2"]}>
-            <ResponsiveLayout2 />
-          </Route>
-          <Route exact path={["/herosections"]}>
-            <HeroSections />
-          </Route>
-          <Route exact path={["/questionaire"]}>
-            <Questionaire />
-          </Route>
-          <Route exact path={["/orders"]}>
-            <Orders />
-          </Route>
+          <Route exact path='/homepagelayout' component={HomepageLayout} />
+          <Route exact path='/responsivelayout' component={ResponsiveLayout} />
+          <Route exact path='/responsivelayout2' component={ResponsiveLayout2} />
+          <Route exact path='/herosections' component={HeroSections} />
+          <Route exact path='/questionaire' component={Questionaire} />
+          <Route exact path='/orders' component={Orders} />
           <Dialog />
-          <Route path='/auth' component={Dialog} />
+          <Route exact path='/auth' component={Dialog} />
         </Switch>
         <Footer />
       </Fragment>
