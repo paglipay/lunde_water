@@ -1,10 +1,18 @@
 const express   = require('express');
+const connectDB = require('./config/db');
+const path      = require('path');
+const routes    = require('./routes');
 
 const app = express();
+
+// Connect Database
+connectDB();
 
 // Middleware
 app.use(express.json());
 
+// API and View routes
+app.use(routes);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
