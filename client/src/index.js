@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css'
+import App from './containers/App';
 //import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
