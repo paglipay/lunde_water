@@ -45,8 +45,6 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.1.10",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "react-test-renderer": "^17.0.1"
   },
   "babel": {
