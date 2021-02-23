@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Form from '../form/Form';
+import Login from '../login/form/Login';
 import { Button, Header, Modal } from 'semantic-ui-react';
 
 const Dialog = () => {
@@ -11,13 +10,13 @@ const Dialog = () => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Sign Up</Button>}
+      trigger={<Button>Login</Button>}
     >
-      <Modal.Header>Sign Up</Modal.Header>
+      <Modal.Header>Lunde Water</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <Header>Register with Lunde Water</Header>
-          <Form/>
+          <Header>Login to your account</Header>
+          <Login/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

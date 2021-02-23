@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import Portal from 'semantic-ui-react/dist/commonjs/addons/Portal/Portal';
 import { Modal } from 'semantic-ui-react';
 import Dialog from '../Dialog';
-import Form from '../../form/Form';
+import Form from '../../login/register/form/Form';
 //import Button from 'semantic-ui-react';
 
 describe('Register dialog component', () => {

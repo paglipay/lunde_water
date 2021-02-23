@@ -1,11 +1,15 @@
 const express = require('express');
+const connectDB = require('./config/db');
 const path = require('path');
-const mongoose = require('mongoose');
 const routes = require('./routes');
+
 const app = express();
 // const bodyParser = require('body-parser');
 
 
+
+// Connect Database
+connectDB();
 
 // Middleware
 app.use(express.json());
@@ -15,6 +19,8 @@ app.use(routes);
 const PORT = process.env.PORT || 5000;
 
 
+// API and View routes
+app.use(routes);
 
 // Serve static assets in production
 // if (process.env.NODE_ENV === 'production') {
