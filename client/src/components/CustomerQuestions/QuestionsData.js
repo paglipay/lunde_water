@@ -1,21 +1,53 @@
 
 const questions = [
-  { question: 'What is your Zip Code?', type: "text" }
+  { question: 'What is your Zip Code?', type: "text" },
+  {
+    question: 'Create a Username', type: "text",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
+  {
+    question: 'Add you Email', type: "text",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
+  {
+    question: 'Create a Password', type: "pass",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
+  {
+    question: 'Renter your Password', type: "pass",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
 
 ]
 
 const questions0 = [
-  { question: 'Create a Username', type: "text" },
-  { question: 'Add you Email', type: "text" },
-  { question: 'Create a Password', type: "pass" },
-  { question: 'Renter your Password', type: "pass" },
+  {
+    question: 'Create a Username', type: "text",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
+  {
+    question: 'Add you Email', type: "text",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
+  {
+    question: 'Create a Password', type: "pass",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
+  {
+    question: 'Renter your Password', type: "pass",
+    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
+  },
 
 ]
 
 const questions1 = [
   { question: 'Do you need to be home for the delivery?', type: "y/n" },
   // { question:'Do you have a preferred day of delivery?', type:"week"},
-  { question: 'Do you have a preferred time of delivery?', type: "datetime" },
+  {
+    question: 'Do you have a preferred time of delivery?',
+    type: "datetime",
+    condition: { property: "Do you need to be home for the delivery?", value: ['Yes'] }
+  },
 
 ]
 
@@ -28,8 +60,17 @@ const questions2 = [
 
 const questions3 = [
   { question: "Do we need to enter the gated property at all (if there’s even a gate)?", type: "y/n" },
-  { question: 'Are there any gate codes, padlock combinations or other barriers to property entry that we need to know about?', type: "y/n" },
-  { question: 'If so, Please Enter Code.', type: "text" },
+  {
+    question: 'Are there any gate codes, padlock combinations or other barriers to property entry that we need to know about?',
+    type: "y/n",
+    condition: { property: "Do we need to enter the gated property at all (if there’s even a gate)?", value: ['Yes'] }
+  },
+
+  {
+    question: 'If so, Please Enter Code.',
+    type: "text",
+    condition: { property: "Are there any gate codes, padlock combinations or other barriers to property entry that we need to know about?", value: ['Yes'] }
+  },
 
 ]
 
@@ -60,5 +101,6 @@ export const homeObjOne = {
   imgStart: 'start',
   img: 'images/svg-2.svg',
   alt: 'Credit Card',
-  onClick: () => console.log('goto Qustion2')
+  onClick: () => console.log('goto Qustion2'),
+  onClickBack: () => console.log('goto Qustion2')
 };

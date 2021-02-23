@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar'
 import Footer from '../components/footer/Footer'
 import Questionaire from '../containers/questionaire/Questionaire'
+import Questionaire2 from '../containers/questionaire/Questionaire2'
 import Orders from '../containers/orders/Orders'
 import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
 import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path='/responsivelayout2' component={ResponsiveLayout2} />
           <Route exact path='/herosections' component={HeroSections} />
           <Route exact path='/questionaire' component={Questionaire} />
+          <Route exact path='/questionaire2' component={Questionaire2} />
           <Route exact path='/orders' component={Orders} />
           <Dialog />
           <Route exact path='/auth' component={Dialog} />

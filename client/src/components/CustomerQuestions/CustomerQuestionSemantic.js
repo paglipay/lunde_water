@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import HeroSection from '../hero/HeroSection';
+import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, questions_arry } from './QuestionsData';
 import { dynamicForm } from '../dynamicform/dynamicform'
 
@@ -11,6 +11,8 @@ function CustomerQuestions() {
   homeObjOne.onClick = () => {
     if (questions_arry.length > questionIndex + 1) {
       setQuestionIndex(questionIndex + 1)
+    }else{
+        console.log('Submit', questionsPost)
     }
   }
   homeObjOne.onClickBack = () => {
@@ -41,7 +43,7 @@ function CustomerQuestions() {
 
   return (
     <>
-      <HeroSection {...homeObjOneD} />
+      <Layout {...homeObjOneD}>{homeObjOneD.description}</Layout>
     </>
   );
 }
