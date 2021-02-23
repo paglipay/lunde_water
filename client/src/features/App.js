@@ -28,7 +28,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <h1>Hello, world. If you want to login <Link to="/login">click here</Link></h1>
+          {/* <h1>Hello, world. If you want to login <Link to="/login">click here</Link></h1> */}
           <Switch>
              <Route component={Routes} /> 
           </Switch>

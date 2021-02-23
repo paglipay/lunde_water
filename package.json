@@ -60,5 +60,9 @@
     "collectCoverageFrom": ["src/**/*.js", "!src/index.js"],
     "coverageReporters": ["text"]
   },
+  "engines": {
+    "node": ">= 12.8.1",
+    "npm": ">= 6.14.5"
+  },
   "homepage": "https://github.com/DataSlate/lunde_water#readme"
 }
