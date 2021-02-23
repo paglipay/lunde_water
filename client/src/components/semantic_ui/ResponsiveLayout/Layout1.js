@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import {
     Button,
     Card,
@@ -33,7 +34,7 @@ const ResponsiveLayout = (props) => (
 
         <Container style={style.last}>
             <Step.Group fluid>
-                <Step icon='plane' title='Shipping' description='Choose your shipping options' />
+                <Step completed icon='plane' as={Link} to="/questionaire2" title='Shipping' description='Choose your shipping options' />
                 <Step active icon='dollar' title='Billing' description='Enter billing information' />
                 <Step
                     disabled
