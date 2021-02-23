@@ -33,8 +33,8 @@ const ResponsiveLayout = (props) => (
 
         <Container style={style.last}>
             <Step.Group fluid>
-                <Step active icon='plane' title='Shipping' description='Choose your shipping options' />
-                <Step disabled icon='dollar' title='Billing' description='Enter billing information' />
+                <Step icon='plane' title='Shipping' description='Choose your shipping options' />
+                <Step active icon='dollar' title='Billing' description='Enter billing information' />
                 <Step
                     disabled
                     icon='info circle'
@@ -47,22 +47,8 @@ const ResponsiveLayout = (props) => (
         <Grid columns={2} stackable>
 
             <Grid.Row columns={2}>
-                <Grid.Column width={12}>
-                    <Segment>
-                        <Header as='h2'>{props.headline}</Header>
-                        <p>
-                        {props.topLine}
-                        </p>
-                        {props.children}
-                        {props.questionIndex !== 0 ?
-                        <Button onClick={props.onClickBack}>
-                            Back
-                        </Button>:null}
-                        <Button onClick={props.onClick}>
-                            {props.buttonLabel}
-                        </Button>
-                    </Segment>
-                    
+                <Grid.Column width={12}>                    
+                    {props.children}                   
                 </Grid.Column>
                 <Grid.Column width={4}>
                     {/* <Segment> */}

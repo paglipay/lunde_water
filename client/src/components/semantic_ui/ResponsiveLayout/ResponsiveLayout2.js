@@ -1,5 +1,5 @@
 import React from 'react'
-import Questionaire from '../../../containers/questionaire/Questionaire'
+import Questionaire from '../../../features/questionaire/Questionaire'
 import FormExampleSubcomponentControl from '../FormExampleSubcomponentControl/FormExampleSubcomponentControl'
 import {
     Button,

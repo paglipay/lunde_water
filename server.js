@@ -32,13 +32,13 @@ app.use(routes);
 //   });
 // }
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/lunde-water-two",
-  {
-    useNewUrlParser: true,
-  },
-  () => {
-    console.log('Mongoose is Connected');
-  });
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/lunde-water-two",
+//   {
+//     useNewUrlParser: true,
+//   },
+//   () => {
+//     console.log('Mongoose is Connected');
+//   });
 
 
 app.listen(PORT, () => console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`));

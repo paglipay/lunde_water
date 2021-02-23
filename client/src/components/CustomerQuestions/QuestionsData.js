@@ -37,25 +37,21 @@ const questions0 = [
     question: 'Renter your Password', type: "pass",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
-
 ]
 
 const questions1 = [
   { question: 'Do you need to be home for the delivery?', type: "y/n" },
-  // { question:'Do you have a preferred day of delivery?', type:"week"},
+  { question:'Do you have a preferred day of delivery?', type:"week"},
   {
     question: 'Do you have a preferred time of delivery?',
     type: "datetime",
     condition: { property: "Do you need to be home for the delivery?", value: ['Yes'] }
   },
-
 ]
 
 const questions2 = [
-
   { question: 'Does GPS take us to your property?', type: "y/n" },
   { question: 'Are there any specific directions and details that we need to know to reach your property?', type: "textarea" },
-
 ]
 
 const questions3 = [
@@ -65,19 +61,16 @@ const questions3 = [
     type: "y/n",
     condition: { property: "Do we need to enter the gated property at all (if there’s even a gate)?", value: ['Yes'] }
   },
-
   {
     question: 'If so, Please Enter Code.',
     type: "text",
     condition: { property: "Are there any gate codes, padlock combinations or other barriers to property entry that we need to know about?", value: ['Yes'] }
   },
-
 ]
 
 const questions4 = [
   { question: 'Do we fill your water tank by connecting to a hydrant or by connecting directly to the tank through the top hole or a valve that is connected to the tank?', type: "textarea" },
   { question: 'How close can our tanker truck get to the tank or hydrant?', type: "text" },
-
 ]
 
 export const questions_arry = [

@@ -2,11 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
   "proxy": "http://localhost:5000/",
-=======
->>>>>>> b9054cf8d8c156abaf271e47cd3b578cc298964e
   "dependencies": {
+    "mongoose": "^5.11.17",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
@@ -48,14 +46,8 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.1.10",
-<<<<<<< HEAD
-    "react-test-renderer": "^17.0.1"
-=======
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "react-test-renderer": "^17.0.1",
     "redux-devtools-extension": "^2.13.8"
->>>>>>> b9054cf8d8c156abaf271e47cd3b578cc298964e
   },
   "babel": {
     "presets": [
