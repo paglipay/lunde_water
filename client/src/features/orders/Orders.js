@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 // import { fetchCollections, removeCollectionRequest, markCollectionAsActiveRequest } from '../../../redux'
 // import { createTodo } from './redux/actions'
@@ -14,36 +15,78 @@ import {
     Button
 } from 'semantic-ui-react'
 function OrdersDisplay(props) {
-    const results = []
-    Object.keys(props.customeranswers.data).forEach((prop) => results.push({ question: prop, answer: props.customeranswers.data[prop] }))
-    const results2 = []
-    Object.keys(props.profile.data).forEach((prop) => results2.push({ question: prop, answer: props.profile.data[prop] }))
-    const results3 = []
-    Object.keys(props.register.data).forEach((prop) => results3.push({ question: prop, answer: props.register.data[prop] }))
+    let results = {}
+    const resultsDisplay = []
+    Object.keys(props.customeranswers.data).forEach((prop) => {
+        if (results.hasOwnProperty(props.customeranswers.data[prop].qIndex) === false) { results[props.customeranswers.data[prop].qIndex] = [] }
+        results[props.customeranswers.data[prop].qIndex].push({ question: prop, answer: props.customeranswers.data[prop].answer })
+        console.log('results:', results)
+    })
 
+    let results2 = {}
+    const resultsDisplay2 = []
+    Object.keys(props.profile.data).forEach((prop) => {
+        if (results2.hasOwnProperty(props.profile.data[prop].qIndex) === false) { results2[props.profile.data[prop].qIndex] = [] }
+        results2[props.profile.data[prop].qIndex].push({ question: prop, answer: props.profile.data[prop].answer })
+
+    })
+    let results3 = {}
+    const resultsDisplay3 = []
+    Object.keys(props.register.data).forEach((prop) => {
+        if (results3.hasOwnProperty(props.register.data[prop].qIndex) === false) { results3[props.register.data[prop].qIndex] = [] }
+        results3[props.register.data[prop].qIndex].push({ question: prop, answer: props.register.data[prop].answer })
+
+    })
+    // const results2 = []
+    // Object.keys(props.profile.data).forEach((prop) => results2.push({ question: prop, answer: props.profile.data[prop] }))
+    // const results3 = []
+    // Object.keys(props.register.data).forEach((prop) => results3.push({ question: prop, answer: props.register.data[prop] }))
+
+    const right_side = () => {
+        // return null
+        return (<Segment>
+            <Header as='h2'><Icon name='registered' />Register</Header><Link to='/register'><Icon style={{float:'right'}}  name='edit' /></Link>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+                {
+                    (Object.keys(results3).forEach((prop) => {
+                        resultsDisplay3.push(<><hr/><h4>{prop}</h4></>)
+                        results3[prop] && results3[prop].map((e, i) => { resultsDisplay3.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
+                    }))
+                }
+                {resultsDisplay3}
+        </Segment>
+        )
+    }
     return (
-        <Layout {...props}>
+        <Layout {...props} right_side={right_side()} >
             <Segment>
-                <Header as='h2'><Icon name='registered' />Register</Header>
+                <Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />Your Information</Header><Link to='/profile'><Icon style={{float:'right'}}  name='edit' /></Link>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p>
-                {results3 && results3.map((e, i) => <p><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>)}
-            </Segment>
-            <Segment>
-                <Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />Your Profile</Header>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
-                {results2 && results2.map((e, i) => <p><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>)}
+                {
+                    (Object.keys(results2).forEach((prop) => {
+                        resultsDisplay2.push(<><hr/><h4>{prop}</h4></>)
+                        results2[prop] && results2[prop].map((e, i) => { resultsDisplay2.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
+                    }))
+                }
+                {resultsDisplay2}
             </Segment>
 
             <Segment>
-                <Header as='h2'><Icon name='question circle' />Your Answers</Header>
+                <Header as='h2'><Icon name='question circle' />Your Answers</Header><Link to='/questionaire2'><Icon style={{ float: 'right' }} name='edit' /></Link>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p>
-                {results && results.map((e, i) => <p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>)}
+                {
+                    (Object.keys(results).forEach((prop) => {
+                        resultsDisplay.push(<><hr/><h4>{prop}</h4></>)
+                        results[prop] && results[prop].map((e, i) => { resultsDisplay.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
+                    }))
+                }
+                {resultsDisplay}
             </Segment>
             <Segment>
                 <Header as='h2'><Icon name='unordered list' />Orders</Header>

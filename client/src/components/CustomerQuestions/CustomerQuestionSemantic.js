@@ -12,17 +12,17 @@ function CustomerQuestions(props) {
   homeObjOne.onClick = () => {
     if (questions_arry.length > questionIndex + 1) {
       setQuestionIndex(questionIndex + 1)
-    }else{
-        console.log('Submit', questionsPost)            
-        props.addAnswersRequest(questionsPost)
-        props.history.push('/orders')
+    } else {
+      console.log('Submit', questionsPost)
+      props.addAnswersRequest(questionsPost)
+      props.history.push('/orders')
     }
   }
   homeObjOne.onClickBack = () => {
     if (questionIndex !== 0) {
       setQuestionIndex(questionIndex - 1)
-    }else{
-      console.log('Submit', questionsPost)   
+    } else {
+      console.log('Submit', questionsPost)
 
     }
   }
@@ -32,7 +32,7 @@ function CustomerQuestions(props) {
       ...homeObjOne,
       questionIndex,
       buttonLabel: questions_arry.length === questionIndex + 1 ? 'Review / Complete' : 'Next',
-      description: dynamicForm(questions_arry[questionIndex]['questions'], setQuestionsPost, questionsPost),
+      description: dynamicForm(questions_arry[questionIndex]['questions'], setQuestionsPost, questionsPost, questions_arry[questionIndex]['headline']),
       img: `images/svg-${questionIndex + 1}.svg`,
       headline: questions_arry[questionIndex]['headline'],
       // lightBg: homeObjOneD.lightBg ? false : true,
@@ -43,7 +43,6 @@ function CustomerQuestions(props) {
 
     console.log('questionsPost: ', questionsPost)
   }, [questionIndex, questionsPost]);
-
 
   return (
     <>
