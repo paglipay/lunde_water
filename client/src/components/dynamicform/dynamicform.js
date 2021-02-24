@@ -1,5 +1,7 @@
 import { Form } from 'react-bootstrap';
-
+import {
+    Icon
+} from 'semantic-ui-react'
 export const dynamicForm = (questions, setPostData, postData) => <>
     <Form>
         {questions.map((q, i) => {
@@ -33,7 +35,15 @@ export const dynamicForm = (questions, setPostData, postData) => <>
 
                             <Form.Text className="">
                                 Please enter a memorable answer.
-            </Form.Text>
+                            </Form.Text>
+                        </Form.Group>
+                        <br />
+                    </>)
+                }
+                else if (q.type === 'message') {
+                    return (<>
+                        <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+                            <Form.Label><h2>{q.question}</h2></Form.Label>
                         </Form.Group>
                         <br />
                     </>)
@@ -48,7 +58,7 @@ export const dynamicForm = (questions, setPostData, postData) => <>
                             }} name={q.question} type="week" placeholder="Enter Day of Week" />
                             <Form.Text className="">
                                 Please enter a memorable answer.
-            </Form.Text>
+                            </Form.Text>
                         </Form.Group>
                         <br />
                     </>)
@@ -64,7 +74,7 @@ export const dynamicForm = (questions, setPostData, postData) => <>
                             }} name={q.question} type="time" placeholder="Enter Date" />
                             <Form.Text className="">
                                 Please enter a memorable answer.
-            </Form.Text>
+                            </Form.Text>
                         </Form.Group>
                         <br />
                     </>)
@@ -79,7 +89,7 @@ export const dynamicForm = (questions, setPostData, postData) => <>
                             }} name={q.question} key={q.question} type="text" placeholder="Enter Text" />
                             <Form.Text className="">
                                 Please enter a memorable answer.
-            </Form.Text>
+                            </Form.Text>
                         </Form.Group>
                         <br />
                     </>)
@@ -94,7 +104,7 @@ export const dynamicForm = (questions, setPostData, postData) => <>
                             }} name={q.question} key={q.question} type="password" placeholder="Enter Text" />
                             <Form.Text className="">
                                 Please enter a memorable answer.
-            </Form.Text>
+                            </Form.Text>
                         </Form.Group>
                         <br />
                     </>)
@@ -109,7 +119,7 @@ export const dynamicForm = (questions, setPostData, postData) => <>
                             }} name={q.question} as="textarea" rows={4} />
                             <Form.Text className="">
                                 Please enter a memorable answer.
-            </Form.Text>
+                            </Form.Text>
                         </Form.Group>
                         <br />
                     </>)

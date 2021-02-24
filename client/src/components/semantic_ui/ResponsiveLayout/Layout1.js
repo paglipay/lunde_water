@@ -34,13 +34,13 @@ const ResponsiveLayout = (props) => (
 
         <Container style={style.last}>
             <Step.Group fluid>
-                <Step completed icon='plane' as={Link} to="/questionaire2" title='Shipping' description='Choose your shipping options' />
-                <Step active icon='dollar' title='Billing' description='Enter billing information' />
+                <Step completed icon='question circle' as={Link} to="/questionaire2" title='Questions' description='Please answer at your convinience' />
+                <Step active icon='dollar' title='Review / Confirm' description='Take a look for accuracy.' />
                 <Step
                     disabled
                     icon='info circle'
-                    title='Confirm Order'
-                    description='Verify order details'
+                    title='Order has been Placed'
+                    description='For your records'
                 />
             </Step.Group>
         </Container>

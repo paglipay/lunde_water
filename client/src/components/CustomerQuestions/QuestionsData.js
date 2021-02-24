@@ -1,47 +1,6 @@
-
-const questions = [
-  { question: 'What is your Zip Code?', type: "text" },
-  {
-    question: 'Create a Username', type: "text",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-  {
-    question: 'Add you Email', type: "text",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-  {
-    question: 'Create a Password', type: "pass",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-  {
-    question: 'Renter your Password', type: "pass",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-
-]
-
-const questions0 = [
-  {
-    question: 'Create a Username', type: "text",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-  {
-    question: 'Add you Email', type: "text",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-  {
-    question: 'Create a Password', type: "pass",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-  {
-    question: 'Renter your Password', type: "pass",
-    condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
-  },
-]
-
 const questions1 = [
   { question: 'Do you need to be home for the delivery?', type: "y/n" },
-  { question:'Do you have a preferred day of delivery?', type:"week"},
+  // { question:'Do you have a preferred day of delivery?', type:"week"},
   {
     question: 'Do you have a preferred time of delivery?',
     type: "datetime",
@@ -74,8 +33,6 @@ const questions4 = [
 ]
 
 export const questions_arry = [
-  { headline: 'Are you within our Zone?', questions: questions },
-  { headline: <>Yes, we service your area.<br />Create your Account</>, questions: questions0 },
   { headline: 'Time for a Delivery?', questions: questions1 },
   { headline: "What's Your Location Like?", questions: questions2 },
   { headline: 'How to Access the Property?', questions: questions3 },

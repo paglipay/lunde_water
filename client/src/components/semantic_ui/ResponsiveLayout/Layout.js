@@ -33,13 +33,13 @@ const ResponsiveLayout = (props) => (
 
         <Container style={style.last}>
             <Step.Group fluid>
-                <Step active icon='plane' title='Shipping' description='Choose your shipping options' />
-                <Step disabled icon='dollar' title='Billing' description='Enter billing information' />
+                <Step active icon='question circle' title='Questions' description='Please answer at your convinience' />
+                <Step disabled icon='dollar' title='Review / Confirm' description='Take a look for accuracy.' />
                 <Step
                     disabled
                     icon='info circle'
-                    title='Confirm Order'
-                    description='Verify order details'
+                    title='Order has been Placed'
+                    description='For your records'
                 />
             </Step.Group>
         </Container>
@@ -58,9 +58,11 @@ const ResponsiveLayout = (props) => (
                         <Button onClick={props.onClickBack}>
                             Back
                         </Button>:null}
+                        {false?null:(
                         <Button onClick={props.onClick}>
                             {props.buttonLabel}
-                        </Button>
+                        </Button>)}
+
                     </Segment>
                     
                 </Grid.Column>

@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 // import { fetchCollections, removeCollectionRequest, markCollectionAsActiveRequest } from '../../../redux'
 // import { createTodo } from './redux/actions'
 import { addAnswersRequest } from './redux/thunks'
-import ProfileDisplay from '../../components/profile/Profile'
+import Register from '../../components/register/Register'
 
-function Profile(props) {
+function RegisterDisplay(props) {
     console.log('Questionaire props:', props)
     return (
-        < ProfileDisplay {...props}/>
+        < Register {...props}/>
     )
 }
 
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Profile)
+)(RegisterDisplay)

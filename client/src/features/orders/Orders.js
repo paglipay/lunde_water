@@ -8,13 +8,12 @@ import Layout from '../../components/semantic_ui/ResponsiveLayout/Layout1';
 import OrdersTable from '../../components/DynamicTable/DynamicTable';
 import {
     Header,
-    Segment
+    Segment,
+    Icon
 } from 'semantic-ui-react'
 function OrdersDisplay(props) {
-
-    console.log('props.customeranswers.data: ', props.customeranswers.data)
-    let result = ''
-    Object.keys(props.customeranswers.data).forEach((prop) => { result = result + '\n\n\nQuestion:\n' + prop + '\n\nYour Answer:\n' + props.customeranswers.data[prop] })
+    const results = []
+    Object.keys(props.customeranswers.data).forEach((prop) => results.push({ question: prop, answer: props.customeranswers.data[prop] }))
 
     return (
         <Layout {...props}>
@@ -23,9 +22,7 @@ function OrdersDisplay(props) {
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p>
-                <pre style={{ whiteSpace: 'pre-wrap' }}>
-                    {result}
-                </pre>
+                {results && results.map((e, i) => <p><Icon name='question circle' /><strong>#{i+1}: {e.question}</strong><br/>{e.answer}</p>)}
             </Segment>
             <Segment>
                 <Header as='h2'>Orders</Header>
