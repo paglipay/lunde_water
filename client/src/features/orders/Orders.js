@@ -45,7 +45,7 @@ function OrdersDisplay(props) {
     const right_side = () => {
         // return null
         return (<Segment>
-            <Header as='h2'><Icon name='registered' />Register</Header><Link to='/register'><Icon style={{float:'right'}}  name='edit' /></Link>
+            <Header as='h2'><Icon name='registered' />Registered</Header><Link to='/register'><Icon style={{float:'right'}}  name='edit' /></Link>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p>
