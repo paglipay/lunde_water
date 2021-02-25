@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const ordersSchema = new Schema({
     customerId: { type: String, required: false },
     InvoiceId: { type: String, required: false },
+    stuff: { type: Object, required: false },
     date: { type: String, required: false }
 
 });

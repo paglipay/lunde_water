@@ -3,7 +3,12 @@ const questions1 = [
   // { question:'Do you have a preferred day of delivery?', type:"week"},
   {
     question: 'Do you have a preferred time of delivery?',
-    type: "datetime",
+    type: "select",
+    options: [
+      { value: 'Morning', id: 'morning' },
+      { value: 'Noon', id: 'noon' },
+      { value: 'Evening', id: 'evening' },
+    ],
     condition: { property: "Do you need to be home for the delivery?", value: ['Yes'] }
   },
 ]

@@ -27,13 +27,25 @@ const questions2 = [
     question: 'Weight', type: "text"
   },
   {
-    question: 'Gender', type: "text"
+    question: 'Gender', type: "select", options: ['M', 'F', 'other']
+  },
+]
+const questions3 = [
+  {
+    question: 'Hobbies', type: "text"
+  },
+  {
+    question: 'Talents', type: "text"
+  },
+  {
+    question: 'Favorites', type: "text"
   },
 ]
 
 export const questions_arry = [
   { headline: 'Your Profile', questions: questions },
-  // { headline: 'Your More Personal Stuff', questions: questions2 }
+  { headline: 'Your More Personal Stuff', questions: questions2 },
+  { headline: 'Extra', questions: questions3 }
 ]
 
 export const homeObjOne = {

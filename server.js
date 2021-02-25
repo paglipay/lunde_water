@@ -2,7 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const path = require('path');
 const routes = require('./routes');
-
+const bodyParser = require('body-parser');
 const app = express();
 // const bodyParser = require('body-parser');
 
@@ -13,8 +13,8 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-// app.use(bodyParser.json({ limit: '500kb' }));
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ limit: '500kb' }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(routes);
 const PORT = process.env.PORT || 5000;
 

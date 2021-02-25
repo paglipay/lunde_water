@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 // import { fetchCollections, removeCollectionRequest, markCollectionAsActiveRequest } from '../../../redux'
 // import { createTodo } from './redux/actions'
-import { addAnswersRequest } from './redux/thunks'
-import CustomerQuestions from '../../components/CustomerQuestions/CustomerQuestions'
+import { addTodoRequest } from '../orders/redux/thunks'
+import OrderFormDisplay from '../../components/orderform/OrderForm'
 
-function Questionaire(props) {
+function OrderForm(props) {
     console.log('Questionaire props:', props)
     return (
-        < CustomerQuestions {...props}/>
+        < OrderFormDisplay {...props}/>
     )
 }
 
@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
+        addAnswersRequest: (obj) => dispatch(addTodoRequest(obj)),
         //     fetchCollections: () => dispatch(fetchCollections()),
         //   onRemovePressed: id => dispatch(removeCollectionRequest(id)), 
         //   onActivatePressed: id => dispatch(markCollectionAsActiveRequest(id)),
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Questionaire)
+)(OrderForm)

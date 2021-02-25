@@ -1,10 +1,10 @@
 import {
-    createTodo,
-    removeTodo,
-    loadTodosInProgress,
-    loadTodosSuccess,
-    loadTodosFailure,
-    markTodoAsCompleted,
+    createAnswers,
+    // removeTodo,
+    // loadTodosInProgress,
+    // loadTodosSuccess,
+    // loadTodosFailure,
+    // markTodoAsCompleted,
 } from './actions';
 import axios from 'axios'
 
@@ -13,7 +13,7 @@ import axios from 'axios'
 //     //     dispatch(loadTodosInProgress());
 //     //     const response = await fetch('/todos');
 //     //     const todos = await response.json();
-
+        
 //     //     await dispatch(loadTodosSuccess(todos));
 //     // } catch (e) {
 //     //     dispatch(loadTodosFailure());
@@ -35,41 +35,22 @@ import axios from 'axios'
 
 // }
 
-// export const addTodoRequest = text => async dispatch => {
-//     try {
-//         const body = JSON.stringify({ text });
-//         // const response = await fetch('/todos', {
-//         //     headers: {
-//         //         'Content-Type': 'application/json',
-//         //     },
-//         //     method: 'post',
-//         //     body,
-//         // });
-//         // const todo = await response.json();
-//         dispatch(createTodo(text));
-//     } catch (e) {
-//         dispatch(displayAlert(e));
-//     }
-// }
-
-export const addTodoRequest = text => async dispatch => {
-
+export const addAnswersRequest = text => async dispatch => {
     console.log('text: ', text)
-    // const body = JSON.stringify({ text });
-    // console.log('body: ', body)
-    axios
-        .post('/api/orders', text)
-        .then(response => {
-            // response.data is the users
-            const data = response.data
-            console.log('response.data.results: ', data)
-            dispatch(createTodo(data));
-        })
-        .catch((e) => {
-            console.log('catch', e)
-            dispatch(displayAlert(e))
-        })
-
+    try {
+        const body = JSON.stringify({ text });
+        // const response = await fetch('/todos', {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     method: 'post',
+        //     body,
+        // });
+        // const todo = await response.json();
+        dispatch(createAnswers(text));
+    } catch (e) {
+        dispatch(displayAlert(e));
+    }
 }
 
 // export const removeTodoRequest = id => async dispatch => {

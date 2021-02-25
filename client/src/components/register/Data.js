@@ -6,7 +6,7 @@ const questions = [
       condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
     },
     {
-      question: 'Add you Email', type: "text",
+      question: 'Add your Email', type: "text",
       condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
     },
     {

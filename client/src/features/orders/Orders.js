@@ -8,85 +8,102 @@ import { addTodoRequest } from './redux/thunks'
 import Layout from '../../components/semantic_ui/ResponsiveLayout/Layout1';
 import OrdersTable from '../../components/DynamicTable/DynamicTable';
 import {
+    Grid,
     Header,
     Segment,
     Icon,
     Image,
     Button
 } from 'semantic-ui-react'
-function OrdersDisplay(props) {
+
+const consolidateQIndexes = (data) => {
     let results = {}
-    const resultsDisplay = []
-    Object.keys(props.customeranswers.data).forEach((prop) => {
-        if (results.hasOwnProperty(props.customeranswers.data[prop].qIndex) === false) { results[props.customeranswers.data[prop].qIndex] = [] }
-        results[props.customeranswers.data[prop].qIndex].push({ question: prop, answer: props.customeranswers.data[prop].answer })
+    Object.keys(data).forEach((prop) => {
+        if (results.hasOwnProperty(data[prop].qIndex) === false) { results[data[prop].qIndex] = [] }
+        results[data[prop].qIndex].push({ question: prop, answer: data[prop].answer })
         console.log('results:', results)
     })
+    return results
+}
 
-    let results2 = {}
+const displayResults = (results, resultsDisplay) => {
+    (Object.keys(results).forEach((prop) => {
+        resultsDisplay.push(<><hr /><h4>{prop}</h4></>)
+        results[prop] && results[prop].map((e, i) => {
+            resultsDisplay.push(<p>
+                {/* <Icon name='question circle' /> */}
+                <strong>
+                    {/* #{i + 1}: */}
+                    {e.question}</strong><br />{e.answer}</p>)
+        })
+    }))
+}
+
+function OrdersDisplay(props) {
+
+    const resultsDisplay = []
+    const results = consolidateQIndexes(props.customeranswers.data)
+    displayResults(results, resultsDisplay)
+
     const resultsDisplay2 = []
-    Object.keys(props.profile.data).forEach((prop) => {
-        if (results2.hasOwnProperty(props.profile.data[prop].qIndex) === false) { results2[props.profile.data[prop].qIndex] = [] }
-        results2[props.profile.data[prop].qIndex].push({ question: prop, answer: props.profile.data[prop].answer })
+    const results2 = consolidateQIndexes(props.profile.data)
+    displayResults(results2, resultsDisplay2)
 
-    })
-    let results3 = {}
     const resultsDisplay3 = []
-    Object.keys(props.register.data).forEach((prop) => {
-        if (results3.hasOwnProperty(props.register.data[prop].qIndex) === false) { results3[props.register.data[prop].qIndex] = [] }
-        results3[props.register.data[prop].qIndex].push({ question: prop, answer: props.register.data[prop].answer })
-
-    })
-    // const results2 = []
-    // Object.keys(props.profile.data).forEach((prop) => results2.push({ question: prop, answer: props.profile.data[prop] }))
-    // const results3 = []
-    // Object.keys(props.register.data).forEach((prop) => results3.push({ question: prop, answer: props.register.data[prop] }))
+    const results3 = consolidateQIndexes(props.register.data)
+    displayResults(results3, resultsDisplay3)
 
     const right_side = () => {
         // return null
         return (<Segment>
-            <Header as='h2'><Icon name='registered' />Registered</Header><Link to='/register'><Icon style={{float:'right'}}  name='edit' /></Link>
+            <span><Link to='/register'><Icon style={{ float: 'right' }} name='edit' /></Link></span>
+            <span><Header as='h2'><Icon name='registered' />Registered</Header></span>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p>
-                {
-                    (Object.keys(results3).forEach((prop) => {
-                        resultsDisplay3.push(<><hr/><h4>{prop}</h4></>)
-                        results3[prop] && results3[prop].map((e, i) => { resultsDisplay3.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
-                    }))
-                }
-                {resultsDisplay3}
+            {/* {
+                (Object.keys(results3).forEach((prop) => {
+                    resultsDisplay3.push(<><hr /><h4>{prop}</h4></>)
+                    results3[prop] && results3[prop].map((e, i) => { resultsDisplay3.push(<p><strong>{e.question}</strong><br />{e.answer}</p>) })
+                }))
+            } */}
+            {resultsDisplay3}
         </Segment>
         )
     }
     return (
         <Layout {...props} right_side={right_side()} >
             <Segment>
-                <Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />Your Information</Header><Link to='/profile'><Icon style={{float:'right'}}  name='edit' /></Link>
+                <span><Link to='/profile'><Icon style={{ float: 'right' }} name='edit' /></Link></span>
+                <span><Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />Your Information</Header></span>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p>
-                {
+                {/* {
                     (Object.keys(results2).forEach((prop) => {
-                        resultsDisplay2.push(<><hr/><h4>{prop}</h4></>)
-                        results2[prop] && results2[prop].map((e, i) => { resultsDisplay2.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
+                        resultsDisplay2.push(<><hr /><h3>{prop}</h3></>)
+                        results2[prop] && results2[prop].map((e, i) => { resultsDisplay2.push(<p><strong>{e.question}</strong><br />{e.answer}</p>) })
+
                     }))
-                }
+                } */}
                 {resultsDisplay2}
             </Segment>
 
             <Segment>
-                <Header as='h2'><Icon name='question circle' />Your Answers</Header><Link to='/questionaire2'><Icon style={{ float: 'right' }} name='edit' /></Link>
+                <span><Link to='/questionaire2'><Icon style={{ float: 'right' }} name='edit' /></Link><Link to='/questionaire'><Icon style={{ float: 'right' }} name='edit' /></Link></span>
+                <span><Header as='h2'><Icon name='question circle' />Your Answers</Header></span>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p>
-                {
+                {/* {
                     (Object.keys(results).forEach((prop) => {
-                        resultsDisplay.push(<><hr/><h4>{prop}</h4></>)
+                        resultsDisplay.push(<><hr /><h4>{prop}</h4></>)
                         results[prop] && results[prop].map((e, i) => { resultsDisplay.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
                     }))
-                }
+                } */}
+
                 {resultsDisplay}
+                {/* {props.customeranswers ? displayResults(props.customeranswers.data): []} */}
             </Segment>
             <Segment>
                 <Header as='h2'><Icon name='unordered list' />Orders</Header>
@@ -94,10 +111,10 @@ function OrdersDisplay(props) {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p>
                 <OrdersTable data={props.orders.data} />
-                <Button onClick={() => {
+                {/* <Button onClick={() => {
                     console.log('Pressed')
                     props.addTodoRequest({ id: 'test' })
-                }}>Press</Button>
+                }}>Press</Button> */}
             </Segment>
         </Layout>
 

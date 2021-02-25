@@ -33,8 +33,8 @@ const ResponsiveLayout = (props) => (
 
         <Container style={style.last}>
             <Step.Group fluid>
-                <Step active icon='question circle' title='Questions' description='Please answer at your convinience' />
-                <Step disabled icon='dollar' title='Review / Confirm' description='Take a look for accuracy.' />
+                <Step active icon='question circle' title='Questions' description='Answer to the best of your ability.' />
+                <Step disabled icon='dollar' title='Review / Complete' description='Confirm for accuracy.' />
                 <Step
                     disabled
                     icon='info circle'
@@ -45,14 +45,13 @@ const ResponsiveLayout = (props) => (
         </Container>
 
         <Grid columns={2} stackable>
-
             <Grid.Row columns={2}>
                 <Grid.Column width={12}>
                     <Segment>
                         <Header as='h2'>{props.headline}</Header>
-                        <p>
+                        {/* <p>
                         {props.topLine}
-                        </p>
+                        </p> */}
                         {props.children}
                         {props.questionIndex !== 0 ?
                         <Button onClick={props.onClickBack}>
@@ -62,9 +61,7 @@ const ResponsiveLayout = (props) => (
                         <Button onClick={props.onClick}>
                             {props.buttonLabel}
                         </Button>)}
-
-                    </Segment>
-                    
+                    </Segment>                    
                 </Grid.Column>
                 <Grid.Column width={4}>
                     {/* <Segment> */}
@@ -83,7 +80,6 @@ const ResponsiveLayout = (props) => (
                                             </Feed.Summary>
                                     </Feed.Content>
                                 </Feed.Event>
-
                                 <Feed.Event>
                                     <Feed.Label image='/images/avatar/small/molly.png' />
                                     <Feed.Content>
@@ -93,7 +89,6 @@ const ResponsiveLayout = (props) => (
                                             </Feed.Summary>
                                     </Feed.Content>
                                 </Feed.Event>
-
                                 <Feed.Event>
                                     <Feed.Label image='/images/avatar/small/elliot.jpg' />
                                     <Feed.Content>
@@ -106,13 +101,9 @@ const ResponsiveLayout = (props) => (
                             </Feed>
                         </Card.Content>
                     </Card>
-
-                    {/* </Segment> */}
-                    
+                    {/* </Segment> */}                    
                 </Grid.Column>
-
             </Grid.Row>
-
         </Grid>
     </Container>
 )

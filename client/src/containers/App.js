@@ -7,6 +7,7 @@ import Questionaire2 from '../features/questionaire/Questionaire2'
 import Register from '../features/register/Register'
 import Profile from '../features/profile/Profile'
 import Orders from '../features/orders/Orders'
+import OrderForm from '../features/orderform/OrderForm'
 import Services from '../features/services/Services'
 import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
 import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
@@ -33,6 +34,7 @@ const App = () => {
             <Route exact path='/questionaire2' component={Questionaire2} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/profile' component={Profile} />
+            <Route exact path='/orderform' component={OrderForm} />
             <Route exact path='/orders' component={Orders} />
             <Route exact path='/services' component={Services} />
           </Switch>
