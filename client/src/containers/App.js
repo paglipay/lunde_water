@@ -2,30 +2,30 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar'
 import Footer from '../components/footer/Footer'
-// import Questionaire from '../features/questionaire/Questionaire'
-// import Questionaire2 from '../features/questionaire/Questionaire2'
-// import Register from '../features/register/Register'
-// import Profile from '../features/profile/Profile'
-// import Orders from '../features/orders/Orders'
-// import OrderForm from '../features/orderform/OrderForm'
-// import Services from '../features/services/Services'
-// import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
-// import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
-// import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2'
-// import HeroSections from '../features/herosections/HeroSections'
-// // import './App.css';
-// import { Provider } from 'react-redux'
-// import store from '../store/store'
+import Questionaire from '../features/questionaire/Questionaire'
+import Questionaire2 from '../features/questionaire/Questionaire2'
+import Register from '../features/register/Register'
+import Profile from '../features/profile/Profile'
+import Orders from '../features/orders/Orders'
+import OrderForm from '../features/orderform/OrderForm'
+import Services from '../features/services/Services'
+import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
+import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
+import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2'
+import HeroSections from '../features/herosections/HeroSections'
+// import './App.css';
+import { Provider } from 'react-redux'
+import store from '../store/store'
 
 
 // import Dialog from '../components/auth/register/dialog/Dialog';
 const App = () => {
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
       <Router>
         <Fragment>
           <NavBar />
-          {/* <Switch>
+          <Switch>
             <Route exact path='/homepagelayout' component={HomepageLayout} />
             <Route exact path='/responsivelayout' component={ResponsiveLayout} />
             <Route exact path='/responsivelayout2' component={ResponsiveLayout2} />
@@ -37,11 +37,11 @@ const App = () => {
             <Route exact path='/orderform' component={OrderForm} />
             <Route exact path='/orders' component={Orders} />
             <Route exact path='/services' component={Services} />
-          </Switch> */}
+          </Switch>
           <Footer />
         </Fragment>
       </Router>
-    // </Provider>
+    </Provider>
   );
 };
 
