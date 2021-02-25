@@ -27,8 +27,15 @@ const questions2 = [
     question: 'Weight', type: "text"
   },
   {
-    question: 'Gender', type: "select", options: ['M', 'F', 'other']
+    question: 'Gender', type: "select", options: [
+      { value: 'Male', id: 'male' },
+      { value: 'Female', id: 'female' },
+      { value: 'Other', id: 'other' }
+    ]
   },
+  {
+    question: 'Please Specify', type: "textarea", condition: { property: "Gender", value: ['other'] }
+  }
 ]
 const questions3 = [
   {
