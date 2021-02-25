@@ -35,7 +35,7 @@ function Navbar() {
       <IconContext.Provider value={{ color: '#fff' }}>
         <nav className='navbar'>
           <div className='navbar-container container'>
-            <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+            <Link to='/herosections' className='navbar-logo' onClick={closeMobileMenu}>
               <MdInvertColors className='navbar-icon' />
               LUNDE WATER
             </Link>
@@ -44,7 +44,7 @@ function Navbar() {
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
-                <Link to='/' className='nav-links home' onClick={closeMobileMenu}>
+                <Link to='/herosections' className='nav-links home' onClick={closeMobileMenu}>
                   Home
                 </Link>
               </li>
@@ -59,11 +59,20 @@ function Navbar() {
               </li>
               <li className='nav-item'>
                 <Link
-                  to='/order'
+                  to='/orderform'
                   className='nav-links order'
                   onClick={closeMobileMenu}
                 >
-                  Order
+                  Order Form
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link
+                  to='/orders'
+                  className='nav-links order'
+                  onClick={closeMobileMenu}
+                >
+                  Orders
                 </Link>
               </li>
               {/* <li className='nav-item'>
@@ -77,11 +86,11 @@ function Navbar() {
               </li> */}
               <li className='nav-btn'>
                 {button ? (
-                  <Link to='/sign-up' className='btn-link'>
+                  <Link to='/register' className='btn-link'>
                     <Button buttonStyle='btn--outline'>SIGN UP</Button>
                   </Link>
                 ) : (
-                  <Link to='/sign-up' className='btn-link'>
+                  <Link to='/register' className='btn-link'>
                     <Button
                       buttonStyle='btn--outline'
                       buttonSize='btn--mobile'
