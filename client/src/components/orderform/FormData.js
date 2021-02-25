@@ -1,6 +1,6 @@
 
 const questions = [
-    { question: 'What would you like to order?', type: "select", options: [
+    { question: 'What would you like to order?', type: "select_cards", options: [
         { value: 'Fill water tank', id: 'pr_12345' },
         { value: 'Other', id: 'pr_4567' }
     ] },
