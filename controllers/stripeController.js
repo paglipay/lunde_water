@@ -1,5 +1,6 @@
 // const Stripe = require("stripe");
-// const stripe = new Stripe("sk_test_51H2jtGLvJwjuOr0RycKGhkT2ZzcZq9pkZfwNmUsSYhQhAr7c0Ay6MzmtW6kqU6lGJFItuNf6i24RQyqXoxpxYhyx00cOJYQMp2")
+// const config = require('../config/default.json')
+// const stripe = new Stripe("STRIPE_SECRET_KEY")
 
 module.exports = {
     create: function (req, res) {
