@@ -16,10 +16,15 @@ import {
   Menu,
   Segment,
   Sidebar,
+  Tab,
+  Table,
   Visibility,
 } from 'semantic-ui-react'
 
 import HomepageHeading from '../HomepageHeading/HomepageHeading'
+import HeroSection1 from '../../hero/HeroSection1'
+import HeroSection2 from '../../hero/HeroSection2'
+import AccordionExampleStyled from '../AccordionExampleStyled/AccordionExampleStyled'
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -63,11 +68,12 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ 
-                backgroundSize: 'cover', backgroundImage:"url('images/wave (bg).svg')", minHeight: 700, padding: '1em 0em' }}
+            style={{
+              backgroundSize: 'cover', backgroundImage: "url('images/wave (bg).svg')", minHeight: 700, padding: '1em 0em'
+            }}
             vertical
           >
-            <Menu
+            {/* <Menu
               fixed={fixed ? 'top' : null}
               inverted={!fixed}
               pointing={!fixed}
@@ -90,7 +96,7 @@ class DesktopContainer extends Component {
                   </Button>
                 </Menu.Item>
               </Container>
-            </Menu>
+            </Menu> */}
             <HomepageHeading />
           </Segment>
         </Visibility>
@@ -189,60 +195,51 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
+const panes = [
+  {
+    menuItem: 'Need to See This', render: () => <Tab.Pane>
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell>Registration Date</Table.HeaderCell>
+            <Table.HeaderCell>E-mail address</Table.HeaderCell>
+            <Table.HeaderCell>Premium Plan</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>John Lilki</Table.Cell>
+            <Table.Cell>September 14, 2013</Table.Cell>
+            <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
+            <Table.Cell>No</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Jamie Harington</Table.Cell>
+            <Table.Cell>January 11, 2014</Table.Cell>
+            <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
+            <Table.Cell>Yes</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Jill Lewis</Table.Cell>
+            <Table.Cell>May 11, 2014</Table.Cell>
+            <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
+            <Table.Cell>Yes</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    </Tab.Pane>
+  },
+  { menuItem: 'FAQs', render: () => <Tab.Pane><AccordionExampleStyled /></Tab.Pane> },
+  { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+]
+
 const HomepageLayout = () => (
   <ResponsiveContainer>
-    <Segment style={{ padding: '8em 0em' }} vertical>
-      <Grid container stackable verticalAlign='middle'>
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              We Help Companies and Companions
-            </Header>
-            <p style={{ fontSize: '1.33em' }}>
-              We can give your company superpowers to do things that they never thought possible.
-              Let us delight your customers and empower your needs... through pure data analytics.
-            </p>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              We Make Bananas That Can Dance
-            </Header>
-            <p style={{ fontSize: '1.33em' }}>
-              Yes that's right, you thought it was the stuff of dreams, but even bananas can be
-              bioengineered.
-            </p>
-          </Grid.Column>
-          <Grid.Column floated='right' width={6}>
-            <Image bordered rounded size='large' src='/images/wireframe/white-image.png' />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign='center'>
-            <Button size='huge'>Check Them Out</Button>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
+    <HeroSection1 />
 
-    <Segment style={{ padding: '0em' }} vertical>
-      <Grid celled='internally' columns='equal' stackable>
-        <Grid.Row textAlign='center'>
-          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              "What a Company"
-            </Header>
-            <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
-          </Grid.Column>
-          <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-            <Header as='h3' style={{ fontSize: '2em' }}>
-              "I shouldn't have gone with their competitor."
-            </Header>
-            <p style={{ fontSize: '1.33em' }}>
-              <Image avatar src='/images/avatar/large/nan.jpg' />
-              <b>Nan</b> Chief Fun Officer Acme Toys
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Segment>
+    <HeroSection2 />
 
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
@@ -257,7 +254,7 @@ const HomepageLayout = () => (
         <Button as='a' size='large'>
           Read More
         </Button>
-
+        <Tab panes={panes} />
         <Divider
           as='h4'
           className='header'

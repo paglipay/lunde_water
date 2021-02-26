@@ -15,7 +15,9 @@ function HeroSection({
     img,
     alt,
     imgStart,
-    onClick
+    onClick,
+    onClickBack,
+    questionIndex
 }) {
     return (
         <>
@@ -47,6 +49,11 @@ function HeroSection({
                                     {description}
                                 </div>
                                 {/* <Link to='/sign-up'> */}
+                                {questionIndex !== 0 ?
+                                    <Button buttonSize='btn--wide' buttonColor='green' onClick={onClickBack}>
+                                        Back
+                                    </Button> : null}
+                                    {'   '}
                                 <Button buttonSize='btn--wide' buttonColor='green' onClick={onClick}>
                                     {buttonLabel}
                                 </Button>

@@ -31,7 +31,6 @@
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.6",
-    "react-router-dom": "^5.2.0",
     "stripe": "^8.127.0"
   },
   "devDependencies": {
@@ -68,6 +67,10 @@
     "coverageReporters": [
       "text"
     ]
+  },
+  "engines": {
+    "node": ">= 12.8.1",
+    "npm": ">= 6.14.5"
   },
   "homepage": "https://github.com/DataSlate/lunde_water#readme"
 }
