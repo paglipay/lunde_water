@@ -1,32 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
-    Table
+    Form,
+    Table,
+    Button
 } from 'semantic-ui-react'
 
-function DynamicTable(props) {
-    console.log('DynamicTable(props): ', props.data)
+function DynamicTable({ data = [], headers=[] }) {
+    console.log('DynamicTable(data): ', data)
+    const headerProps = headers
+    const tableData = data
+
     return (
-        <Table>
-            <Table.Header>
-                <Table.Row>
-                    <Table.HeaderCell>ID</Table.HeaderCell>
-                    <Table.HeaderCell>Custom Details</Table.HeaderCell>
-                </Table.Row>
-            </Table.Header>
+        <>
+            <Table>
+                <Table.Header>
+                    <Table.Row>
+                        {/* <Table.HeaderCell>ID</Table.HeaderCell> */}
+                        {/* <Table.HeaderCell>ID</Table.HeaderCell>
+                    <Table.HeaderCell>Custom Details</Table.HeaderCell> */}
+                        {headerProps.map(c => <Table.HeaderCell>{c}</Table.HeaderCell>)}
+                    </Table.Row>
+                </Table.Header>
 
-            <Table.Body>
-                {props.data.map(e => {
-                    return (
-                        <Table.Row>
-                            <Table.Cell>{e.results['_id']}TEST</Table.Cell>
-                            <Table.Cell>{e.results['stuff'] && e.results['stuff'].map(e => <>{e.question}<br/>{e.answer}<br/><br/></>)}</Table.Cell>
-
+                <Table.Body>
+                    {tableData.map(r => {
+                        return (
+                            <Table.Row key={r['_id']}>
+                                {/* <Table.Cell><Button>Delete</Button></Table.Cell> */}
+                                {/* <Table.Cell>{e.results['_id']}TEST</Table.Cell> */}
+                                {/* <Table.Cell>{e.results['stuff'] && e.results['stuff'].map(e => <>{e.question}<br/>{e.answer}<br/><br/></>)}</Table.Cell>      */}
+                                {headerProps.map(c => <Table.HeaderCell>{JSON.stringify(r[c])}</Table.HeaderCell>)}
+                            </Table.Row>)
+                    }
+                    )
+                    }
+                    {/* {
+                        (<Table.Row key={'last'}>
+                            <Table.Cell><Button>Add</Button></Table.Cell>
+                            {headerProps.map(c => <Table.HeaderCell>{[c]}
+                                
+                            </Table.HeaderCell>)}
                         </Table.Row>)
-                }
-                )
-                }
-            </Table.Body>
-        </Table>
+                    } */}
+                </Table.Body>
+            </Table>
+            {/* <Button onClick={() => setTableData([...tableData, { '_id': 'ID', '2': '2', '3': '3', '4': '4' }])}>Add</Button> */}
+        </>
     )
 }
 

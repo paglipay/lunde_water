@@ -1,5 +1,12 @@
 
 const questions = [
+  // {
+  //   name: 'Press',
+  //   type: "button", 
+  //   onClick: () => {
+  //     console.log('Pressed', document.querySelector('input[name="Full Name"]').value)
+  //   }
+  // },
   {
     question: 'Full Name', type: "text"
   },
@@ -51,8 +58,8 @@ const questions3 = [
 
 export const questions_arry = [
   { headline: 'Your Profile', questions: questions },
-  { headline: 'Your More Personal Stuff', questions: questions2 },
-  { headline: 'Extra', questions: questions3 }
+  // { headline: 'Your More Personal Stuff', questions: questions2 },
+  // { headline: 'Extra', questions: questions3 }
 ]
 
 export const homeObjOne = {
