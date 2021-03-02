@@ -12,6 +12,7 @@ const questions1 = [
             { value: 'Text', id: 'text' },
             { value: 'Select', id: 'select' },
             { value: 'Text Area', id: 'textarea' },
+            { value: 'Yes / No', id: 'y/n' },
         ],
     },
     {

@@ -59,15 +59,15 @@ function OrdersDisplay(props) {
         return (<Segment>
             <span>
                 <Link to='/register'>
-                    <Label style={{ float: 'right' }}>
-                        <Icon name='edit' /> 23
-                    </Label>
+                    {/* <Label style={{ float: 'right' }}> */}
+                        <Icon name='edit' style={{ float: 'right' }}/>
+                    {/* </Label> */}
                 </Link>
             </span>
             <span><Header as='h2'><Icon name='registered' />Registered</Header></span>
-            <p>
+            {/* <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </p>
+            </p> */}
             {/* {
                 (Object.keys(results3).forEach((prop) => {
                     resultsDisplay3.push(<><hr /><h4>{prop}</h4></>)
@@ -83,17 +83,17 @@ function OrdersDisplay(props) {
             <Segment>
                 <span>
                     <Link to='/profile'>
-                        <Label style={{ float: 'right' }}>
-                            <Icon name='edit' /> 23
-                        </Label>
+                        {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit' style={{ float: 'right' }}/>
+                        {/* </Label> */}
                     </Link>
 
 
                 </span>
                 <span><Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />Your Information</Header></span>
-                <p>
+                {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
+                </p> */}
                 {/* {
                     (Object.keys(results2).forEach((prop) => {
                         resultsDisplay2.push(<><hr /><h3>{prop}</h3></>)
@@ -107,18 +107,18 @@ function OrdersDisplay(props) {
             <Segment>
                 <span>
                     <Link to='/questionaire2'>
-                        <Label style={{ float: 'right' }}>
-                            <Icon name='edit' /> 23
-                        </Label>
+                        {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit'style={{ float: 'right' }} />
+                        {/* </Label> */}
                     </Link><Link to='/questionaire'>
-                        <Label style={{ float: 'right' }}>
-                            <Icon name='edit' /> 23
-                        </Label>
+                        {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit' style={{ float: 'right' }}/>
+                        {/* </Label> */}
                     </Link></span>
                 <span><Header as='h2'><Icon name='question circle' />Your Answers</Header></span>
-                <p>
+                {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
+                </p> */}
                 {/* {
                     (Object.keys(results).forEach((prop) => {
                         resultsDisplay.push(<><hr /><h4>{prop}</h4></>)
@@ -131,9 +131,9 @@ function OrdersDisplay(props) {
             </Segment>
             <Segment>
                 <Header as='h2'><Icon name='unordered list' />Orders</Header>
-                <p>
+                {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
+                </p> */}
                 <OrdersTable data={props.orders.data} />
                 {/* <Button onClick={() => {
                     console.log('Pressed')

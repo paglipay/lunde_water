@@ -14,7 +14,7 @@ import { MdInvertColors } from 'react-icons/md';
 function Footer() {
   return (
     <div className='footer-container'>
-      <section className='footer-subscription'>
+      {/* <section className='footer-subscription'>
         <p className='footer-subscription-heading'>
           Join our exclusive membership to receive the latest news and trends
         </p>
@@ -32,8 +32,8 @@ function Footer() {
             <Button buttonStyle='btn--outline'>Subscribe</Button>
           </form>
         </div>
-      </section>
-      <div className='footer-links'>
+      </section> */}
+      {/* <div className='footer-links'>
         <div className='footer-link-wrapper'>
           <div className='footer-link-items'>
             <h2>About Us</h2>
@@ -67,7 +67,7 @@ function Footer() {
             <Link to='/homepagelayout'>Twitter</Link>
           </div>
         </div>
-      </div>
+      </div> */}
       <section className='social-media'>
         <div className='social-media-wrap'>
           <div className='footer-logo'>
@@ -77,7 +77,7 @@ function Footer() {
             </Link>
           </div>
           <small className='website-rights'>Lunde Water © 2021</small>
-          <div className='social-icons'>
+          {/* <div className='social-icons'>
             <Link
               className='social-icon-link'
               to='/homepagelayout'
@@ -120,7 +120,7 @@ function Footer() {
             >
               <FaLinkedin />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

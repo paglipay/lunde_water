@@ -17,7 +17,6 @@ const restructureForTable = (data) => {
     Object.keys(data).forEach((q) => {
         switch (q) {
             case "What name of input?": {
-                console.log('case: ', data[q].answer)
                 state = {
                     ...state,
                     question: data[q].answer,
@@ -25,7 +24,6 @@ const restructureForTable = (data) => {
                 break;
             }
             case "What type of input?": {
-                console.log('case: ', data[q].answer)
                 state = {
                     ...state,
                     type: data[q].answer,
@@ -33,7 +31,6 @@ const restructureForTable = (data) => {
                 break;
             }
             case "Add a option(s), comma delimited.": {
-                console.log('case: ', data[q].answer)
                 state = {
                     ...state,
                     options: data[q].answer.split(',').map(e => { return { 'value': e.trim(), 'id': e.trim() } }),
@@ -41,7 +38,6 @@ const restructureForTable = (data) => {
                 break;
             }
             case "What is the previous input that this would be dependent on?": {
-                console.log('case: ', data[q].answer)
                 state = {
                     ...state,
                     condition: { ...state.condition, property: data[q].answer },
@@ -49,7 +45,6 @@ const restructureForTable = (data) => {
                 break;
             }
             case "Add a value(s), comma delimited.": {
-                console.log('case: ', data[q].answer)
                 state = {
                     ...state,
                     condition: { ...state.condition, value: data[q].answer.split(',').map(e => e.trim()) },
@@ -77,6 +72,7 @@ function DynamicTableForm(props) {
         } else {
             console.log('Submit', questionsPost)
             setNewQuestionsArry([...newQuestionsArry, restructureForTable(questionsPost)])
+            setQuestionsPost({})
         }
     }
     homeObjOne.onClickBack = () => {
@@ -117,39 +113,10 @@ function DynamicTableForm(props) {
             <Grid columns={2} relaxed='very'>
                 <Grid.Column>
                     <Layout {...homeObjOneD}>{homeObjOneD.description}</Layout>
-                    <br />
-                    {/* <Button onClick={() => {
-                        console.log('Submit', questionsArry)
-
-                        const questions1 = [
-                            { question: 'What name of input?', type: "text" },
-                            {
-                                question: 'What type of input?', type: "select",
-                                options: [
-                                    { value: 'Message', id: 'message' },
-                                    { value: 'Text', id: 'text' },
-                                    { value: 'Select', id: 'select' },
-                                    { value: 'Text Area', id: 'textarea' },
-                                ],
-                            },
-                            {
-                                question: 'Add a option(s), comma delimited.', type: "textarea",
-                                condition: { property: "What type of input?", value: ['select'] }
-                            }
-
-                        ]
-
-
-
-
-                        setQuestionsArry([...questionsArry,
-                        { headline: `Lets create your form Input ${questionsArry.length}?`, questions: questions1 },
-                        ])
-                    }} >Create</Button> */}
                 </Grid.Column>
                 <Grid.Column>
                     <h2>questionIndex:{questionIndex}</h2>
-                    <DTable data={newQuestionsArry} headers={['question', 'type', 'options']} />
+                    <DTable data={newQuestionsArry} headers={['question', 'type', 'options', 'condition']} />
                     <Button onClick={feedToSelf} >Feed to Self</Button>
                 </Grid.Column>
             </Grid>

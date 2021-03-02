@@ -49,7 +49,6 @@ function CustomerQuestions(props) {
 
   return (
     <>
-      {dynamicForm(questions_arry[questionIndex]['questions'], setQuestionsPost, questionsPost, questions_arry[questionIndex]['headline'])}
       <Layout {...homeObjOneD}>{homeObjOneD.description}</Layout>
 
     </>

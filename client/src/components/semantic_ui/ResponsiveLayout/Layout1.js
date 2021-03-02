@@ -53,7 +53,7 @@ const ResponsiveLayout = (props) => (
                 </Grid.Column>
                 <Grid.Column width={4}>
                     {/* <Segment> */} 
-                    <Card fluid>
+                    {/* <Card fluid>
                         <Card.Content>
                             <Card.Header>Recent Activity</Card.Header>
                         </Card.Content>
@@ -90,7 +90,7 @@ const ResponsiveLayout = (props) => (
                                 </Feed.Event>
                             </Feed>
                         </Card.Content>
-                    </Card>                                    
+                    </Card>                                     */}
                     {props.right_side} 
                     {/* </Segment> */}
                     

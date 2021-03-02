@@ -26,20 +26,22 @@ const App = () => {
       <Router>
         <Fragment>
           <NavBar />
-          <Switch>
-            <Route exact path='/homepagelayout' component={HomepageLayout} />
-            <Route exact path='/responsivelayout' component={ResponsiveLayout} />
-            <Route exact path='/responsivelayout2' component={ResponsiveLayout2} />
-            <Route exact path='/herosections' component={HeroSections} />
-            <Route exact path='/questionaire' component={Questionaire} />
-            <Route exact path='/questionaire2' component={Questionaire2} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/profile' component={Profile} />
-            <Route exact path='/orderform' component={OrderForm} />
-            <Route exact path='/orders' component={Orders} />
-            <Route exact path='/services' component={Services} />
-            <Route exact path='/dtf' component={DTF} />
-          </Switch>
+          <div style={{ minHeight: "75vh" }}>
+            <Switch >
+              <Route exact path='/homepagelayout' component={HomepageLayout} />
+              <Route exact path='/responsivelayout' component={ResponsiveLayout} />
+              <Route exact path='/responsivelayout2' component={ResponsiveLayout2} />
+              <Route exact path='/herosections' component={HeroSections} />
+              <Route exact path='/questionaire' component={Questionaire} />
+              <Route exact path='/questionaire2' component={Questionaire2} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/profile' component={Profile} />
+              <Route exact path='/orderform' component={OrderForm} />
+              <Route exact path='/orders' component={Orders} />
+              <Route exact path='/services' component={Services} />
+              <Route exact path='/dtf' component={DTF} />
+            </Switch>
+          </div>
           <Footer />
         </Fragment>
       </Router>

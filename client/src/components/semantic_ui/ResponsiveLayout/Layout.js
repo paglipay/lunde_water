@@ -70,7 +70,7 @@ const ResponsiveLayout = (props) => (
                             <Card.Header>Recent Activity</Card.Header>
                         </Card.Content>
                         <Card.Content>
-                            <Feed>
+                            {/* <Feed>
                                 <Feed.Event>
                                     <Feed.Label image='/images/avatar/small/jenny.jpg' />
                                     <Feed.Content>
@@ -98,7 +98,7 @@ const ResponsiveLayout = (props) => (
                                             </Feed.Summary>
                                     </Feed.Content>
                                 </Feed.Event>
-                            </Feed>
+                            </Feed> */}
                         </Card.Content>
                     </Card>
                     {/* </Segment> */}                    

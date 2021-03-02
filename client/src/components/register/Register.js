@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, questions_arry } from './Data';
 import { dynamicForm } from '../dynamicform/dynamicform'
+import { restructureForQuestion } from './helperFunctions'
 
 function Register(props) {
 
@@ -14,7 +15,7 @@ function Register(props) {
       setQuestionIndex(questionIndex + 1)
     }else{
         console.log('Submit', questionsPost)            
-        props.addAnswersRequest(questionsPost)
+        props.addAnswersRequest(restructureForQuestion(questionsPost))
         props.history.push('/orders')
     }
   }
