@@ -1,7 +1,7 @@
 import React from 'react';
 import './HeroSection.css';
 import { Button } from '../button/Button';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function HeroSection({
     questionsPost,
@@ -48,16 +48,16 @@ function HeroSection({
                                 >
                                     {description}
                                 </div>
-                                {/* <Link to='/sign-up'> */}
-                                {questionIndex !== 0 ?
+                                <Link to='/homepagelayout'>
+                                {/* {questionIndex !== 0 ?
                                     <Button buttonSize='btn--wide' buttonColor='green' onClick={onClickBack}>
                                         Back
                                     </Button> : null}
-                                    {'   '}
+                                    {'   '} */}
                                 <Button buttonSize='btn--wide' buttonColor='green' onClick={onClick}>
                                     {buttonLabel}
                                 </Button>
-                                {/* </Link> */}
+                                </Link>
                             </div>
                         </div>
                         <div className='col'>

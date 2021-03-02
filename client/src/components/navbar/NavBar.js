@@ -5,6 +5,9 @@ import './Navbar.css';
 import { MdInvertColors } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+import {
+  Icon
+} from 'semantic-ui-react'
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -45,6 +48,7 @@ function Navbar() {
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
               <li className='nav-item'>
                 <Link to='/herosections' className='nav-links home' onClick={closeMobileMenu}>
+                {/* <Icon name='home' /> */}
                   Home
                 </Link>
               </li>
@@ -54,6 +58,7 @@ function Navbar() {
                   className='nav-links services'
                   onClick={closeMobileMenu}
                 >
+                  {/* <Icon name='briefcase' /> */}
                   Services
                 </Link>
               </li>
@@ -63,6 +68,7 @@ function Navbar() {
                   className='nav-links order'
                   onClick={closeMobileMenu}
                 >
+                  {/* <Icon name='calendar outline' /> */}
                   Order Form
                 </Link>
               </li>
@@ -72,6 +78,7 @@ function Navbar() {
                   className='nav-links order'
                   onClick={closeMobileMenu}
                 >
+                  {/* <Icon name='shopping cart' /> */}
                   Orders
                 </Link>
               </li>

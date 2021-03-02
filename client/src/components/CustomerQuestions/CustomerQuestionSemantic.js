@@ -11,13 +11,16 @@ function CustomerQuestions(props) {
 
   homeObjOne.onClick = () => {
     if (questions_arry.length > questionIndex + 1) {
+      //Next Button
       setQuestionIndex(questionIndex + 1)
     } else {
+      //Button says Submit
       console.log('Submit', questionsPost)
       props.addAnswersRequest(questionsPost)
       props.history.push('/orders')
     }
   }
+  
   homeObjOne.onClickBack = () => {
     if (questionIndex !== 0) {
       setQuestionIndex(questionIndex - 1)
@@ -47,6 +50,7 @@ function CustomerQuestions(props) {
   return (
     <>
       <Layout {...homeObjOneD}>{homeObjOneD.description}</Layout>
+
     </>
   );
 }

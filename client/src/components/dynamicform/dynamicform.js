@@ -6,6 +6,10 @@ import {
   Icon
 } from 'semantic-ui-react'
 
+import DTF from '../DynamicTable/DynamicTableForm'
+
+// const isValidZip = (zip) => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
+
 const CardExampleCard = () => (
   <Card>
     <Image src='/images/avatar/large/elliot.jpg' wrapped ui={false} />
@@ -108,12 +112,13 @@ const CardExampleGroups = () => (
 export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
   <Form>
     {questions.map((q, i) => {
-      if (q.hasOwnProperty('condition') === false || postData.hasOwnProperty(q.condition.property) && postData[q.condition.property].hasOwnProperty('answer') && q.condition.value.includes(postData[q.condition.property].answer)) {
+      if (q.hasOwnProperty('condition') === false || postData.hasOwnProperty(q.condition.property) &&
+        postData[q.condition.property].hasOwnProperty('answer') &&
+        q.condition.value.includes(postData[q.condition.property].answer)) {
         if (q.type === 'y/n') {
           return (<>
             <Form.Group controlId={`formBasicUsername${i}`}>
               <Form.Label>{q.question} </Form.Label>
-
               <Form.Check onChange={(e) => {
                 console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: "Yes", qIndex } })
@@ -146,7 +151,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
         else if (q.type === 'select') {
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
-            <Form.Label>{q.question} </Form.Label>
+              <Form.Label>{q.question} </Form.Label>
               <Form.Control as="select" name={q.question} onChange={(e) => {
                 console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
@@ -164,7 +169,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
         else if (q.type === 'select_cards') {
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
-            <Form.Label>{q.question} </Form.Label>
+              <Form.Label>{q.question} </Form.Label>
 
               {q.options.map(e => CardExampleGroups())}
 
@@ -179,6 +184,27 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label><h2>{q.question}</h2></Form.Label>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'button') {
+          return (<>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <Button onClick={(e) => {
+                e.preventDefault()
+                q.onClick()
+              }
+              }>{q.name}</Button>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'dtf') {
+          return (<>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <Form.Label><h2>{q.question}</h2></Form.Label>
+              <DTF />
             </Form.Group>
             <br />
           </>)
@@ -200,9 +226,9 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
         }
         else if (q.type === 'datetime') {
           return (<>
-          <Form.Label>{q.question} </Form.Label>
+            <Form.Label>{q.question} </Form.Label>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
-              <br/>
+              <br />
               <span style={{ float: 'left' }}>
                 <Form.Control style={{ float: 'left' }} onChange={(e) => {
                   console.log(e.target.name, e.target.value)
@@ -216,8 +242,8 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
                   setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
                 }} name={q.question} type="time" placeholder="Enter Date" />
               </span>
-              <Form.Text className="">  
-              <br/>  
+              <Form.Text className="">
+                <br />
               </Form.Text>
             </Form.Group>
             <br />

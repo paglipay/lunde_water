@@ -10,6 +10,7 @@ import OrdersTable from '../../components/DynamicTable/DynamicTable';
 import {
     Grid,
     Header,
+    Label,
     Segment,
     Icon,
     Image,
@@ -28,13 +29,13 @@ const consolidateQIndexes = (data) => {
 
 const displayResults = (results, resultsDisplay) => {
     (Object.keys(results).forEach((prop) => {
-        resultsDisplay.push(<><hr /><h4>{prop}</h4></>)
+        resultsDisplay.push(<><hr /><h3>{prop}</h3></>)
         results[prop] && results[prop].map((e, i) => {
             resultsDisplay.push(<p>
                 {/* <Icon name='question circle' /> */}
-                <strong>
+                <b>
                     {/* #{i + 1}: */}
-                    {e.question}</strong><br />{e.answer}</p>)
+                    {e.question}</b><br />{e.answer}</p>)
         })
     }))
 }
@@ -56,11 +57,17 @@ function OrdersDisplay(props) {
     const right_side = () => {
         // return null
         return (<Segment>
-            <span><Link to='/register'><Icon style={{ float: 'right' }} name='edit' /></Link></span>
+            <span>
+                <Link to='/register'>
+                    {/* <Label style={{ float: 'right' }}> */}
+                        <Icon name='edit' style={{ float: 'right' }}/>
+                    {/* </Label> */}
+                </Link>
+            </span>
             <span><Header as='h2'><Icon name='registered' />Registered</Header></span>
-            <p>
+            {/* <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </p>
+            </p> */}
             {/* {
                 (Object.keys(results3).forEach((prop) => {
                     resultsDisplay3.push(<><hr /><h4>{prop}</h4></>)
@@ -74,11 +81,19 @@ function OrdersDisplay(props) {
     return (
         <Layout {...props} right_side={right_side()} >
             <Segment>
-                <span><Link to='/profile'><Icon style={{ float: 'right' }} name='edit' /></Link></span>
+                <span>
+                    <Link to='/profile'>
+                        {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit' style={{ float: 'right' }}/>
+                        {/* </Label> */}
+                    </Link>
+
+
+                </span>
                 <span><Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />Your Information</Header></span>
-                <p>
+                {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
+                </p> */}
                 {/* {
                     (Object.keys(results2).forEach((prop) => {
                         resultsDisplay2.push(<><hr /><h3>{prop}</h3></>)
@@ -90,11 +105,20 @@ function OrdersDisplay(props) {
             </Segment>
 
             <Segment>
-                <span><Link to='/questionaire2'><Icon style={{ float: 'right' }} name='edit' /></Link><Link to='/questionaire'><Icon style={{ float: 'right' }} name='edit' /></Link></span>
+                <span>
+                    <Link to='/questionaire2'>
+                        {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit'style={{ float: 'right' }} />
+                        {/* </Label> */}
+                    </Link><Link to='/questionaire'>
+                        {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit' style={{ float: 'right' }}/>
+                        {/* </Label> */}
+                    </Link></span>
                 <span><Header as='h2'><Icon name='question circle' />Your Answers</Header></span>
-                <p>
+                {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
+                </p> */}
                 {/* {
                     (Object.keys(results).forEach((prop) => {
                         resultsDisplay.push(<><hr /><h4>{prop}</h4></>)
@@ -107,9 +131,9 @@ function OrdersDisplay(props) {
             </Segment>
             <Segment>
                 <Header as='h2'><Icon name='unordered list' />Orders</Header>
-                <p>
+                {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
-                </p>
+                </p> */}
                 <OrdersTable data={props.orders.data} />
                 {/* <Button onClick={() => {
                     console.log('Pressed')
