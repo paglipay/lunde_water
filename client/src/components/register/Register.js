@@ -15,7 +15,8 @@ function Register(props) {
       setQuestionIndex(questionIndex + 1)
     }else{
         console.log('Submit', questionsPost)            
-        props.addAnswersRequest(restructureForQuestion(questionsPost))
+        props.addAnswersToPost(restructureForQuestion(questionsPost))
+        props.addAnswersRequest(questionsPost)
         props.history.push('/orders')
     }
   }

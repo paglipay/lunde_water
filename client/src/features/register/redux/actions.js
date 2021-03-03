@@ -4,6 +4,12 @@ export const createAnswers = answers => ({
     payload: answers,
 });
 
+export const CREATE_REGISTER_POST = 'CREATE_REGISTER_POST';
+export const createPost = answers => ({
+    type: CREATE_REGISTER_POST,
+    payload: answers,
+});
+
 // export const REMOVE_TODO = 'REMOVE_TODO';
 // export const removeTodo = todo => ({
 //     type: REMOVE_TODO,
