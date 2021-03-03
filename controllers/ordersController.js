@@ -1,22 +1,12 @@
+const Stripe = require("stripe");
+const config = require('../config/default.json')
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || config["STRIPE_SECRET_KEY"])
 const db = require("../models");
-const consolidateQIndexes = (data) => {
-    let results = {}
-    const resArry = []
-    Object.keys(data).forEach((prop, i) => {
-        if (results.hasOwnProperty(data[prop].qIndex) === false) { results[data[prop].qIndex] = [] }
-        results[data[prop].qIndex].push({ question: prop, answer: data[prop].answer })
-        console.log('results:', results)
-        resArry.push({ question: prop, answer: data[prop].answer })
-    })
-    return resArry
-}
-
 
 module.exports = {
     findAll: function (req, res) {
         db.Order
             .find(req.query)
-            // .find({ ...req.query, user_id: req.userId }) fillter by users
             .sort({ date: -1 })
             .then(dbModel => res.json({ results: dbModel }))
             .catch(err => res.status(422).json(err));
@@ -27,27 +17,42 @@ module.exports = {
             .then(dbModel => res.json({ results: dbModel }))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
+    create: async (req, res) => {
         console.log('create:', req.body)
-        // res.json({ results: consolidateQIndexes(req.body) })
+        try {
+            const stripeTest = await stripe.invoiceItems.create({
+                price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
+                customer: 'cus_IuYYhZhxyoNkai'
 
-        db.Order
-            .create({
-                // stuff: consolidateQIndexes(req.body)
-                customerId: '603c357135eb5413c0fe18a0',
-                item: req.body
-
-            })
-            // .then(({ _id }) => db.customerId.findOneAndUpdate({ email: req.body.order },
-            //     { $push: { Orders: _id } }, { new: true }))
-            .then(dbModel => {
-                console.log({ results: dbModel })
-                res.json({ results: dbModel })
-            })
-            .catch(err => {
-                console.log(err)
-                res.status(422).json(err)
             });
+            console.log(stripeTest);
+
+
+
+            const invoice = await stripe.invoices.create({
+                customer: 'cus_IuYYhZhxyoNkai',
+                collection_method: 'send_invoice',
+                days_until_due: 30,
+            });
+            db.Order
+                .create({
+                    customerId: 'cus_IuYYhZhxyoNkai',
+                    item: invoice
+
+                })
+                .then(dbModel => {
+                    // console.log({ results: dbModel })
+                    res.json({ results: dbModel })
+                })
+                .catch(err => {
+                    // console.log(err)
+                    res.status(422).json(err)
+                });
+        }
+        catch (err) {
+            res.status(500).json({ statusCode: 500, message: err.message });
+        }
+
     },
 
 

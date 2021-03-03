@@ -14,6 +14,7 @@ import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/Respons
 import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2'
 import DTF from '../components/DynamicTable/DynamicTableForm'
 import HeroSections from '../features/herosections/HeroSections'
+import Invoice from '../features/invoice/Invoice'
 // import './App.css';
 import { Provider } from 'react-redux'
 import store from '../store/store'
@@ -40,6 +41,7 @@ const App = () => {
               <Route exact path='/orders' component={Orders} />
               <Route exact path='/services' component={Services} />
               <Route exact path='/dtf' component={DTF} />
+              <Route exact path='/invoice' component={Invoice} />
             </Switch>
           </div>
           <Footer />
