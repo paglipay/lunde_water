@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, questions_arry } from './FormData';
 import { dynamicForm } from '../dynamicform/dynamicform'
+import { restructureForQuestion } from './helperFunctions'
 
 function OrderForm(props) {
 
@@ -14,8 +15,11 @@ function OrderForm(props) {
       setQuestionIndex(questionIndex + 1)
     } else {
       console.log('Submit', questionsPost)
-      props.addAnswersRequest(questionsPost)
-      props.history.push('/orders')
+
+      // console.log(restructureForQuestion(questionsPost))
+      props.addAnswersRequest(restructureForQuestion(questionsPost))
+      // props.addAnswersRequest(questionsPost)
+      // props.history.push('/orders')
     }
   }
   homeObjOne.onClickBack = () => {

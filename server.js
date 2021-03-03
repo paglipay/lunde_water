@@ -5,8 +5,6 @@ const routes = require('./routes');
 const bodyParser = require('body-parser');
 const app = express();
 
-
-
 // Connect Database
 connectDB();
 
@@ -17,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 5000;
-
-
 
 //Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

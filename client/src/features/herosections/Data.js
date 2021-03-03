@@ -17,9 +17,9 @@ export const homeObjOne = {
   lightText: false,
   lightTextDesc: false,
   topLine: 'Exclusive Access',
-  headline: 'Easy Payment Plans',
+  headline: 'Easy Payments!',
   description:
-    'Get access to our easy payment process. Just set it and forget it. It\'s that easy',
+    'Use our online payment system!',
   buttonLabel: 'Get Started',
   imgStart: '',
   img: 'images/svg-1.svg',
