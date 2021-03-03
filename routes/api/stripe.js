@@ -5,7 +5,7 @@ const stripeController = require("../../controllers/stripeController");
 // Matches with "/api/orders"
 router.route("/")
 
-    // .get(stripeController.findAll)
+    .get(stripeController.findAll)
     .post(stripeController.create);
 
 module.exports = router;

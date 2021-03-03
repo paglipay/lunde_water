@@ -13,6 +13,7 @@ import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLay
 import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
 import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2'
 import HeroSections from '../features/herosections/HeroSections'
+import Invoice from '../features/invoice/invoice'
 // import './App.css';
 import { Provider } from 'react-redux'
 import store from '../store/store'
@@ -37,6 +38,7 @@ const App = () => {
             <Route exact path='/orderform' component={OrderForm} />
             <Route exact path='/orders' component={Orders} />
             <Route exact path='/services' component={Services} />
+            <Route exact path='/invoice' component={Invoice} />
           </Switch>
           <Footer />
         </Fragment>
