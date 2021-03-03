@@ -62,7 +62,7 @@ function OrdersDisplay(props) {
             <span>
                 <Link to='/register'>
                     {/* <Label style={{ float: 'right' }}> */}
-                        <Icon name='edit' style={{ float: 'right' }}/>
+                    <Icon name='edit' style={{ float: 'right' }} />
                     {/* </Label> */}
                 </Link>
             </span>
@@ -86,7 +86,7 @@ function OrdersDisplay(props) {
                 <span>
                     <Link to='/profile'>
                         {/* <Label style={{ float: 'right' }}> */}
-                            <Icon name='edit' style={{ float: 'right' }}/>
+                        <Icon name='edit' style={{ float: 'right' }} />
                         {/* </Label> */}
                     </Link>
 
@@ -110,11 +110,11 @@ function OrdersDisplay(props) {
                 <span>
                     <Link to='/questionaire2'>
                         {/* <Label style={{ float: 'right' }}> */}
-                            <Icon name='edit'style={{ float: 'right' }} />
+                        <Icon name='edit' style={{ float: 'right' }} />
                         {/* </Label> */}
                     </Link><Link to='/questionaire'>
                         {/* <Label style={{ float: 'right' }}> */}
-                            <Icon name='edit' style={{ float: 'right' }}/>
+                        <Icon name='edit' style={{ float: 'right' }} />
                         {/* </Label> */}
                     </Link></span>
                 <span><Header as='h2'><Icon name='question circle' />Your Answers</Header></span>
@@ -144,6 +144,7 @@ function OrdersDisplay(props) {
             </Segment>
             <Segment>
                 <Invoice {...props} />
+                <Button onClick={() => { console.log("Submit"); }}>Submit</Button>
             </Segment>
         </Layout>
 

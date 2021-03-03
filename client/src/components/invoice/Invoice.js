@@ -1,4 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import {
+
+    Button
+} from 'semantic-ui-react'
 
 function Invoice({ loadInvoices }) {
 
@@ -10,10 +14,10 @@ function Invoice({ loadInvoices }) {
     return (
         <div>
             Invoice
-            <button onClick={() => {
+            <Button onClick={() => {
                 console.log('LOAD')
                 loadInvoices({})
-            }}>Load</button>
+            }}>Load</Button>
         </div>
     )
 }
