@@ -17,7 +17,7 @@ function DynamicQuestions(props) {
       setQuestionIndex(questionIndex + 1)
     } else {
       console.log('Submit', questionsPost, questions_keys[props.qIndex])
-      props.addAnswersToPost(restructureQuestionsForPost(questionsPost))
+      props.addAnswersToPost(restructureQuestionsForPost(questionsPost), questions_keys[props.qIndex])
       props.addAnswersRequest(questionsPost, questions_keys[props.qIndex])
       setQuestionsPost({})
       setQuestionIndex(0)

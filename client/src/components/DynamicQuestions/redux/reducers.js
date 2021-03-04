@@ -9,17 +9,17 @@ const output = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case CREATE_ANSWER: {
-            const {data, key} = payload;
+            const { data, key } = payload;
             return {
                 ...state,
                 results: { ...state.results, [key]: data },
             };
         }
         case CREATE_REGISTER_POST: {
-            const answers = payload;
+            const { data, key } = payload;
             return {
                 ...state,
-                post_data: { ...state.post_data, answers},
+                post_data: { ...state.post_data, [key]: data },
             };
         }
         default:

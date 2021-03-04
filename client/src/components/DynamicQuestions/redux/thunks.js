@@ -13,8 +13,8 @@ export const addAnswersRequest = (text, key) => async dispatch => {
     }
 }
 
-export const addAnswersToPost = text => async dispatch => {
-    console.log('text: ', text)
+export const addAnswersToPost = (text, key) => async dispatch => {
+    console.log('text: ', text, key)
     try {
         const body = JSON.stringify({ text });
         // const response = await fetch('/todos', {
@@ -25,7 +25,7 @@ export const addAnswersToPost = text => async dispatch => {
         //     body,
         // });
         // const todo = await response.json();
-        dispatch(createPost(text));
+        dispatch(createPost(text, key));
     } catch (e) {
         dispatch(displayAlert(e));
     }
