@@ -109,7 +109,7 @@ const CardExampleGroups = () => (
 )
 
 
-export const dynamicForm = (questions, setPostData, postData, qIndex, id:q.id = 0, elRefs) => <>
+export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs) => <>
   <Form>
     {questions.map((q, i) => {
       if (q.hasOwnProperty('condition') === false || postData.hasOwnProperty(q.condition.property) &&
