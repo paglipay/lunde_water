@@ -3,7 +3,7 @@ import {
     CREATE_REGISTER_POST
 } from './actions';
 
-const initialState = { isLoading: false, data: {} };
+const initialState = { isLoading: false, results: {}, post_data: {} };
 
 const output = (state = initialState, action) => {
     const { type, payload } = action;
