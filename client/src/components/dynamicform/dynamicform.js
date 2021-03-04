@@ -109,7 +109,7 @@ const CardExampleGroups = () => (
 )
 
 
-export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
+export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs) => <>
   <Form>
     {questions.map((q, i) => {
       if (q.hasOwnProperty('condition') === false || postData.hasOwnProperty(q.condition.property) &&
@@ -152,7 +152,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Form.Control as="select" name={q.question} onChange={(e) => {
+              <Form.Control  as="select" name={q.question} onChange={(e) => {
                 console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
               }}>
@@ -213,7 +213,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Form.Control onChange={(e) => {
+              <Form.Control  onChange={(e) => {
                 console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
               }} name={q.question} type="week" placeholder="Enter Day of Week" />
@@ -249,6 +249,43 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
             <br />
           </>)
         }
+        else if (q.type === 'date') {
+          return (<>
+            <Form.Label>{q.question} </Form.Label>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <br />
+              <span style={{ float: 'left' }}>
+                <Form.Control style={{ float: 'left' }} onChange={(e) => {
+                  console.log(e.target.name, e.target.value)
+                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                }} name={q.question} type="date" placeholder="Enter Date" />
+              </span>
+              <Form.Text className="">
+                <br />
+              </Form.Text>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'time') {
+          return (<>
+            <Form.Label>{q.question} </Form.Label>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <br />
+              <span style={{ float: 'left' }}>
+                <Form.Control style={{ float: 'left' }} onChange={(e) => {
+                  console.log(e.target.name, e.target.value)
+
+                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                }} name={q.question} type="time" placeholder="Enter Date" />
+              </span>
+              <Form.Text className="">
+                <br />
+              </Form.Text>
+            </Form.Group>
+            <br />
+          </>)
+        }
         else if (q.type === 'text') {
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
@@ -256,7 +293,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
               <Form.Control onChange={(e) => {
                 console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
-              }} name={q.question} key={q.question} type="text" placeholder="Enter Text" />
+              }} name={q.question} key={q.question} type="text" placeholder="Enter Text" value={postData[q.question] ? (postData[q.question].answer ? postData[q.question].answer : null): null } />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>
@@ -283,10 +320,11 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Form.Control onChange={(e) => {
+              <Form.Control  onChange={(e) => {
                 console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
-              }} name={q.question} as="textarea" rows={4} />
+              }} name={q.question} as="textarea" rows={4} 
+              value={postData[q.question] ? (postData[q.question].answer ? postData[q.question].answer : null): null } />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>

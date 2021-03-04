@@ -5,7 +5,6 @@ import { dynamicForm } from '../dynamicform/dynamicform'
 import { restructureQuestionsForPost } from './helperFunctions'
 
 function Register(props) {
-
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
@@ -20,6 +19,7 @@ function Register(props) {
         props.history.push('/orders')
     }
   }
+  
   homeObjOne.onClickBack = () => {
     if (questionIndex !== 0) {
       setQuestionIndex(questionIndex - 1)

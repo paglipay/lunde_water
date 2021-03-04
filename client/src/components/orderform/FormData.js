@@ -4,8 +4,10 @@ const questions = [
         { value: 'Fill water tank', id: 'pr_12345' },
         { value: 'Other', id: 'pr_4567' }
     ] },
-    { question: 'Please select a date and time.', type: "datetime" },
-    { question: 'Please sepecify any details.', type: "textarea" },
+    { question: 'Please select a date', type: "date" },   
+    { question: 'Please select an estimated start time.', type: "time" },
+    { question: 'Please select an estimated end time.', type: "time" },
+    { question: 'Please add any relevent details.', type: "textarea" },
     // { question: 'Please sepecify any details.', type: "textarea", condition: { property: "What would you like to order?", value: ['Other', 'Fill water tank'] } }
 
 ]
