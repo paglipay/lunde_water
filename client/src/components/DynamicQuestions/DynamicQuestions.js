@@ -3,10 +3,11 @@ import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 import { dynamicForm } from '../dynamicform/dynamicform'
 import Answers from './Answers/Answers'
+import { restructureQuestionsForPost } from './helperFunctions'
 
 function DynamicQuestions(props) {
 
-  const arrayOfQuestionsArry = array_of_questions_arry
+  const [arrayOfQuestionsArry, setArrayOfQuestionsArry] = useState(array_of_questions_arry)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
@@ -16,6 +17,7 @@ function DynamicQuestions(props) {
       setQuestionIndex(questionIndex + 1)
     } else {
       console.log('Submit', questionsPost, questions_keys[props.qIndex])
+      props.addAnswersToPost(restructureQuestionsForPost(questionsPost))
       props.addAnswersRequest(questionsPost, questions_keys[props.qIndex])
       setQuestionsPost({})
       setQuestionIndex(0)
@@ -33,10 +35,6 @@ function DynamicQuestions(props) {
 
   useEffect(() => {
 
-    console.log('questions error: ', arrayOfQuestionsArry[props.qIndex][questionIndex])
-
-
-
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
@@ -50,8 +48,8 @@ function DynamicQuestions(props) {
   return (
     <>
       <Layout key={props.qIndex} {...homeObjOneD}>
-        <Answers />
         {homeObjOneD.description}
+        <Answers />
         </Layout>
     </>
   );

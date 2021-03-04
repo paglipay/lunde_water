@@ -1,24 +1,24 @@
 
 const questions = [
-  { question: 'What is your Zip Code?', type: "text" },
+  { question: 'What is your Zip Code?', type: "text", id: "zip_code" },
   {
     question: 'You are within our Zone!!!', type: "message",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
   {
-    question: 'Create a Username', type: "text",
+    question: 'Create a Username', type: "text", id: "username",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
   {
-    question: 'Add your Email', type: "text",
+    question: 'Add your Email', type: "text", id: "email",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
   {
-    question: 'Create a Password', type: "pass",
+    question: 'Create a Password', type: "pass", id: "password",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
   {
-    question: 'Renter your Password', type: "pass",
+    question: 'Renter your Password', type: "pass", id: "repeat_password",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
 

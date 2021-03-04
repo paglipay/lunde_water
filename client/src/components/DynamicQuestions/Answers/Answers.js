@@ -32,7 +32,7 @@ const displayResults = (results) => {
 
 function Answers(props) {
     console.log('Answers:', props)
-    const data = ['register', 'profile', 'customer_questions']
+    const data = ['Register', 'Profile', 'Customer Questions', 'Order Form']
 
     return (
         <>

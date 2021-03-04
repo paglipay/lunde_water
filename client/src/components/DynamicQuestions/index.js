@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import DynamicQuestions from './DynamicQuestions'
-import { addAnswersRequest } from './redux/thunks'
+import { addAnswersRequest, addAnswersToPost } from './redux/thunks'
 import {
     Button
 } from 'semantic-ui-react'
@@ -33,10 +33,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         addAnswersRequest: (obj, key) => dispatch(addAnswersRequest(obj, key)),
-        // addAnswersToPost: (obj) => dispatch(addAnswersToPost(obj)),
-        //     fetchCollections: () => dispatch(fetchCollections()),
-        //   onRemovePressed: id => dispatch(removeCollectionRequest(id)), 
-        //   onActivatePressed: id => dispatch(markCollectionAsActiveRequest(id)),
+        addAnswersToPost: (obj) => dispatch(addAnswersToPost(obj)),
     }
 }
 

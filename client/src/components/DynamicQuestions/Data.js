@@ -4,7 +4,7 @@ import { questions_arry as q3 } from '../CustomerQuestions/QuestionsData'
 import { questions_arry as q4 } from '../orderform/FormData'
 
 
-export const questions_keys = ['register', 'profile', 'customer_questions', 'order_form']
+export const questions_keys = ['Register', 'Profile', 'Customer Questions', 'Order Form']
 export const array_of_questions_arry = [q1, q2, q3, q4]
 
 export const homeObjOne = {
