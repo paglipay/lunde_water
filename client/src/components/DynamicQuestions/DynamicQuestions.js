@@ -6,7 +6,7 @@ import Answers from './Answers/Answers'
 
 function DynamicQuestions(props) {
 
-  const [arrayOfQuestionsArry, setArrayOfQuestionsArry] = useState(array_of_questions_arry)
+  const arrayOfQuestionsArry = array_of_questions_arry
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
@@ -18,6 +18,7 @@ function DynamicQuestions(props) {
       console.log('Submit', questionsPost, questions_keys[props.qIndex])
       props.addAnswersRequest(questionsPost, questions_keys[props.qIndex])
       setQuestionsPost({})
+      setQuestionIndex(0)
       // props.history.push('/orders')
     }
   }
@@ -31,6 +32,11 @@ function DynamicQuestions(props) {
   }
 
   useEffect(() => {
+
+    console.log('questions error: ', arrayOfQuestionsArry[props.qIndex][questionIndex])
+
+
+
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
@@ -44,8 +50,8 @@ function DynamicQuestions(props) {
   return (
     <>
       <Layout key={props.qIndex} {...homeObjOneD}>
-        {homeObjOneD.description}
         <Answers />
+        {homeObjOneD.description}
         </Layout>
     </>
   );

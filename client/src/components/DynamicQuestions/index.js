@@ -16,6 +16,7 @@ function Display(props) {
 
     return (
         <>
+        <h1>{qIndex}</h1>
             <Button onClick={() => setQIndex(qIndex - 1)}>Back</Button>
             <Button onClick={() => setQIndex(qIndex + 1)}>Next</Button>
             < DynamicQuestions {...props} qIndex={qIndex} />
