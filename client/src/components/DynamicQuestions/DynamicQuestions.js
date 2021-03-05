@@ -7,7 +7,6 @@ import Submit from './Submit'
 import { restructureQuestionsForPost } from './helperFunctions'
 
 function DynamicQuestions(props) {
-
   const [arrayOfQuestionsArry, setArrayOfQuestionsArry] = useState(array_of_questions_arry)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
@@ -20,7 +19,7 @@ function DynamicQuestions(props) {
       console.log('Submit', questionsPost, questions_keys[props.qIndex])
       props.addAnswersToPost(restructureQuestionsForPost(questionsPost), questions_keys[props.qIndex])
       props.addAnswersRequest(questionsPost, questions_keys[props.qIndex])
-      setQuestionsPost({})
+      // setQuestionsPost({})
       setQuestionIndex(0)
       // props.history.push('/orders')
     }
@@ -35,7 +34,6 @@ function DynamicQuestions(props) {
   }
 
   useEffect(() => {
-
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
@@ -46,12 +44,16 @@ function DynamicQuestions(props) {
 
   }, [questionIndex, questionsPost, props.qIndex]);
 
+  useEffect(() => {
+    props.questions.results['Customer Questions'] && setQuestionsPost(props.questions.results['Customer Questions'])
+  }, [props.questions]);
+
   return (
     <>
       <Layout key={props.qIndex} {...homeObjOneD} right_side={<><Answers />
         <Submit /></>}>
         {homeObjOneD.description}
-        </Layout>
+      </Layout>
     </>
   );
 }

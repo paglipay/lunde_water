@@ -40,6 +40,23 @@ export const postAnswers = (text, key) => async dispatch => {
         })
 }
 
+export const getAnswersById = (text, key) => async dispatch => {
+    console.log('getAnswersById text: ', text, key)
+    axios
+        .get(`/api/orders/${text}`)
+        .then( async response => {
+            // response.data is the users
+            const data = response.data
+            console.log('response.data.results: ', data)
+            dispatch(postSuccess(data, key));            
+            dispatch(createAnswers(data.results.profile[key], key));
+        })
+        .catch((e) => {
+            console.log('catch', e)
+            dispatch(displayAlert(e))
+        })
+}
+
 
 
 export const displayAlert = text => () => {

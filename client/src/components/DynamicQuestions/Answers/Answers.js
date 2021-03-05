@@ -17,7 +17,6 @@ const consolidateQIndexes = (data) => {
     Object.keys(data).forEach((prop) => {
         if (results.hasOwnProperty(data[prop].qIndex) === false) { results[data[prop].qIndex] = [] }
         results[data[prop].qIndex].push({ question: prop, answer: data[prop].answer })
-        console.log('results:', results)
     })
     return results
 }
@@ -31,7 +30,6 @@ const displayResults = (results) => {
 }
 
 function Answers(props) {
-    console.log('Answers:', props)
     const data = ['Register', 'Profile', 'Customer Questions', 'Order Form']
 
     return (
@@ -39,7 +37,7 @@ function Answers(props) {
             <>
                 {data.map((e, i) => {
                     return (
-                        <Segment>
+                        <Segment key={i}>
                             <span>
                                 <Link to='/profile'>
                                     {/* <Label style={{ float: 'right' }}> */}

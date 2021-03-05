@@ -128,6 +128,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs
                 type="radio"
                 id={`default-radio`}
                 label={`Yes`}
+                checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'Yes'}
               />
 
               <Form.Check onChange={(e) => {
@@ -139,6 +140,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs
                 type="radio"
                 label={`No`}
                 id={`default-radio`}
+                checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'No'}
               />
 
               <Form.Text className="">
@@ -157,7 +159,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
               }}>
                 <option>Default select</option>
-                {q.options.map(e => <option value={e.id}>{e.value}</option>)}
+                {q.options.map(e => <option value={e.id} selected={(postData[q.question] && postData[q.question].answer === e.id ? true : false)} >{e.value}</option>)}
               </Form.Control>
               <Form.Text className="">
                 Please enter a memorable answer.

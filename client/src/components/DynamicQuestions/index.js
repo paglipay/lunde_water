@@ -25,7 +25,7 @@ function Display(props) {
 
 const mapStateToProps = state => {
     return {
-        answers: state.answers
+        questions: state.questions
     }
 }
 
