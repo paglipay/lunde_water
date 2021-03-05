@@ -109,7 +109,7 @@ const CardExampleGroups = () => (
 )
 
 
-export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
+export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs) => <>
   <Form>
     {questions.map((q, i) => {
       if (q.hasOwnProperty('condition') === false || postData.hasOwnProperty(q.condition.property) &&
@@ -121,24 +121,26 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
               <Form.Label>{q.question} </Form.Label>
               <Form.Check onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: "Yes", qIndex } })
+                setPostData({ ...postData, [e.target.name]: { answer: "Yes", qIndex, id:q.id } })
               }}
                 name={`${q.question}`}
                 key={`${q.question}_yes`}
                 type="radio"
                 id={`default-radio`}
                 label={`Yes`}
+                checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'Yes'}
               />
 
               <Form.Check onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: "No", qIndex } })
+                setPostData({ ...postData, [e.target.name]: { answer: "No", qIndex, id:q.id } })
               }}
                 name={`${q.question}`}
                 key={`${q.question}_no`}
                 type="radio"
                 label={`No`}
                 id={`default-radio`}
+                checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'No'}
               />
 
               <Form.Text className="">
@@ -152,12 +154,12 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Form.Control as="select" name={q.question} onChange={(e) => {
+              <Form.Control  as="select" name={q.question} onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
               }}>
                 <option>Default select</option>
-                {q.options.map(e => <option value={e.id}>{e.value}</option>)}
+                {q.options.map(e => <option value={e.id} selected={(postData[q.question] && postData[q.question].answer === e.id ? true : false)} >{e.value}</option>)}
               </Form.Control>
               <Form.Text className="">
                 Please enter a memorable answer.
@@ -213,9 +215,9 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Form.Control onChange={(e) => {
+              <Form.Control  onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
               }} name={q.question} type="week" placeholder="Enter Day of Week" />
               <Form.Text className="">
                 Please enter a memorable answer.
@@ -232,14 +234,51 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
               <span style={{ float: 'left' }}>
                 <Form.Control style={{ float: 'left' }} onChange={(e) => {
                   console.log(e.target.name, e.target.value)
-                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
                 }} name={q.question} type="date" placeholder="Enter Date" />
               </span>
               <span style={{ float: 'left' }}>
                 <Form.Control style={{ float: 'left' }} onChange={(e) => {
                   console.log(e.target.name, e.target.value)
 
-                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
+                }} name={q.question} type="time" placeholder="Enter Date" />
+              </span>
+              <Form.Text className="">
+                <br />
+              </Form.Text>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'date') {
+          return (<>
+            <Form.Label>{q.question} </Form.Label>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <br />
+              <span style={{ float: 'left' }}>
+                <Form.Control style={{ float: 'left' }} onChange={(e) => {
+                  console.log(e.target.name, e.target.value)
+                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
+                }} name={q.question} type="date" placeholder="Enter Date" />
+              </span>
+              <Form.Text className="">
+                <br />
+              </Form.Text>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'time') {
+          return (<>
+            <Form.Label>{q.question} </Form.Label>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <br />
+              <span style={{ float: 'left' }}>
+                <Form.Control style={{ float: 'left' }} onChange={(e) => {
+                  console.log(e.target.name, e.target.value)
+
+                  setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
                 }} name={q.question} type="time" placeholder="Enter Date" />
               </span>
               <Form.Text className="">
@@ -255,8 +294,8 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
               <Form.Label>{q.question} </Form.Label>
               <Form.Control onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
-              }} name={q.question} key={q.question} type="text" placeholder="Enter Text" />
+                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
+              }} name={q.question} key={q.question} type="text" placeholder="Enter Text" value={postData[q.question] ? (postData[q.question].answer ? postData[q.question].answer : null): null } />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>
@@ -270,7 +309,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
               <Form.Label>{q.question} </Form.Label>
               <Form.Control onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
+                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
               }} name={q.question} key={q.question} type="password" placeholder="Enter Text" />
               <Form.Text className="">
                 Please enter a memorable answer.
@@ -283,10 +322,11 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0) => <>
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Form.Control onChange={(e) => {
+              <Form.Control  onChange={(e) => {
                 console.log(e.target.name, e.target.value)
-                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex } })
-              }} name={q.question} as="textarea" rows={4} />
+                setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id:q.id } })
+              }} name={q.question} as="textarea" rows={4} 
+              value={postData[q.question] ? (postData[q.question].answer ? postData[q.question].answer : null): null } />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>

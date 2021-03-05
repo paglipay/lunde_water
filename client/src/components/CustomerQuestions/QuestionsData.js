@@ -26,7 +26,7 @@ const questions3 = [
     condition: { property: "Do we need to enter the gated property at all (if there’s even a gate)?", value: ['Yes'] }
   },
   {
-    question: 'If so, Please Enter Code.',
+    question: 'If so, Please Enter Code',
     type: "text",
     condition: { property: "Are there any gate codes, padlock combinations or other barriers to property entry that we need to know about?", value: ['Yes'] }
   },
