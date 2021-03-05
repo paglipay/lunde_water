@@ -46,15 +46,12 @@ function DynamicQuestions(props) {
   }, [questionIndex, questionsPost, props.qIndex]);
 
   useEffect(() => {
-    console.log('props.qIndex: ', props.qIndex)
-    console.log('props.questions questions_keys[props.qIndex]: ', questions_keys[props.qIndex])
     props.questions && props.questions.results && props.questions.results[questions_keys[props.qIndex]] && setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
   }, [props.questions]);
 
   return (
     <>
-      <Layout key={props.qIndex} {...homeObjOneD} right_side={<><Answers />
-        <Submit /></>}>
+      <Layout key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers /></>}>
         {homeObjOneD.description}
       </Layout>
     </>
