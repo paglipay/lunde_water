@@ -46,6 +46,7 @@ function DynamicQuestions(props) {
   }, [questionIndex, questionsPost, props.qIndex]);
 
   useEffect(() => {
+    console.log('useEffect props.questions')
     props.questions && props.questions.results && props.questions.results[questions_keys[props.qIndex]] && setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
   }, [props.questions]);
 
