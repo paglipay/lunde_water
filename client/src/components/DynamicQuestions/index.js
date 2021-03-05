@@ -7,7 +7,6 @@ import {
 } from 'semantic-ui-react'
 
 function Display(props) {
-    console.log('Questionaire props:', props)
     const [qIndex, setQIndex] = useState(0)
 
     useEffect(() => {

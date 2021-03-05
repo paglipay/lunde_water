@@ -14,13 +14,25 @@ function Submit(props) {
     const GetButton = (e) => {
         console.log('GetButton: ', props.questions.post_data)
         // props.postAnswers(props.questions.post_data, 'profile')
-        props.getAnswersById('6042798ac02c930d008c8354', 'Customer Questions')
+        props.getAnswersById('60427f76ab5f791d44f01950', 'Register')
+    }
+    const GetButton2 = (e) => {
+        console.log('GetButton: ', props.questions.post_data)
+        // props.postAnswers(props.questions.post_data, 'profile')
+        props.getAnswersById('60427f76ab5f791d44f01950', 'Profile')
+    }
+    const GetButton3 = (e) => {
+        console.log('GetButton: ', props.questions.post_data)
+        // props.postAnswers(props.questions.post_data, 'profile')
+        props.getAnswersById('60427f76ab5f791d44f01950', 'Customer Questions')
     }
 
     return (
         <>
             <Button onClick={(e) => handleClick(e)}>Submit</Button>
             <Button onClick={(e) => GetButton(e)}>Get</Button>
+            <Button onClick={(e) => GetButton2(e)}>Get</Button>
+            <Button onClick={(e) => GetButton3(e)}>Get</Button>
         </>
     )
 }

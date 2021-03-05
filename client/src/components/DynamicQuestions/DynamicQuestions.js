@@ -19,7 +19,7 @@ function DynamicQuestions(props) {
       console.log('Submit', questionsPost, questions_keys[props.qIndex])
       props.addAnswersToPost(restructureQuestionsForPost(questionsPost), questions_keys[props.qIndex])
       props.addAnswersRequest(questionsPost, questions_keys[props.qIndex])
-      // setQuestionsPost({})
+      setQuestionsPost({})
       setQuestionIndex(0)
       // props.history.push('/orders')
     }
@@ -34,6 +34,8 @@ function DynamicQuestions(props) {
   }
 
   useEffect(() => {
+    // console.log('props:', props)
+    console.log('questionsPost:', questionsPost)
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
@@ -41,11 +43,12 @@ function DynamicQuestions(props) {
       description: dynamicForm(arrayOfQuestionsArry[props.qIndex][questionIndex]['questions'], setQuestionsPost, questionsPost, arrayOfQuestionsArry[props.qIndex][questionIndex]['headline']),
       headline: arrayOfQuestionsArry[props.qIndex][questionIndex]['headline'],
     })
-
   }, [questionIndex, questionsPost, props.qIndex]);
 
   useEffect(() => {
-    props.questions.results['Customer Questions'] && setQuestionsPost(props.questions.results['Customer Questions'])
+    console.log('props.qIndex: ', props.qIndex)
+    console.log('props.questions questions_keys[props.qIndex]: ', questions_keys[props.qIndex])
+    props.questions && props.questions.results && props.questions.results[questions_keys[props.qIndex]] && setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
   }, [props.questions]);
 
   return (

@@ -57,8 +57,6 @@ export const getAnswersById = (text, key) => async dispatch => {
         })
 }
 
-
-
 export const displayAlert = text => () => {
     alert(text);
 };
