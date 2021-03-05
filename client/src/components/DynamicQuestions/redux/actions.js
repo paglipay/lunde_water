@@ -10,3 +10,9 @@ export const createPost = (data, key) => ({
     payload: { data, key },
 });
 
+export const POST_SUCCESS = 'POST_SUCCESS';
+export const postSuccess = (data, key) => ({
+    type: POST_SUCCESS,
+    payload: { data, key },
+});
+

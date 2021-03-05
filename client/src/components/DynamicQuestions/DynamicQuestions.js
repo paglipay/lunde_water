@@ -3,6 +3,7 @@ import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 import { dynamicForm } from '../dynamicform/dynamicform'
 import Answers from './Answers/Answers'
+import Submit from './Submit'
 import { restructureQuestionsForPost } from './helperFunctions'
 
 function DynamicQuestions(props) {
@@ -47,7 +48,8 @@ function DynamicQuestions(props) {
 
   return (
     <>
-      <Layout key={props.qIndex} {...homeObjOneD} right_side={<Answers />}>
+      <Layout key={props.qIndex} {...homeObjOneD} right_side={<><Answers />
+        <Submit /></>}>
         {homeObjOneD.description}
         </Layout>
     </>

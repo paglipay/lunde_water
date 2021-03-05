@@ -49,29 +49,24 @@ module.exports = {
 
         request(options, async function (error, response, body) {
             if (error) throw new Error(error);
-
             console.log(JSON.stringify(body));
             // console.log(response);
-
             try {
-
                 const stripeTest = await stripe.invoiceItems.create({
                     price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
                     customer: 'cus_IuYYhZhxyoNkai'
-
                 });
                 console.log(stripeTest);
-
                 const invoice = await stripe.invoices.create({
                     customer: 'cus_IuYYhZhxyoNkai',
                     collection_method: 'send_invoice',
                     days_until_due: 30,
                 });
-
                 db.Order
                     .create({
                         customerId: 'cus_IuYYhZhxyoNkai',
-                        item: { invoice, body }
+                        item: { invoice, body },
+                        profile: req.body
                     })
                     .then(dbModel => {
                         // console.log({ results: dbModel })
@@ -85,10 +80,8 @@ module.exports = {
             catch (err) {
                 res.status(500).json({ statusCode: 500, message: err.message });
             }
-
         });
     },
-
 
     update: function (req, res) {
         db.Order

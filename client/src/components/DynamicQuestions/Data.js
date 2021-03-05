@@ -12,9 +12,6 @@ export const homeObjOne = {
   headline: 'Please Answer Questions',
   description: 'TEST DESCRIPTION',
   buttonLabel: 'Next',
-  imgStart: 'start',
-  img: 'images/svg-2.svg',
-  alt: 'Credit Card',
   onClick: () => console.log('goto Qustion2'),
   onClickBack: () => console.log('goto Qustion2')
 };
