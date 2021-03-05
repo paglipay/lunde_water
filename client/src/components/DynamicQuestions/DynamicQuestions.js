@@ -49,7 +49,6 @@ function DynamicQuestions(props) {
     <>
       <Layout key={props.qIndex} {...homeObjOneD} right_side={<Answers />}>
         {homeObjOneD.description}
-
         </Layout>
     </>
   );
