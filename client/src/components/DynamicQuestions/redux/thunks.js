@@ -29,7 +29,6 @@ export const postAnswers = (text, key) => async dispatch => {
     axios
         .post(`/api/orders`, text)
         .then(response => {
-            // response.data is the users
             const data = response.data
             console.log('response.data.results: ', data)
             dispatch(postSuccess(data, key));
@@ -45,10 +44,9 @@ export const getAnswersById = (text, key) => async dispatch => {
     axios
         .get(`/api/orders/${text}`)
         .then( async response => {
-            // response.data is the users
             const data = response.data
             console.log('response.data.results: ', data)
-            dispatch(postSuccess(data, key));            
+            // dispatch(postSuccess(data, key));            
             dispatch(createAnswers(data.results.profile[key], key));
         })
         .catch((e) => {

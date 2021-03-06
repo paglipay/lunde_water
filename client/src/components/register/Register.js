@@ -12,19 +12,20 @@ function Register(props) {
   homeObjOne.onClick = () => {
     if (questions_arry.length > questionIndex + 1) {
       setQuestionIndex(questionIndex + 1)
-    }else{
-        console.log('Submit', questionsPost)            
-        props.addAnswersToPost(restructureQuestionsForPost(questionsPost))
-        props.addAnswersRequest(questionsPost)
-        props.history.push('/orders')
+    } else {
+      console.log('Submit', questionsPost)
+      console.log('restructureQuestionsForPost(questionsPost)', restructureQuestionsForPost(questionsPost))
+      props.register(restructureQuestionsForPost(questionsPost))
+      props.addAnswersRequest(questionsPost)
+      // props.history.push('/orders')
     }
   }
-  
+
   homeObjOne.onClickBack = () => {
     if (questionIndex !== 0) {
       setQuestionIndex(questionIndex - 1)
-    }else{
-      console.log('Submit', questionsPost)   
+    } else {
+      console.log('Submit', questionsPost)
     }
   }
 

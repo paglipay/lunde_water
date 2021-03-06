@@ -1,15 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import {
-    Button,
-    Card,
     Container,
-    Feed,
     Grid,
-    Header,
-    Segment,
     Step,
-    Table,
 } from 'semantic-ui-react'
 
 const style = {

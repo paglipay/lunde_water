@@ -41,15 +41,16 @@ function Answers(props) {
                                 {/* </Label> */}
                             </Link>
                         </span>
-                        <span><Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />{e}</Header></span>
+                        <span><Header as='h2'>
+                            {/* <Image src='/images/avatar/small/elliot.jpg' size='medium' circular /> */}
+                            {props.questions.results && props.questions.results[data[i]] ? null : <Icon name="exclamation triangle" />}
+                            {e}</Header></span>
                         {displayResults(consolidateQIndexes(props.questions.results && props.questions.results[data[i]] ? props.questions.results[data[i]] : {}))}
                     </Segment>)
             })}
         </>
     );
 }
-
-// export default Orders;
 
 const mapStateToProps = state => {
     return {

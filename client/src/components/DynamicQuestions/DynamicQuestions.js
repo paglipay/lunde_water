@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Layout from '../semantic_ui/ResponsiveLayout/Layout';
+import Layout from '../semantic_ui/ResponsiveLayout/Layout2';
 import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 import { dynamicForm } from '../dynamicform/dynamicform'
 import Answers from './Answers/Answers'
@@ -34,8 +34,6 @@ function DynamicQuestions(props) {
   }
 
   useEffect(() => {
-    // console.log('props:', props)
-    console.log('questionsPost:', questionsPost)
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
@@ -43,12 +41,18 @@ function DynamicQuestions(props) {
       description: dynamicForm(arrayOfQuestionsArry[props.qIndex][questionIndex]['questions'], setQuestionsPost, questionsPost, arrayOfQuestionsArry[props.qIndex][questionIndex]['headline']),
       headline: arrayOfQuestionsArry[props.qIndex][questionIndex]['headline'],
     })
-  }, [questionIndex, questionsPost, props.qIndex]);
+  }, [questionIndex, questionsPost,
+    props.qIndex
+  ]);
 
   useEffect(() => {
-    console.log('useEffect props.questions')
     props.questions && props.questions.results && props.questions.results[questions_keys[props.qIndex]] && setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
   }, [props.questions]);
+
+  useEffect(() => {
+    setQuestionIndex(0)
+    // props.getAnswersById('604292b444c6f014e89326ef', questions_keys[props.qIndex])
+  }, [props.qIndex]);
 
   return (
     <>
