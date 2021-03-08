@@ -13,17 +13,17 @@ export const createAnswers = answers => ({
     payload: answers
 });
 
-export const register = answers => ({
+export const registerUser = answers => ({
     type: REGISTER_SUCCESS, 
     payload: answers
 });
 
-export const loadUser = userData => ({
+export const getUserDoc = userData => ({
     type: USER_LOADED,
     payload: userData
 });
 
-export const login = loginData => ({
+export const loginUser = loginData => ({
     type: LOGIN_SUCCESS,
     payload: loginData
 
@@ -40,4 +40,4 @@ export const registerFail = answers => ({
 })
 
 // Logout
-export const logout = () => ({ type: LOGOUT });
+export const logoutUser = () => ({ type: LOGOUT });
