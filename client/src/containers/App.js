@@ -5,7 +5,9 @@ import Footer from '../components/footer/Footer'
 import Questionaire from '../features/questionaire/Questionaire'
 import Questionaire2 from '../features/questionaire/Questionaire2'
 import Register from '../features/register/Register'
+// import Profile from '../features/profile/Profile'
 import Profile from '../features/profile/Profile'
+import ReviewComplete from '../features/profile/Profile'
 import Orders from '../features/orders/Orders'
 import OrderForm from '../features/orderform/OrderForm'
 import Services from '../features/services/Services'
@@ -15,7 +17,6 @@ import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/Respon
 import DTF from '../components/DynamicTable/DynamicTableForm'
 import HeroSections from '../features/herosections/HeroSections'
 import Invoice from '../features/invoice/Invoice'
-import Stage  from './Stage'
 // import './App.css';
 import { Provider } from 'react-redux'
 import store from '../store/store'
@@ -28,7 +29,7 @@ const App = () => {
       <Router>
         <Fragment>
           <NavBar />
-          <div style={{ minHeight: "75vh" }}>
+          {/* <div style={{ minHeight: "75vh" }}> */}
             <Switch >
               <Route exact path='/homepagelayout' component={HomepageLayout} />
               <Route exact path='/responsivelayout' component={ResponsiveLayout} />
@@ -38,14 +39,14 @@ const App = () => {
               <Route exact path='/questionaire2' component={Questionaire2} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/profile' component={Profile} />
+              <Route exact path='/reviewcomplete' component={ReviewComplete} />
               <Route exact path='/orderform' component={OrderForm} />
               <Route exact path='/orders' component={Orders} />
               <Route exact path='/services' component={Services} />
               <Route exact path='/dtf' component={DTF} />
               <Route exact path='/invoice' component={Invoice} />
-              <Route exact path='/stage' component={Stage} />
             </Switch>
-          </div>
+          {/* </div> */}
           <Footer />
         </Fragment>
       </Router>

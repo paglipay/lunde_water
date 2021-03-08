@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import { postAnswers, getAnswersById } from '../redux/thunks'
-import { Button, Select } from 'semantic-ui-react'
+import { Button, Checkbox, Select } from 'semantic-ui-react'
 
 function Submit(props) {
+
+    const [checked, setChecked] = useState()
 
     const handleClick = (e) => {
         console.log('handleClick: ', props.questions.post_data)
@@ -13,7 +15,10 @@ function Submit(props) {
     }
     return (
         <>
-            <Button onClick={(e) => handleClick(e)}>Submit</Button>
+
+            <Button onClick={(e) => handleClick(e)}  color={checked ? 'green': 'disabled'}>Submit</Button>
+            {' '}
+            <Checkbox onClick={() => setChecked(!checked)} label='I agree to the Terms and Conditions' />
         </>
     )
 }

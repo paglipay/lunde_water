@@ -32,8 +32,8 @@ const ResponsiveLayout = (props) => (
 
         <Container style={style.last}>
             <Step.Group fluid>
-                <Step icon='question circle' title='Questions' description='Answer to the best of your ability.' />
-                <Step active icon='dollar' title='Review / Complete' description='Confirm for accuracy.' />
+                <Step active icon='question circle' title='Questions' description='Answer to the best of your ability.' />
+                <Step disabled icon='dollar' title='Review / Complete' description='Confirm for accuracy.' />
                 <Step
                     disabled
                     icon='info circle'
@@ -45,7 +45,7 @@ const ResponsiveLayout = (props) => (
 
         <Grid columns={2} stackable>
             <Grid.Row columns={2}>
-                <Grid.Column width={12}>
+                <Grid.Column width={8}>
                     <Segment >
                         <Header as='h2'>{props.headline}</Header>
                         {/* <p>
@@ -62,15 +62,15 @@ const ResponsiveLayout = (props) => (
                             </Button>)}
                     </Segment>
                 </Grid.Column>
-                <Grid.Column width={4}>
+                <Grid.Column width={8}>
                     {/* <Segment> */}
                     <Card fluid>
                         <Card.Content>
                             <Card.Header>Review / Complete</Card.Header>
                         </Card.Content>
                         <Card.Content>
-                            {/* {props.right_side} */}
-                            <Feed>
+                            {props.right_side}
+                            {/* <Feed>
                                 <Feed.Event>
                                     <Feed.Label image='/images/avatar/small/jenny.jpg' />
                                     <Feed.Content>
@@ -98,7 +98,7 @@ const ResponsiveLayout = (props) => (
                                             </Feed.Summary>
                                     </Feed.Content>
                                 </Feed.Event>
-                            </Feed>
+                            </Feed> */}
                         </Card.Content>
                     </Card>
                     {/* </Segment> */}

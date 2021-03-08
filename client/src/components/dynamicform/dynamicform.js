@@ -2,6 +2,7 @@ import { Form } from 'react-bootstrap';
 import {
   Button,
   Card,
+  Dropdown,
   Image,
   Icon
 } from 'semantic-ui-react'
@@ -143,6 +144,20 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs
                 checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'No'}
               />
 
+              <Form.Text className="">
+                Please enter a memorable answer.
+                            </Form.Text>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'dropdown') {
+          return (<>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <Form.Label>{q.question} </Form.Label>
+              <Dropdown placeholder='Skills' fluid multiple selection options={[{ key: 'angular', text: 'Angular', value: 'angular' },
+              { key: 'css', text: 'CSS', value: 'css' },
+              { key: 'design', text: 'Graphic Design', value: 'design' },]} />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>

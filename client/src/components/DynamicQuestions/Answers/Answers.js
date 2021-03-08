@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 
 import {
+    Button,
     Header,
     Segment,
     Icon,
@@ -20,14 +21,15 @@ const consolidateQIndexes = (data) => {
 
 const displayResults = (results) => {
     return Object.keys(results).map((e, i) => {
-        return (<><hr /><h3>{e}</h3><br />{results[e].map(l => {
+        return (<><hr /><h3>{e}</h3>{results[e].map(l => {
             return (<p><b>{l.question}</b><br />{l.answer}</p>)
         })}</>)
     })
 }
 
 function Answers(props) {
-    const data = ['Register', 'Profile', 'Customer Questions', 'Order Form']
+    const data = ['Profile', 'Customer Questions', 'Order Form']
+    // const data = ['Order Form', 'Customer Questions', 'Profile', 'Register' ]
 
     return (
         <>
@@ -35,17 +37,20 @@ function Answers(props) {
                 return (
                     <Segment key={i}>
                         <span>
-                            <Link to='/profile'>
-                                {/* <Label style={{ float: 'right' }}> */}
-                                <Icon name='edit' style={{ float: 'right' }} />
-                                {/* </Label> */}
-                            </Link>
+                            {/* <Button  onClick={() => props.setQIndex(i)} style={{ float: 'right' }}> */}
+                            {/* <Label style={{ float: 'right' }}> */}
+                            <Icon name='edit' style={{ float: 'right' }} onClick={() => {
+                                props.setQIndex(i)  
+                                props.history.push('/profile')            
+                                }} style={{ float: 'right', cursor: "pointer" }} />
+                            {/* </Label> */}
+                            {/* </Button> */}
                         </span>
-                        <span><Header as='h2'>
+                        <span><Header>
                             {/* <Image src='/images/avatar/small/elliot.jpg' size='medium' circular /> */}
-                            {props.questions.results && props.questions.results[data[i]] ? null : <Icon name="exclamation triangle" />}
+                            {props.questions.results && props.questions.results[data[i]] ? <Icon circular name="check" size='tiny' /> : <Icon circular name="exclamation triangle" size='tiny' />}
                             {e}</Header></span>
-                        {displayResults(consolidateQIndexes(props.questions.results && props.questions.results[data[i]] ? props.questions.results[data[i]] : {}))}
+                        {props.questions.results && props.questions.results[data[i]] ? displayResults(consolidateQIndexes(props.questions.results && props.questions.results[data[i]] ? props.questions.results[data[i]] : {})) : <p>Help us help you! Please fill in as many answers as you can. Thank you!</p>}
                     </Segment>)
             })}
         </>
