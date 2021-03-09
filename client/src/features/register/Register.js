@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addAnswersRequest, register } from './redux/thunks';
+import { register, addAnswersRequest } from './redux/thunks';
 import Register from '../../components/register/Register';
-import PropTypes from 'prop-types';
 
 const RegisterDisplay = props => {
     console.log('Questionaire props:', props)
@@ -21,7 +20,7 @@ const mapStateToProps = state => {
   const mapDispatchToProps = dispatch => {
     return {
         addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
-       // register: (obj) => dispatch(register(obj))
+        register: (obj) => dispatch(register(obj))
     }
 }  
 /* RegisterDisplay.propTypes = {

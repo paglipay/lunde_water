@@ -50,9 +50,9 @@ function OrdersDisplay(props) {
     const results2 = consolidateQIndexes(props.profile.data)
     displayResults(results2, resultsDisplay2)
 
-    //const resultsDisplay3 = []
-    //const results3 = consolidateQIndexes(props.register.data)
-    //displayResults(results3, resultsDisplay3)
+/*     const resultsDisplay3 = []
+    const results3 = consolidateQIndexes(props.register.data)
+    displayResults(results3, resultsDisplay3) */
 
     const right_side = () => {
         // return null
@@ -68,12 +68,12 @@ function OrdersDisplay(props) {
             {/* <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p> */}
-            {/* {
+{/*              {
                 (Object.keys(results3).forEach((prop) => {
                     resultsDisplay3.push(<><hr /><h4>{prop}</h4></>)
                     results3[prop] && results3[prop].map((e, i) => { resultsDisplay3.push(<p><strong>{e.question}</strong><br />{e.answer}</p>) })
                 }))
-            } */}
+            }  */}
            {/*  {resultsDisplay3} */}
         </Segment>
         )
@@ -94,13 +94,13 @@ function OrdersDisplay(props) {
                 {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p> */}
-                {/* {
+                 {
                     (Object.keys(results2).forEach((prop) => {
                         resultsDisplay2.push(<><hr /><h3>{prop}</h3></>)
                         results2[prop] && results2[prop].map((e, i) => { resultsDisplay2.push(<p><strong>{e.question}</strong><br />{e.answer}</p>) })
 
                     }))
-                } */}
+                }
                 {resultsDisplay2}
             </Segment>
 
@@ -119,12 +119,12 @@ function OrdersDisplay(props) {
                 {/* <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam id sed enim modi non est minima itaque necessitatibus, possimus vero, omnis laborum distinctio odit nihil fuga. Ratione accusamus aliquid repellendus!
                 </p> */}
-                {/* {
+                 {
                     (Object.keys(results).forEach((prop) => {
                         resultsDisplay.push(<><hr /><h4>{prop}</h4></>)
                         results[prop] && results[prop].map((e, i) => { resultsDisplay.push(<p><Icon name='question circle' /><strong>#{i + 1}: {e.question}</strong><br />{e.answer}</p>) })
                     }))
-                } */}
+                } 
 
                 {resultsDisplay}
                 {/* {props.customeranswers ? displayResults(props.customeranswers.data): []} */}

@@ -36,7 +36,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   }, []);
 
   const authLinks = (
-    <ul>
+    <Fragment>
       <li>
         <Link to="/dashboard">
           <i className="fas fa-user" />{' '}
@@ -49,18 +49,32 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
           <span className="hide-sm">Logout</span>
         </a>
       </li>
-    </ul>
+    </Fragment>
   );
 
   const guestLinks = (
-    <ul>
-      <li>
-        <Link to="/register">Register</Link>
-      </li>
+    <Fragment>
+      <li className='nav-btn'>
+                {button ? (
+                  <Link to='/register' className='btn-link'>
+                    <Button buttonStyle='btn--outline'>SIGN UP</Button>
+                  </Link>
+                ) : (
+                  <Link to='/register' className='btn-link'>
+                    <Button
+                      buttonStyle='btn--outline'
+                      buttonSize='btn--mobile'
+                      onClick={closeMobileMenu} disabled
+                    >
+                      SIGN UP
+                    </Button>
+                  </Link>
+                )}
+              </li>
       <li>
         <Link to="/login">Login</Link>
       </li>
-    </ul>
+    </Fragment>
   );
 
 
@@ -122,23 +136,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                   Products
                 </Link>
               </li> */}
-              <li className='nav-btn'>
-                {button ? (
-                  <Link to='/register' className='btn-link'>
-                    <Button buttonStyle='btn--outline'>SIGN UP</Button>
-                  </Link>
-                ) : (
-                  <Link to='/register' className='btn-link'>
-                    <Button
-                      buttonStyle='btn--outline'
-                      buttonSize='btn--mobile'
-                      onClick={closeMobileMenu} disabled
-                    >
-                      SIGN UP
-                    </Button>
-                  </Link>
-                )}
-              </li>
             </ul>
             <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
 

@@ -1,6 +1,7 @@
 import api from '../../../utils/api';
 import {
   createAnswers,
+  //createPost,
   getUserDoc,
   //authError,
   logoutUser
@@ -25,12 +26,13 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const register = (answers) => async (dispatch) => {
+export const register = (formData) => async (dispatch) => {
   try {
-    const res = await api.post('/users', answers);
+
+    const res = await api.post('/users', formData);
     dispatch(loadUser(res.body));
   } catch (err) {
-    dispatch(displayAlert('Signup failed'))
+    dispatch(displayAlert('Signup failed'));
   }
 };
 
@@ -42,7 +44,7 @@ export const login = (username, email, password) => async (dispatch) => {
 
     dispatch(loadUser(res.body));
   } catch (err) {
-    dispatch(displayAlert('Login failed'))
+    dispatch(displayAlert('Login failed'));
   }
 };
 
