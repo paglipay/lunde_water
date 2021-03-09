@@ -50,9 +50,9 @@ function OrdersDisplay(props) {
     const results2 = consolidateQIndexes(props.profile.data)
     displayResults(results2, resultsDisplay2)
 
-    const resultsDisplay3 = []
-    const results3 = consolidateQIndexes(props.register.data)
-    displayResults(results3, resultsDisplay3)
+    //const resultsDisplay3 = []
+    //const results3 = consolidateQIndexes(props.register.data)
+    //displayResults(results3, resultsDisplay3)
 
     const right_side = () => {
         // return null
@@ -74,7 +74,7 @@ function OrdersDisplay(props) {
                     results3[prop] && results3[prop].map((e, i) => { resultsDisplay3.push(<p><strong>{e.question}</strong><br />{e.answer}</p>) })
                 }))
             } */}
-            {resultsDisplay3}
+           {/*  {resultsDisplay3} */}
         </Segment>
         )
     }

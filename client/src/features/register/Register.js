@@ -1,11 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-// import { fetchCollections, removeCollectionRequest, markCollectionAsActiveRequest } from '../../../redux'
-// import { createTodo } from './redux/actions'
-import { addAnswersRequest } from './redux/thunks'
-import Register from '../../components/register/Register'
+import React from 'react';
+import { connect } from 'react-redux';
+import { addAnswersRequest, register } from './redux/thunks';
+import Register from '../../components/register/Register';
+import PropTypes from 'prop-types';
 
-function RegisterDisplay(props) {
+const RegisterDisplay = props => {
     console.log('Questionaire props:', props)
     return (
         < Register {...props}/>
@@ -14,20 +13,23 @@ function RegisterDisplay(props) {
 
 const mapStateToProps = state => {
     return {
-        orders: state.orders
+        orders: state.orders,
+        //isAuthenticated: state.isAuthenticated
     }
 }
 
-const mapDispatchToProps = dispatch => {
+/* const mapDispatchToProps = dispatch => {
     return {
         addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
-        //     fetchCollections: () => dispatch(fetchCollections()),
-        //   onRemovePressed: id => dispatch(removeCollectionRequest(id)), 
-        //   onActivatePressed: id => dispatch(markCollectionAsActiveRequest(id)),
+       // register: (obj) => dispatch(register(obj))
     }
+} */
+RegisterDisplay.propTypes = {
+    addAnswersRequest: PropTypes.func,
+    register: PropTypes.func
 }
-
-export default connect(
+/* export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(RegisterDisplay)
+)(RegisterDisplay) */
+export default connect(mapStateToProps, { addAnswersRequest, register })(RegisterDisplay);

@@ -1,26 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavBar from '../components/navbar/NavBar'
-import Footer from '../components/footer/Footer'
-import Questionaire from '../features/questionaire/Questionaire'
-import Questionaire2 from '../features/questionaire/Questionaire2'
-import Register from '../features/register/Register'
-import Profile from '../features/profile/Profile'
-import Orders from '../features/orders/Orders'
-import OrderForm from '../features/orderform/OrderForm'
-import Services from '../features/services/Services'
-import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
-import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
-import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2'
-import DTF from '../components/DynamicTable/DynamicTableForm'
-import HeroSections from '../features/herosections/HeroSections'
+import NavBar from '../components/navbar/NavBar';
+import Footer from '../components/footer/Footer';
+import Questionaire from '../features/questionaire/Questionaire';
+import Questionaire2 from '../features/questionaire/Questionaire2';
+import Register from '../features/register/Register';
+import Profile from '../features/profile/Profile';
+import Orders from '../features/orders/Orders';
+import OrderForm from '../features/orderform/OrderForm';
+import Services from '../features/services/Services';
+import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout';
+import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1';
+import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2';
+import DTF from '../components/DynamicTable/DynamicTableForm';
+import HeroSections from '../features/herosections/HeroSections';
 // import './App.css';
-import { Provider } from 'react-redux'
-import store from '../store/store'
+import { Provider } from 'react-redux';
+import store from '../store/store';
+import { loadUser } from '../features/register/redux/thunks';
+import setAuthToken from '../utils/setAuthToken';
+import { LOGOUT } from '../features/register/redux/actions/types';
 
 
-// import Dialog from '../components/auth/register/dialog/Dialog';
 const App = () => {
+  useEffect(() => {
+    // check for token in LS
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    store.dispatch(loadUser());
+
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener('storage', () => {
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>
