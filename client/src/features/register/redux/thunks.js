@@ -1,4 +1,4 @@
-import api from '../../../utils/api';
+/* import api from '../../../utils/api';
 import {
   createAnswers,
   //createPost,
@@ -54,4 +54,4 @@ export const logout = () => (dispatch) => {
 
 export const displayAlert = (text) => () => {
   alert(text);
-};
+}; */

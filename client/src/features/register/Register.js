@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { register, addAnswersRequest } from './redux/thunks';
+import { register, addAnswersRequest } from './redux/actions/actions';
 import Register from '../../components/register/Register';
 
 const RegisterDisplay = props => {
@@ -13,14 +13,15 @@ const RegisterDisplay = props => {
 const mapStateToProps = state => {
     return {
         orders: state.orders,
-        isAuthenticated: state.auth.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated,
+        formData: state.formData
     }
 }
 
   const mapDispatchToProps = dispatch => {
     return {
         addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
-        register: (obj) => dispatch(register(obj))
+        register: (formData) => dispatch(register(formData))
     }
 }  
 /* RegisterDisplay.propTypes = {

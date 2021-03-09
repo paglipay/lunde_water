@@ -2,23 +2,24 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, questions_arry } from './Data';
 import { dynamicForm } from '../dynamicform/dynamicform';
-import { restructureQuestionsForPost } from './helperFunctions'
+import { restructureQuestionsForPost } from './helperFunctions';
 
 function Register(props) {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
-  const [formData, setFormData] = useState({})
+  //const [formData, setFormData] = useState({})
 
   homeObjOne.onClick = () => {
     if (questions_arry.length > questionIndex + 1) {
       setQuestionIndex(questionIndex + 1)
     }else{
-        console.log('Submit', questionsPost)  
-        setFormData(restructureQuestionsForPost(questionsPost));        
-        props.register(formData);
-        props.addAnswersRequest(questionsPost)
-        props.history.push('/orders')
+        //console.log('Submit', questionsPost)  
+        //setFormData(restructureQuestionsForPost(questionsPost));        
+        props.register(restructureQuestionsForPost(questionsPost));
+        //console.log(formData);
+        props.addAnswersRequest(questionsPost);
+        props.history.push('/orders');
     }
   }
   
@@ -41,7 +42,7 @@ function Register(props) {
       imgStart: 'start'
     })
 
-    console.log('questionsPost: ', questionsPost)
+    //console.log('questionsPost: ', questionsPost)
   }, [questionIndex, questionsPost]);
 
 

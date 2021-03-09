@@ -17,7 +17,7 @@ import HeroSections from '../features/herosections/HeroSections';
 // import './App.css';
 import { Provider } from 'react-redux';
 import store from '../store/store';
-import { loadUser } from '../features/register/redux/thunks';
+import { loadUser } from '../features/register/redux/actions/actions';
 import setAuthToken from '../utils/setAuthToken';
 import { LOGOUT } from '../features/register/redux/actions/types';
 
