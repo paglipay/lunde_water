@@ -14,22 +14,22 @@ const RegisterDisplay = props => {
 const mapStateToProps = state => {
     return {
         orders: state.orders,
-        //isAuthenticated: state.isAuthenticated
+        isAuthenticated: state.auth.isAuthenticated
     }
 }
 
-/* const mapDispatchToProps = dispatch => {
+  const mapDispatchToProps = dispatch => {
     return {
         addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
        // register: (obj) => dispatch(register(obj))
     }
-} */
-RegisterDisplay.propTypes = {
+}  
+/* RegisterDisplay.propTypes = {
     addAnswersRequest: PropTypes.func,
     register: PropTypes.func
-}
-/* export default connect(
+} */
+ export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(RegisterDisplay) */
-export default connect(mapStateToProps, { addAnswersRequest, register })(RegisterDisplay);
+)(RegisterDisplay) 
+//export default connect(mapStateToProps, { addAnswersRequest, register })(RegisterDisplay);

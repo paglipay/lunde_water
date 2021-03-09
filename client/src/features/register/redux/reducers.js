@@ -14,7 +14,7 @@ import {
     user: null
   };
   
-  const register = (state = initialState, action) => {
+  const auth = (state = initialState, action) => {
     const { type, payload } = action;
   
     switch (type) {
@@ -48,4 +48,4 @@ import {
     }
   }
   
-  export default register;
+  export default auth;

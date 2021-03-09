@@ -1,34 +1,40 @@
 import api from '../../../utils/api';
-import { createAnswers, getUserDoc, authError, logoutUser } from './actions/actions';
+import {
+  createAnswers,
+  getUserDoc,
+  //authError,
+  logoutUser
+} from './actions/actions';
 
 export const addAnswersRequest = (text) => async (dispatch) => {
   console.log('text: ', text);
   try {
     dispatch(createAnswers(text));
   } catch (err) {
-    dispatch(displayAlert(err));
+    //dispatch(displayAlert())
   }
 };
 
-export const loadUser = () => async dispatch => {
+export const loadUser = () => async (dispatch) => {
   try {
     const res = await api.get('/auth');
     dispatch(getUserDoc(res.data));
+    
   } catch (err) {
-    dispatch(authError());
+    //dispatch(err.msg)
   }
 };
 
-export const register = (answers) => async dispatch => {
+export const register = (answers) => async (dispatch) => {
   try {
     const res = await api.post('/users', answers);
     dispatch(loadUser(res.body));
   } catch (err) {
-    dispatch(authError());
+    dispatch(displayAlert('Signup failed'))
   }
 };
 
-export const login = (username, email, password) => async dispatch => {
+export const login = (username, email, password) => async (dispatch) => {
   const body = { username, email, password };
 
   try {
@@ -36,14 +42,14 @@ export const login = (username, email, password) => async dispatch => {
 
     dispatch(loadUser(res.body));
   } catch (err) {
-    dispatch(authError());
+    dispatch(displayAlert('Login failed'))
   }
 };
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch) => {
   dispatch(logoutUser());
 };
 
-export const displayAlert = text => () => {
+export const displayAlert = (text) => () => {
   alert(text);
 };

@@ -15,10 +15,10 @@ export const getUserDoc = userData => ({
     payload: userData
 });
 
-export const authError = authData => ({
+/* export const authError = authData => ({
     type: AUTH_ERROR,
     payload: authData
-});
+}); */
 
 
 // Logout
