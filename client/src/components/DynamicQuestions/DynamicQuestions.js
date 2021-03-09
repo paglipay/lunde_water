@@ -7,7 +7,6 @@ import Submit from './Submit'
 import { restructureQuestionsForPost } from './helperFunctions'
 
 function DynamicQuestions(props) {
-  console.log('DynamicQuestions props: ', props)
   const { homeObjOne, array_of_questions_arry, questions_keys, customerId } = props;
 
   const [arrayOfQuestionsArry, setArrayOfQuestionsArry] = useState(array_of_questions_arry)
@@ -51,7 +50,7 @@ function DynamicQuestions(props) {
     })
   }, [questionIndex, questionsPost]);
 
-  useEffect(() => {
+  useEffect(() => {    
     props.questions && props.questions.results && props.questions.results[questions_keys[props.qIndex]] && setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
   }, [props.questions]);
 
@@ -65,25 +64,19 @@ function DynamicQuestions(props) {
 
   return (
     <>
-      { props.match.path === '/reviewcomplete' ? (<Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} >
-        <Answers {...props} />
+      { props.match.path === '/reviewcomplete' ? (<Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<Answers {...props} data={['Profile']}/>}  >
+        <Answers {...props} data={['Orders', 'Customer Questions']}/>
       </Layout>) : true ? (
-        <Layout2a contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers {...props} /></>}>
+        <Layout2a contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers {...props} data={['Profile', 'Customer Questions', 'Orders']}/></>}>
           {homeObjOneD.description}
+
         </Layout2a>
       ) : (
-            <Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers {...props} /></>}>
+            <Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers {...props} data={['Profile', 'Customer Questions', 'Orders']}/></>}>
               {homeObjOneD.description}
             </Layout>
           )
-
       }
-      {/* <Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers setQIndex={props.setQIndex} /></>}>
-        {homeObjOneD.description}
-      </Layout> */}
-      {/* <Layout2a contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers setQIndex={props.setQIndex} /></>}>
-        {homeObjOneD.description}
-      </Layout2a> */}
     </>
   );
 }

@@ -28,8 +28,8 @@ const displayResults = (results) => {
 }
 
 function Answers(props) {
-    const data = ['Profile', 'Customer Questions', 'Order Form']
-    // const data = ['Order Form', 'Customer Questions', 'Profile', 'Register' ]
+    // const data = ['Profile', 'Customer Questions', 'Order Form']
+    const data = props.data
 
     return (
         <>

@@ -5,12 +5,14 @@ import DynamicQuestions from './DynamicQuestions'
 import { addAnswersRequest, addAnswersToPost, getAnswersById } from './redux/thunks'
 import {
     Button,
+    Checkbox,
     Container,
     Grid,
     Select
 } from 'semantic-ui-react'
 
 function Display(props) {
+    const [adminMode, setAdminMode] = useState(false)
     const [customerId, setCustomerId] = useState()
     const [qIndex, setQIndex] = useState(0)
     const idOptions = [
@@ -26,12 +28,12 @@ function Display(props) {
             // props.getAnswersById(customerId, 'Register')
             props.getAnswersById(customerId, 'Profile')
             props.getAnswersById(customerId, 'Customer Questions')
+            props.getAnswersById(customerId, 'Orders')
         }
     }, [customerId, qIndex])
 
-
-    const adminMode = (<>
-        <h1>Administration Mode:</h1>
+    const adminModeDisplay = (<>
+        <h1>Employee Administration Mode:</h1>
         {qIndex < questions_keys.length - 1 ?
             <Button onClick={() => setQIndex(qIndex + 1)} primary>
                 New
@@ -54,7 +56,6 @@ function Display(props) {
                             <Button onClick={() => setQIndex(qIndex + 1)} style={{ float: 'right' }} size='huge' primary>
                                 Next
                             </Button> : null}
-
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
@@ -63,7 +64,8 @@ function Display(props) {
 
     return (
         <>
-            {true && adminMode}
+            <Checkbox label='Employee Admin Mode' onChange={() => setAdminMode(!adminMode)} />
+            {adminMode && adminModeDisplay}
             <DynamicQuestions {...props} qIndex={qIndex} setQIndex={setQIndex} />
         </>
     )

@@ -46,11 +46,7 @@ const ResponsiveLayout = (props) => (
         <Grid columns={2} stackable>
             <Grid.Row columns={2}>
                 <Grid.Column width={12}>
-                    <Segment >
-                        <Header as='h2'>{props.headline}</Header>
-                        {/* <p>
-                                {props.topLine}
-                                </p> */}
+
                         {props.children}
                         {props.questionIndex !== 0 ?
                             <Button onClick={props.onClickBack}>
@@ -60,48 +56,13 @@ const ResponsiveLayout = (props) => (
                             <Button onClick={props.onClick}>
                                 {props.buttonLabel}
                             </Button>)}
-                    </Segment>
+ 
                 </Grid.Column>
                 <Grid.Column width={4}>
-                    {/* <Segment> */}
-                    <Card fluid>
-                        <Card.Content>
-                            <Card.Header>Review / Complete</Card.Header>
-                        </Card.Content>
-                        <Card.Content>
-                            {/* {props.right_side} */}
-                            <Feed>
-                                <Feed.Event>
-                                    <Feed.Label image='/images/avatar/small/jenny.jpg' />
-                                    <Feed.Content>
-                                        <Feed.Date content='1 day ago' />
-                                        <Feed.Summary>
-                                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                                            </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                                <Feed.Event>
-                                    <Feed.Label image='/images/avatar/small/molly.png' />
-                                    <Feed.Content>
-                                        <Feed.Date content='3 days ago' />
-                                        <Feed.Summary>
-                                            You added <a>Molly Malone</a> as a friend.
-                                            </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                                <Feed.Event>
-                                    <Feed.Label image='/images/avatar/small/elliot.jpg' />
-                                    <Feed.Content>
-                                        <Feed.Date content='4 days ago' />
-                                        <Feed.Summary>
-                                            You added <a>Elliot Baker</a> to your <a>musicians</a> group.
-                                            </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                            </Feed>
-                        </Card.Content>
-                    </Card>
-                    {/* </Segment> */}
+
+                    {props.right_side}
+
+
                 </Grid.Column>
             </Grid.Row>
         </Grid>

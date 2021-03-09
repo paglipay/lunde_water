@@ -21,7 +21,6 @@ import Invoice from '../features/invoice/Invoice'
 import { Provider } from 'react-redux'
 import store from '../store/store'
 
-
 // import Dialog from '../components/auth/register/dialog/Dialog';
 const App = () => {
   return (
@@ -29,7 +28,7 @@ const App = () => {
       <Router>
         <Fragment>
           <NavBar />
-          {/* <div style={{ minHeight: "75vh" }}> */}
+          <div style={{ minHeight: "75vh" }}>
             <Switch >
               <Route exact path='/homepagelayout' component={HomepageLayout} />
               <Route exact path='/responsivelayout' component={ResponsiveLayout} />
@@ -46,7 +45,7 @@ const App = () => {
               <Route exact path='/dtf' component={DTF} />
               <Route exact path='/invoice' component={Invoice} />
             </Switch>
-          {/* </div> */}
+          </div>
           <Footer />
         </Fragment>
       </Router>

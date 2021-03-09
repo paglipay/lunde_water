@@ -127,7 +127,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs
                 name={`${q.question}`}
                 key={`${q.question}_yes`}
                 type="radio"
-                id={`default-radio`}
+                id={`default-radio_yes`}
                 label={`Yes`}
                 checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'Yes'}
               />
@@ -140,7 +140,7 @@ export const dynamicForm = (questions, setPostData, postData, qIndex = 0, elRefs
                 key={`${q.question}_no`}
                 type="radio"
                 label={`No`}
-                id={`default-radio`}
+                id={`default-radio_no`}
                 checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'No'}
               />
 
