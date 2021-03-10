@@ -5,6 +5,7 @@ import Footer from '../components/footer/Footer';
 import Questionaire from '../features/questionaire/Questionaire';
 import Questionaire2 from '../features/questionaire/Questionaire2';
 import Register from '../features/register/Register';
+import Login from '../features/register/Login';
 import Profile from '../features/profile/Profile';
 import Orders from '../features/orders/Orders';
 import OrderForm from '../features/orderform/OrderForm';
@@ -50,6 +51,7 @@ const App = () => {
               <Route exact path='/questionaire' component={Questionaire} />
               <Route exact path='/questionaire2' component={Questionaire2} />
               <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/orderform' component={OrderForm} />
               <Route exact path='/orders' component={Orders} />

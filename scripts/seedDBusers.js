@@ -5,7 +5,7 @@ const db = require("../models");
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost/lunde-water-two"
+    "mongodb://localhost/lunde-water"
 );
 
 const userSeed = [
