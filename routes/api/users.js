@@ -27,8 +27,9 @@ router.post(
 
     const { username, email, password } = req.body;
 
-    // try {
-      let user = await User.findOne({ email });
+     try {
+      let user = await User.findOne({ username });
+      console.log(username);
 
       if (user) {
         return res
@@ -64,10 +65,10 @@ router.post(
           res.json({ token });
         }
       );
-    // } catch (err) {
-    //   console.error(err.message);
-    //   res.status(500).send('Server error');
-    // }
+     } catch (err) {
+       console.error(err.message);
+       res.status(500).send('Server error');
+     }
   }
 );
 

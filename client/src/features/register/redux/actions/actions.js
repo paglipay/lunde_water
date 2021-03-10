@@ -1,31 +1,3 @@
-/* import {
-    CREATE_REGISTER,
-    USER_LOADED,
-    AUTH_ERROR,
-    LOGOUT,
-    CREATE_REGISTER_POST
-  } from './types' */
-
-/* export const createAnswers = answers => ({
-    type: CREATE_REGISTER,
-    payload: answers
-});
-
-export const createPost = answers => ({
-    type: CREATE_REGISTER_POST,
-    payload: answers
-})
-
-export const getUserDoc = userData => ({
-    type: USER_LOADED,
-    payload: userData
-}); */
-
-/* export const authError = authData => ({
-    type: AUTH_ERROR,
-    payload: authData
-}); */
-
 import api from '../../../../utils/api';
 //import { setAlert } from './alert';
 import {
@@ -40,7 +12,7 @@ import {
   LOGOUT
 } from './types';
 
-export const createAnswers = (answers) => ({
+ export const createAnswers = (answers) => ({
   type: CREATE_REGISTER,
   payload: answers
 });
@@ -48,16 +20,17 @@ export const createAnswers = (answers) => ({
 export const createPost = (answers) => ({
   type: CREATE_REGISTER_POST,
   payload: answers
-});
+}); 
 
-export const addAnswersRequest = (text) => async (dispatch) => {
+ export const addAnswersRequest = (text) => async (dispatch) => {
   //console.log('text: ', text);
   try {
     dispatch(createAnswers(text));
   } catch (err) {
+    console.log(err);
     //dispatch(displayAlert())
   }
-};
+}; 
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -78,8 +51,7 @@ export const loadUser = () => async (dispatch) => {
 
 // Register User
 export const register = (answers) => async (dispatch) => {
-  // try {
-    //const user = { }
+   try {
     console.log('register')
     const res = await api.post('/users', answers);
 
@@ -88,17 +60,17 @@ export const register = (answers) => async (dispatch) => {
       payload: res.data
     });
     dispatch(loadUser());
-  // } catch (err) {
+   } catch (err) {
   //   //const errors = err.response.data.errors;
 
   //   //if (errors) {
   //   //  errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
   //   //}
-
-  //   dispatch({
-  //     type: REGISTER_FAIL
-  //   });
-  // }
+    console.log(err);
+     dispatch({
+       type: REGISTER_FAIL
+     });
+   }
 };
 
 // Login User

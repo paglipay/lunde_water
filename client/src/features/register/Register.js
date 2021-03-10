@@ -23,12 +23,9 @@ const mapStateToProps = state => {
         register: (formData) => dispatch(register(formData))
     }
 }  
-/* RegisterDisplay.propTypes = {
-    addAnswersRequest: PropTypes.func,
-    register: PropTypes.func
-} */
+
  export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(RegisterDisplay) 
-//export default connect(mapStateToProps, { addAnswersRequest, register })(RegisterDisplay);
+
