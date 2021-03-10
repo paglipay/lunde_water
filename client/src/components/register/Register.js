@@ -15,7 +15,7 @@ function Register(props) {
       setQuestionIndex(questionIndex + 1)
     }else{
         //console.log('Submit', questionsPost)  
-        setFormData(restructureQuestionsForPost(questionsPost));        
+        // setFormData(restructureQuestionsForPost(questionsPost));        
         // props.register(formData);
         //console.log(formData);
         props.register(restructureQuestionsForPost(questionsPost));

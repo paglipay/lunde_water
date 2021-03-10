@@ -1,4 +1,3 @@
 module.exports = {
-    Order: require("./order"),
-    User: require("./User")
+    Order: require("./order")
 };
