@@ -1,5 +1,6 @@
 import {
     CREATE_REGISTER,
+<<<<<<< HEAD
     CREATE_REGISTER_POST,
     // REMOVE_TODO,
     // MARK_TODO_AS_COMPLETED,
@@ -11,8 +12,27 @@ import {
 const initialState = { isLoading: false, data: {}, post_data: {} };
 
 const answers = (state = initialState, action) => {
+=======
+    REGISTER_SUCCESS,
+    USER_LOADED,
+    AUTH_ERROR,
+    LOGIN_SUCCESS,
+    LOGOUT
+  } from './actions/types';
+  
+  const initialState = {
+    token: localStorage.getItem('token'),
+    isAuthenticated: null,
+    loading: true,
+    user: null
+  };
+  
+  const auth = (state = initialState, action) => {
+>>>>>>> 987edeb4999dc5a224cde890afda721f63d9bf40
     const { type, payload } = action;
+  
     switch (type) {
+<<<<<<< HEAD
         case CREATE_REGISTER: {
             const answers = payload;
             return {
@@ -66,7 +86,36 @@ const answers = (state = initialState, action) => {
         //     }
         default:
             return state;
+=======
+      case USER_LOADED:
+        return {
+          ...state,
+          isAuthenticated: true,
+          loading: false,
+          user: payload
+        };
+      case CREATE_REGISTER:
+      case REGISTER_SUCCESS:
+      case LOGIN_SUCCESS:
+        return {
+          ...state,
+          ...payload,
+          isAuthenticated: true,
+          loading: false
+        };
+      case AUTH_ERROR:
+      case LOGOUT:
+        return {
+          ...state,
+          token: null,
+          isAuthenticated: false,
+          loading: false,
+          user: null
+        };
+      default:
+        return state;
+>>>>>>> 987edeb4999dc5a224cde890afda721f63d9bf40
     }
-}
-
-export default answers
+  }
+  
+  export default auth;

@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Button } from '../button/Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { MdInvertColors } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+import { logout } from '../../features/register/redux/thunks';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
   Icon
 } from 'semantic-ui-react'
 
-function Navbar() {
+const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -31,6 +34,54 @@ function Navbar() {
     //   window.removeEventListener('resize', showButton)
     // }
   }, []);
+
+  const authLinks = (
+    <Fragment>
+      <li>
+        <Link to="/dashboard">
+          <i className="fas fa-user" />{' '}
+          <span className="hide-sm">Profile</span>
+        </Link>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{' '}
+          <span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <li className='nav-btn'>
+                {button ? (
+                  <Link to='/register' className='btn-link'>
+                    <Button buttonStyle='btn--outline'>SIGN UP</Button>
+                  </Link>
+                ) : (
+                  <Link to='/register' className='btn-link'>
+                    <Button
+                      buttonStyle='btn--outline'
+                      buttonSize='btn--mobile'
+                      onClick={closeMobileMenu} disabled
+                    >
+                      SIGN UP
+                    </Button>
+                  </Link>
+                )}
+              </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{' '}
+          <span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </Fragment>
+  );
 
 
   return (
@@ -91,24 +142,9 @@ function Navbar() {
                   Products
                 </Link>
               </li> */}
-              <li className='nav-btn'>
-                {button ? (
-                  <Link to='/register' className='btn-link'>
-                    <Button buttonStyle='btn--outline'>SIGN UP</Button>
-                  </Link>
-                ) : (
-                  <Link to='/register' className='btn-link'>
-                    <Button
-                      buttonStyle='btn--outline'
-                      buttonSize='btn--mobile'
-                      onClick={closeMobileMenu} disabled
-                    >
-                      SIGN UP
-                    </Button>
-                  </Link>
-                )}
-              </li>
             </ul>
+            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+
           </div>
         </nav>
       </IconContext.Provider>
@@ -116,4 +152,13 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
