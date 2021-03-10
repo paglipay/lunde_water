@@ -16,9 +16,9 @@ function Register(props) {
     }else{
         //console.log('Submit', questionsPost)  
         setFormData(restructureQuestionsForPost(questionsPost));        
-        props.register(formData);
+        // props.register(formData);
         //console.log(formData);
-        props.addAnswersRequest(questionsPost);
+        props.register(restructureQuestionsForPost(questionsPost));
         props.history.push('/orders');
     }
   }
