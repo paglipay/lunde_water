@@ -14,7 +14,6 @@ const mapStateToProps = state => {
     return {
         orders: state.orders,
         isAuthenticated: state.auth.isAuthenticated,
-        formData: state.formData
     }
 }
 

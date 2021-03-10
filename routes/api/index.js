@@ -1,12 +1,14 @@
 const router = require("express").Router();
 const path          = require('path');
 const authRoutes    = require('./auth');
+const userRoutes    = require('./users');
 const orderRoutes = require("./orders");
 const stripeRoutes = require("./stripe");
 
 router.use('/auth', authRoutes);
 router.use("/orders", orderRoutes);
 router.use("/stripe", stripeRoutes);
+router.use("/users", userRoutes);
 
 // For anything else, render the html page
 router.use(function(req, res) {
