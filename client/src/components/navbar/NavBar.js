@@ -5,7 +5,7 @@ import './Navbar.css';
 import { MdInvertColors } from 'react-icons/md';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
-import { logout } from '../../features/register/redux/thunks';
+import { logout } from '../../features/register/redux/actions/actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -44,10 +44,10 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         </Link>
       </li>
       <li>
-        <a onClick={logout} href="#!">
-          <i className="fas fa-sign-out-alt" />{' '}
-          <span className="hide-sm">Logout</span>
-        </a>
+        <Link to='/homepagelayout' onClick={logout}>
+          <Icon namee='sign out' />{' '}
+          <span className='hide-sm'>Logout</span>
+        </Link>
       </li>
     </Fragment>
   );
@@ -73,12 +73,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
               </li>
       <li>
         <Link to="/login">Login</Link>
-      </li>
-      <li>
-        <Link to='/' onClick={logout}>
-          <i className="fas fa-sign-out-alt" />{' '}
-          <span className="hide-sm">Logout</span>
-        </Link>
       </li>
     </Fragment>
   );
