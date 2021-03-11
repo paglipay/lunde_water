@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../semantic_ui/ResponsiveLayout/Layout';
 import { homeObjOne, questions_arry } from './FormData';
 import { dynamicForm } from '../dynamicform/dynamicform'
-import { restructureForQuestion } from './helperFunctions'
+import { restructureQuestionsForPost } from '../DynamicQuestions/helperFunctions'
 
 function OrderForm(props) {
 
@@ -16,9 +16,8 @@ function OrderForm(props) {
     } else {
       console.log('Submit', questionsPost)
 
-      // console.log(restructureForQuestion(questionsPost))
-      props.addAnswersRequest(restructureForQuestion(questionsPost))
-      // props.addAnswersRequest(questionsPost)
+      // props.addAnswersRequest(restructureQuestionsForPost(questionsPost))
+      props.addAnswersRequest(questionsPost)
       // props.history.push('/orders')
     }
   }

@@ -7,6 +7,7 @@ import Questionaire2 from '../features/questionaire/Questionaire2'
 import Register from '../features/register/Register'
 // import Profile from '../features/profile/Profile'
 import Profile from '../features/profile/Profile'
+import PlaceOrder from '../features/placeorder/PlaceOrder'
 import ReviewComplete from '../features/profile/Profile'
 import Orders from '../features/orders/Orders'
 import OrderForm from '../features/orderform/OrderForm'
@@ -53,6 +54,7 @@ const App = () => {
               <Route exact path='/questionaire2' component={Questionaire2} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/profile' component={Profile} />
+              <Route exact path='/placeorder' component={PlaceOrder} />
               <Route exact path='/reviewcomplete' component={ReviewComplete} />
               <Route exact path='/orderform' component={OrderForm} />
               <Route exact path='/orders' component={Orders} />

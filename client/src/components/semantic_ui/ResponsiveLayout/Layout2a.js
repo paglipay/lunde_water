@@ -25,6 +25,7 @@ const style = {
         marginTop: '2em',
         marginBottom: '30px',
     },
+
 }
 
 const ResponsiveLayout = (props) => (
@@ -45,7 +46,17 @@ const ResponsiveLayout = (props) => (
 
         <Grid columns={2} stackable>
             <Grid.Row columns={2}>
-                {true && <Grid.Column width={8}>
+                <Grid.Column width={6}>
+                    <Card fluid>
+                        <Card.Content>
+                            <Card.Header>Review / Complete</Card.Header>
+                        </Card.Content>
+                        <Card.Content>
+                            {props.right_side}
+                        </Card.Content>
+                    </Card>
+                </Grid.Column>
+                {true && <Grid.Column width={10}>
                     <Segment >
                         <Header as='h2'>{props.headline}</Header>
                         {/* <p>
@@ -56,53 +67,12 @@ const ResponsiveLayout = (props) => (
                             <Button onClick={props.onClickBack}>
                                 Back
                                     </Button> : null}
-                        {false ? null : (
+                        {props.questions_keys.length - 1 == props.qIndex ? null : (
                             <Button onClick={props.onClick}>
                                 {props.buttonLabel}
                             </Button>)}
                     </Segment>
                 </Grid.Column>}
-                <Grid.Column width={8}>
-                    {/* <Segment> */}
-                    <Card fluid>
-                        <Card.Content>
-                            <Card.Header>Review / Complete</Card.Header>
-                        </Card.Content>
-                        <Card.Content>
-                            {props.right_side}
-                            {/* <Feed>
-                                <Feed.Event>
-                                    <Feed.Label image='/images/avatar/small/jenny.jpg' />
-                                    <Feed.Content>
-                                        <Feed.Date content='1 day ago' />
-                                        <Feed.Summary>
-                                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                                            </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                                <Feed.Event>
-                                    <Feed.Label image='/images/avatar/small/molly.png' />
-                                    <Feed.Content>
-                                        <Feed.Date content='3 days ago' />
-                                        <Feed.Summary>
-                                            You added <a>Molly Malone</a> as a friend.
-                                            </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                                <Feed.Event>
-                                    <Feed.Label image='/images/avatar/small/elliot.jpg' />
-                                    <Feed.Content>
-                                        <Feed.Date content='4 days ago' />
-                                        <Feed.Summary>
-                                            You added <a>Elliot Baker</a> to your <a>musicians</a> group.
-                                            </Feed.Summary>
-                                    </Feed.Content>
-                                </Feed.Event>
-                            </Feed> */}
-                        </Card.Content>
-                    </Card>
-                    {/* </Segment> */}
-                </Grid.Column>
             </Grid.Row>
         </Grid>
     </Container>

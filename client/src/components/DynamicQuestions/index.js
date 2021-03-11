@@ -16,8 +16,10 @@ function Display(props) {
     const [customerId, setCustomerId] = useState()
     const [qIndex, setQIndex] = useState(0)
     const idOptions = [
-        { key: "60467d8f8423ad02049bd11a", value: "60467d8f8423ad02049bd11a", text: "60467d8f8423ad02049bd11a" },
-        { key: "60467dfde235da0404f636e4", value: "60467dfde235da0404f636e4", text: "60467dfde235da0404f636e4" },
+        { key: "604a7848bd133e2284171b5a", value: "604a7848bd133e2284171b5a", text: "604a7848bd133e2284171b5a" },
+        { key: "604a7e645503c10d542af03e", value: "604a7e645503c10d542af03e", text: "604a7e645503c10d542af03e" },
+        { key: "604a884365bc1d07400c4684", value: "604a884365bc1d07400c4684", text: "604a884365bc1d07400c4684" },
+//604a884365bc1d07400c4684
     ]
 
     const questions_keys = props.questions_keys
@@ -28,9 +30,9 @@ function Display(props) {
             // props.getAnswersById(customerId, 'Register')
             props.getAnswersById(customerId, 'Profile')
             props.getAnswersById(customerId, 'Customer Questions')
-            props.getAnswersById(customerId, 'Orders')
+            // props.getAnswersById(customerId, 'Orders')
         }
-    }, [customerId, qIndex])
+    }, [customerId])
 
     const adminModeDisplay = (<>
         <h1>Employee Administration Mode:</h1>
@@ -66,7 +68,7 @@ function Display(props) {
         <>
             <Checkbox label='Employee Admin Mode' onChange={() => setAdminMode(!adminMode)} />
             {adminMode && adminModeDisplay}
-            <DynamicQuestions {...props} qIndex={qIndex} setQIndex={setQIndex} />
+            <DynamicQuestions {...props} qIndex={qIndex} setQIndex={setQIndex} customerId={customerId} />
         </>
     )
 }

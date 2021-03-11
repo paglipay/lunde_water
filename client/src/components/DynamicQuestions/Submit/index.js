@@ -9,14 +9,22 @@ function Submit(props) {
     const [checked, setChecked] = useState()
 
     const handleClick = (e) => {
+        e.preventDefault()
         console.log('handleClick: ', props.questions.post_data)
-        // props.postAnswers(props.questions.post_data, 'profile')
-        props.postAnswers(props.questions.results, 'app_data')
+        // props.postAnswers(props.questions.results, 'profiles')
+        // props.postAnswers(props.questions.post_data, 'orders')
+
+
+        props.location.pathname === '/placeorder' && props.history.push('/reviewcomplete')
+        props.location.pathname === '/reviewcomplete' && props.postAnswers(props.questions.post_data, 'orders') && props.history.push('/orders')
+        props.location.pathname === '/profile' && props.postAnswers(props.questions.results, 'profiles') && props.history.push('/reviewcomplete')
+        // props.location.pathname !== '/reviewcomplete' ? props.history.push('/orders') : props.history.push('/reviewcomplete')
+        
+
     }
     return (
         <>
-
-            <Button onClick={(e) => handleClick(e)}  color={checked ? 'green': 'disabled'}>Submit</Button>
+            <Button onClick={(e) => handleClick(e)} color={checked ? 'green' : 'disabled'}>Submit</Button>
             {' '}
             <Checkbox onClick={() => setChecked(!checked)} label='I agree to the Terms and Conditions' />
         </>

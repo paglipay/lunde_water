@@ -52,7 +52,7 @@ const ResponsiveLayout = (props) => (
                             <Button onClick={props.onClickBack}>
                                 Back
                                     </Button> : null}
-                        {false ? null : (
+                        {true ? null : (
                             <Button onClick={props.onClick}>
                                 {props.buttonLabel}
                             </Button>)}

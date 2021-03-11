@@ -26,6 +26,7 @@ function DynamicQuestions(props) {
       setQuestionsPost({})
       setQuestionIndex(0)
       // props.history.push('/reviewcomplete')
+
       if (questions_keys.length - 1 > props.qIndex) {
         props.setQIndex(props.qIndex + 1)
       }
@@ -41,17 +42,23 @@ function DynamicQuestions(props) {
   }
 
   useEffect(() => {
+    console.log('questionsPost: ', questionsPost)
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
       buttonLabel: arrayOfQuestionsArry[props.qIndex].length === questionIndex + 1 ? 'Review / Complete' : 'Next',
-      description: dynamicForm(arrayOfQuestionsArry[props.qIndex][questionIndex]['questions'], setQuestionsPost, questionsPost, arrayOfQuestionsArry[props.qIndex][questionIndex]['headline']),
+      description: dynamicForm(props, arrayOfQuestionsArry[props.qIndex][questionIndex]['questions'], setQuestionsPost, questionsPost, arrayOfQuestionsArry[props.qIndex][questionIndex]['headline']),
       headline: arrayOfQuestionsArry[props.qIndex][questionIndex]['headline'],
     })
   }, [questionIndex, questionsPost]);
 
-  useEffect(() => {    
-    props.questions && props.questions.results && props.questions.results[questions_keys[props.qIndex]] && setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
+  useEffect(() => {
+    props.questions &&
+      props.questions.results &&
+      props.questions.results[questions_keys[props.qIndex]] &&
+      setQuestionsPost(props.questions.results[questions_keys[props.qIndex]])
+
+
   }, [props.questions]);
 
   useEffect(() => {
@@ -64,18 +71,24 @@ function DynamicQuestions(props) {
 
   return (
     <>
-      { props.match.path === '/reviewcomplete' ? (<Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<Answers {...props} data={['Profile']}/>}  >
-        <Answers {...props} data={['Orders', 'Customer Questions']}/>
-      </Layout>) : true ? (
-        <Layout2a contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers {...props} data={['Profile', 'Customer Questions', 'Orders']}/></>}>
-          {homeObjOneD.description}
+      { props.match.path === '/reviewcomplete' ? (<Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Answers {...props} data={['Profile']} />
+        <Submit {...props} /></>}>
+        <Answers {...props}
+          data={[
+            'Orders',
+            'Customer Questions']}
+        />
+        <br /><br />
+      </Layout>) : (<>
+          <Layout2a {...props} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<>
+            {/* <Submit {...props} /> */}
+            <Answers {...props}
+              data={props.questions_keys}
+            /></>}>
+            {homeObjOneD.description}
 
-        </Layout2a>
-      ) : (
-            <Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Submit /><Answers {...props} data={['Profile', 'Customer Questions', 'Orders']}/></>}>
-              {homeObjOneD.description}
-            </Layout>
-          )
+          </Layout2a>
+        </>)
       }
     </>
   );
