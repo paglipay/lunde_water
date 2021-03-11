@@ -1,8 +1,6 @@
 import api from '../../../../utils/api';
 //import { setAlert } from './alert';
 import {
-  CREATE_REGISTER,
-  CREATE_REGISTER_POST,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
