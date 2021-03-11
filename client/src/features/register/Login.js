@@ -4,20 +4,18 @@ import { login } from './redux/actions/actions';
 import Login from '../../components/login/Login';
 
 const LoginDisplay = (props) => {
-  console.log('Questionaire props:', props);
   return <Login {...props} />;
 };
 
 const mapStateToProps = (state) => {
   return {
-    orders: state.orders,
     isAuthenticated: state.auth.isAuthenticated
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (formData) => dispatch(login(formData))
+    login: (username, password) => dispatch(login(username, password))
   };
 };
 

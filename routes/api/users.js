@@ -12,8 +12,7 @@ const User = require('../../models/User');
 // @access   Public
 router.post(
   '/',
-  check('username:', 'Name is required').notEmpty(),
-  check('email', 'Please include a valid email').isEmail(),
+  check('username', 'Name is required').notEmpty(),
   check(
     'password',
     'Please enter a password with 6 or more characters'
@@ -29,7 +28,6 @@ router.post(
 
      try {
       let user = await User.findOne({ username });
-      console.log(username);
 
       if (user) {
         return res

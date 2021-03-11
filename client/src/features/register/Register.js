@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { register, addAnswersRequest } from './redux/actions/actions';
+import { register } from './redux/actions/actions';
 import Register from '../../components/register/Register';
 
 const RegisterDisplay = (props) => {
@@ -17,7 +17,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
     register: (formData) => dispatch(register(formData))
   };
 };

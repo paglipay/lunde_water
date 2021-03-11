@@ -1,4 +1,4 @@
-export const restructureQuestionsForPost = (data) => {
+/* export const restructureQuestionsForPost = (data) => {
     console.log('restructureForTable: ', data)
     let state = {}
     Object.keys(data).forEach((q) => {
@@ -37,4 +37,4 @@ export const restructureQuestionsForPost = (data) => {
     })
     console.log("restructureForTable:", state)
     return state
-}
+} */
