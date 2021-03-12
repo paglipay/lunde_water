@@ -2,7 +2,6 @@ const path       = require('path');
 const router     = require('express').Router();
 const bodyParser = require('body-parser');
 const apiRoutes  = require('./api');
-const mailRoutes = require('./nodemailer');
 
 // API Routes
 router.use('/api', apiRoutes);
