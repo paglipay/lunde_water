@@ -8,7 +8,8 @@ import {
     Checkbox,
     Container,
     Grid,
-    Select
+    Select,
+    Sidebar
 } from 'semantic-ui-react'
 
 function Display(props) {
@@ -56,6 +57,7 @@ function Display(props) {
             Get
             </Button>
         <Select placeholder='Select' onChange={(e, { value }) => setCustomerId(value)} options={idOptions} />
+        
         <Container>
             <Grid columns={2} stackable>
                 <Grid.Row columns={3}>
