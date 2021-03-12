@@ -12,8 +12,7 @@ const User = require('../../models/User');
 // @access   Public
 router.post(
   '/',
-  check('username:', 'Name is required').notEmpty(),
-  check('email', 'Please include a valid email').isEmail(),
+  check('username', 'Name is required').notEmpty(),
   check(
     'password',
     'Please enter a password with 6 or more characters'
@@ -27,8 +26,8 @@ router.post(
 
     const { username, email, password } = req.body;
 
-    // try {
-      let user = await User.findOne({ email });
+     try {
+      let user = await User.findOne({ username });
 
       if (user) {
         return res
@@ -64,10 +63,10 @@ router.post(
           res.json({ token });
         }
       );
-    // } catch (err) {
-    //   console.error(err.message);
-    //   res.status(500).send('Server error');
-    // }
+     } catch (err) {
+       console.error(err.message);
+       res.status(500).send('Server error');
+     }
   }
 );
 

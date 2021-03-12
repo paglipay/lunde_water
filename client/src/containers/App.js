@@ -1,29 +1,30 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NavBar from '../components/navbar/NavBar'
-import Footer from '../components/footer/Footer'
-import Questionaire from '../features/questionaire/Questionaire'
-import Questionaire2 from '../features/questionaire/Questionaire2'
-import Register from '../features/register/Register'
-// import Profile from '../features/profile/Profile'
-import Profile from '../features/profile/Profile'
-import PlaceOrder from '../features/placeorder/PlaceOrder'
-import ReviewComplete from '../features/profile/Profile'
-import Orders from '../features/orders/Orders'
-import OrderForm from '../features/orderform/OrderForm'
-import Services from '../features/services/Services'
-import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout'
-import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1'
-import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2'
-import DTF from '../components/DynamicTable/DynamicTableForm'
-import HeroSections from '../features/herosections/HeroSections'
-import Invoice from '../features/invoice/Invoice'
-// import './App.css';
+
+import NavBar from '../components/navbar/NavBar';
+import Footer from '../components/footer/Footer';
+import Questionaire from '../features/questionaire/Questionaire';
+import Questionaire2 from '../features/questionaire/Questionaire2';
+import Register from '../features/auth/Register';
+import Login from '../features/auth/Login';
+import Profile from '../features/profile/Profile';
+import PlaceOrder from '../features/placeorder/PlaceOrder';
+import ReviewComplete from '../features/profile/Profile';
+import Orders from '../features/orders/Orders';
+import OrderForm from '../features/orderform/OrderForm';
+import Services from '../features/services/Services';
+import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout';
+import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1';
+import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2';
+import DTF from '../components/DynamicTable/DynamicTableForm';
+import HeroSections from '../features/herosections/HeroSections';
+import Invoice from '../features/invoice/Invoice';
+
 import { Provider } from 'react-redux';
 import store from '../store/store';
-import { loadUser } from '../features/register/redux/actions/actions';
+import { loadUser } from '../features/auth/redux/actions/auth';
 import setAuthToken from '../utils/setAuthToken';
-import { LOGOUT } from '../features/register/redux/actions/types';
+import { LOGOUT } from '../features/auth/redux/actions/types';
 
 const App = () => {
   useEffect(() => {
@@ -53,6 +54,7 @@ const App = () => {
               <Route exact path='/questionaire' component={Questionaire} />
               <Route exact path='/questionaire2' component={Questionaire2} />
               <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/placeorder' component={PlaceOrder} />
               <Route exact path='/reviewcomplete' component={ReviewComplete} />
