@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import { postAnswers, getAnswersById } from '../redux/thunks'
-import { Button, Checkbox, Select } from 'semantic-ui-react'
+import { Button, Checkbox, Segment } from 'semantic-ui-react'
 
 function Submit(props) {
 
@@ -22,15 +22,39 @@ function Submit(props) {
 
     }
     return (
-        <>
+        <Segment>
             <Button onClick={(e) => handleClick(e)} color={checked ? 'green' : 'disabled'}>Submit</Button>
             {' '}
-            <Checkbox onClick={() => {
-                const allGood = ['Profile', 'Orders', 'Customer Questions'].map(e => props.questions.results && props.questions.results[e] && Object.keys(props.questions.results[e]).length !== 0 ? true : false) 
-                allGood.every((e) => e) && setChecked(!checked)
+            <Segment>
+                <Checkbox onClick={() => {
+                    props.location.pathname === '/profile' &&
+                        ['Profile', 'Customer Questions']
+                            .map(e => props.questions.results &&
+                                props.questions.results[e] &&
+                                Object.keys(props.questions.results[e]).length !== 0 ?
+                                true : false)
+                            .every((e) => e) && setChecked(!checked)
 
-            }} label='I agree to the Terms and Conditions' />
-        </>
+                    props.location.pathname === '/placeorder' &&
+                        ['Profile', 'Orders', 'Customer Questions']
+                            .map(e => props.questions.results &&
+                                props.questions.results[e] &&
+                                Object.keys(props.questions.results[e]).length !== 0 ?
+                                true : false)
+                            .every((e) => e) && setChecked(!checked)
+
+                    props.location.pathname === '/reviewcomplete' &&
+                        ['Profile', 'Orders', 'Customer Questions']
+                            .map(e => props.questions.results &&
+                                props.questions.results[e] &&
+                                Object.keys(props.questions.results[e]).length !== 0 ?
+                                true : false)
+                            .every((e) => e) && setChecked(!checked)
+
+
+                }} label='I agree to the Terms and Conditions' />
+            </Segment>
+        </Segment>
     )
 }
 
