@@ -7,7 +7,7 @@ import {
     Icon
 } from 'semantic-ui-react'
 
-import DTF from '../../DynamicTable/DynamicTableForm'
+//import DTF from '../../DynamicTable/DynamicTableForm'
 
 // const isValidZip = (zip) => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
 
