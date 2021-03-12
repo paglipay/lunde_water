@@ -113,7 +113,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
               </li>
               <li className='nav-item'>
                 <Link
-                  to='/orderform'
+                  to='/placeorder'
                   className='nav-links order'
                   onClick={closeMobileMenu}
                 >

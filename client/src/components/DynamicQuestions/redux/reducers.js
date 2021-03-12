@@ -1,7 +1,8 @@
 import {
     CREATE_ANSWER,
     CREATE_REGISTER_POST,
-    POST_SUCCESS
+    POST_SUCCESS,
+    GET_PROFILES
 } from './actions';
 
 const initialState = { isLoading: false, results: {}, post_data: {}, post_success: {} };
@@ -28,6 +29,13 @@ const output = (state = initialState, action) => {
             return {
                 ...state,
                 post_success: { ...state.post_success, [key]: data },
+            };
+        }
+        case GET_PROFILES: {
+            const { data, key } = payload;
+            return {
+                ...state,
+                profiles: { ...state.profiles, [key]: data },
             };
         }
         default:

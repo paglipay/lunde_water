@@ -15,8 +15,8 @@ function Submit(props) {
         // props.postAnswers(props.questions.post_data, 'orders')
 
         props.location.pathname === '/placeorder' && props.history.push('/reviewcomplete')
-        props.location.pathname === '/reviewcomplete' && props.postAnswers(props.questions.post_data, 'orders') && props.history.push('/orders')
-        props.location.pathname === '/profile' && props.postAnswers(props.questions.results, 'profiles') && props.history.push('/orders')
+        props.location.pathname === '/reviewcomplete' && props.postAnswers({...props.questions.post_data, userId:props.auth.user._id}, 'orders') && props.history.push('/orders')
+        props.location.pathname === '/profile' && props.postAnswers({...props.questions.results, userId:props.auth.user._id}, 'profiles') && props.history.push('/orders')
         // props.location.pathname !== '/reviewcomplete' ? props.history.push('/orders') : props.history.push('/reviewcomplete')
         
 
@@ -33,6 +33,7 @@ function Submit(props) {
 const mapStateToProps = state => {
     return {
         questions: state.questions,
+        auth: state.auth,
     }
 }
 

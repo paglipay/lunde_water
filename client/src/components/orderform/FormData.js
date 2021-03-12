@@ -9,7 +9,7 @@ const questions = [
     // },
     { question: 'Please select a date', type: "date", id: "date" },
     {
-        question: 'What time would you prefer for the delivery?', type: "select", id: "prefered_time_delivery",
+        question: 'What time would you prefer for the delivery?', type: "select", id: "prefered_time_delivery", required: true,
         options: [
             { value: 'Morning', id: '15-19' },
             { value: 'Noon', id: '20-24' },
