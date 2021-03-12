@@ -14,7 +14,7 @@ router.post('/', (req, res, next) => {
 
 
   const mailOpts = {
-    from: YAHOO_USER, 
+    from: MAIL_USER, 
     to: 'katyeary@gmail.com',
     subject: `Message from ${req.body.name} through your portfolio`,
     text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
