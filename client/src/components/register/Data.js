@@ -18,7 +18,7 @@ const questions = [
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
   {
-    question: 'Renter your Password', type: "pass", id: "repeat_password",
+    question: 'Renter your Password', type: "pass", id: "password2",
     condition: { property: "What is your Zip Code?", value: ['91387', '93550', '93551', '93552', '93535', '93543'] }
   },
 

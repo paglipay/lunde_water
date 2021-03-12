@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 
 import {
+    Button,
     Header,
     Segment,
     Icon,
@@ -20,14 +21,15 @@ const consolidateQIndexes = (data) => {
 
 const displayResults = (results) => {
     return Object.keys(results).map((e, i) => {
-        return (<><hr /><h3>{e}</h3><br />{results[e].map(l => {
+        return (<><hr /><h3>{e}</h3>{results[e].map(l => {
             return (<p><b>{l.question}</b><br />{l.answer}</p>)
         })}</>)
     })
 }
 
 function Answers(props) {
-    const data = ['Register', 'Profile', 'Customer Questions', 'Order Form']
+    // const data = ['Profile', 'Customer Questions', 'Order Form']
+    const data = props.data
 
     return (
         <>
@@ -35,21 +37,31 @@ function Answers(props) {
                 return (
                     <Segment key={i}>
                         <span>
-                            <Link to='/profile'>
-                                {/* <Label style={{ float: 'right' }}> */}
-                                <Icon name='edit' style={{ float: 'right' }} />
-                                {/* </Label> */}
-                            </Link>
+                            {/* <Icon name='edit' style={{ float: 'right' }} onClick={() => {
+                                props.setQIndex(i)
+                                props.history.push('/placeorder')
+                            }} style={{ float: 'right', cursor: "pointer" }} /> */}
                         </span>
-                        <span><Header as='h2'><Image src='/images/avatar/small/elliot.jpg' size='medium' circular />{e}</Header></span>
-                        {displayResults(consolidateQIndexes(props.questions.results && props.questions.results[data[i]] ? props.questions.results[data[i]] : {}))}
-                    </Segment>)
+                        
+                        {props.qIndex === i ?
+                            (<span><Header>
+                                {/* <Image src='/images/avatar/small/elliot.jpg' size='medium' circular /> */}
+                                {props.questions.results && props.questions.results[data[i]] ? <Icon circular name="check" /> : <Icon circular name="exclamation triangle" />}
+                                {e}
+                            </Header></span>) : (<>
+                                {props.questions.results && props.questions.results[data[i]] ? <Icon circular name="check" /> : <Icon circular name="exclamation triangle" />}
+                                {e}
+                            </>)
+                        }
+                        {
+                            props.location.pathname !== '/placeorder' &&
+                                props.questions.results && props.questions.results[data[i]] ? displayResults(consolidateQIndexes(props.questions.results && props.questions.results[data[i]] ? props.questions.results[data[i]] : {})) : <p></p>}
+                    </Segment>
+                )
             })}
         </>
     );
 }
-
-// export default Orders;
 
 const mapStateToProps = state => {
     return {

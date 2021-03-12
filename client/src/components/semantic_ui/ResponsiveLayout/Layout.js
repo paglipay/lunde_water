@@ -46,7 +46,7 @@ const ResponsiveLayout = (props) => (
 
         <Grid columns={2} stackable>
             <Grid.Row columns={2}>
-                <Grid.Column width={8}>
+                <Grid.Column width={12}>
                     <Segment>
                         <Header as='h2'>{props.headline}</Header>
                         {/* <p>
@@ -63,7 +63,7 @@ const ResponsiveLayout = (props) => (
                         </Button>)}
                     </Segment>                    
                 </Grid.Column>
-                <Grid.Column width={8}>
+                <Grid.Column width={4}>
                     {/* <Segment> */}
                     <Card fluid>
                         <Card.Content>

@@ -1,26 +1,33 @@
-export const restructureForQuestion = (data) => {
+export const restructureQuestionsForPost = (data) => {
     console.log('restructureForTable: ', data)
     let state = {}
     Object.keys(data).forEach((q) => {
         switch (q) {
-            case "What would you like to order?": {
+            case "Create a Username": {
                 state = {
                     ...state,
-                    order_id: data[q].answer,
+                    username: data[q].answer,
                 };
                 break;
             }
-            case "Please select a date and time.": {
+            case "Add your Email": {
                 state = {
                     ...state,
-                    desired_time: data[q].answer,
+                    email: data[q].answer,
                 };
                 break;
             }
-            case "Please sepecify any details.": {
+            case "Create a Password": {
                 state = {
                     ...state,
-                    details: data[q].answer,
+                    password: data[q].answer,
+                };
+                break;
+            }
+            case "Renter your Password": {
+                state = {
+                    ...state,
+                    repeat_password: data[q].answer,
                 };
                 break;
             }

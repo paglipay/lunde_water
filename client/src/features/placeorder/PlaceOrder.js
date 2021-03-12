@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ProfileDisplay from '../../components/profile'
+import PlaceOrderDisplay from '../../components/profile'
 import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 
-function Profile(props) {
+function PlaceOrder(props) {
 
-    console.log('Profile props:', props)
+    console.log('PlaceOrder props:', props)
     return (
-        < ProfileDisplay {...props} 
+        < PlaceOrderDisplay {...props} 
         homeObjOne={homeObjOne} 
         array_of_questions_arry={array_of_questions_arry} 
         questions_keys={questions_keys} 
@@ -18,7 +18,7 @@ function Profile(props) {
 
 const mapStateToProps = state => {
     return {
-        profile: state.profile
+        questions: state.questions
     }
 }
 
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Profile)
+)(PlaceOrder)

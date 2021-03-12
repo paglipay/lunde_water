@@ -1,11 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar'
 import Footer from '../components/footer/Footer'
 import Questionaire from '../features/questionaire/Questionaire'
 import Questionaire2 from '../features/questionaire/Questionaire2'
 import Register from '../features/register/Register'
+// import Profile from '../features/profile/Profile'
 import Profile from '../features/profile/Profile'
+import PlaceOrder from '../features/placeorder/PlaceOrder'
+import ReviewComplete from '../features/profile/Profile'
 import Orders from '../features/orders/Orders'
 import OrderForm from '../features/orderform/OrderForm'
 import Services from '../features/services/Services'
@@ -15,14 +18,27 @@ import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/Respon
 import DTF from '../components/DynamicTable/DynamicTableForm'
 import HeroSections from '../features/herosections/HeroSections'
 import Invoice from '../features/invoice/Invoice'
-import Stage  from './Stage'
 // import './App.css';
-import { Provider } from 'react-redux'
-import store from '../store/store'
+import { Provider } from 'react-redux';
+import store from '../store/store';
+import { loadUser } from '../features/register/redux/actions/actions';
+import setAuthToken from '../utils/setAuthToken';
+import { LOGOUT } from '../features/register/redux/actions/types';
 
-
-// import Dialog from '../components/auth/register/dialog/Dialog';
 const App = () => {
+  useEffect(() => {
+    // check for token in LS
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    store.dispatch(loadUser());
+
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener('storage', () => {
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>
@@ -38,12 +54,13 @@ const App = () => {
               <Route exact path='/questionaire2' component={Questionaire2} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/profile' component={Profile} />
+              <Route exact path='/placeorder' component={PlaceOrder} />
+              <Route exact path='/reviewcomplete' component={ReviewComplete} />
               <Route exact path='/orderform' component={OrderForm} />
               <Route exact path='/orders' component={Orders} />
               <Route exact path='/services' component={Services} />
               <Route exact path='/dtf' component={DTF} />
               <Route exact path='/invoice' component={Invoice} />
-              <Route exact path='/stage' component={Stage} />
             </Switch>
           </div>
           <Footer />
