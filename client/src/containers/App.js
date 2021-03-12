@@ -22,7 +22,7 @@ import Invoice from '../features/invoice/Invoice';
 
 import { Provider } from 'react-redux';
 import store from '../store/store';
-import { loadUser } from '../features/register/redux/actions/actions';
+import { loadUser } from '../features/auth/redux/actions/auth';
 import setAuthToken from '../utils/setAuthToken';
 import { LOGOUT } from '../features/auth/redux/actions/types';
 

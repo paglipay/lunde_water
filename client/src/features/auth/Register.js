@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { register } from './redux/actions/actions';
+import { register } from './redux/actions/auth';
 import Register from '../../components/register/Register';
 
 const RegisterDisplay = (props) => {

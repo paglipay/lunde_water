@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from './redux/actions/actions';
+import { login } from './redux/actions/auth';
 import Login from '../../components/login/Login';
 
 const LoginDisplay = (props) => {
