@@ -31,7 +31,7 @@ function Register(props) {
       ...homeObjOne,
       questionIndex,
       buttonLabel: questions_arry.length === questionIndex + 1 ? 'Review / Complete' : 'Next',
-      description: dynamicForm(questions_arry[questionIndex]['questions'], setQuestionsPost, questionsPost, questions_arry[questionIndex]['headline']),
+      description: dynamicForm(props, questions_arry[questionIndex]['questions'], setQuestionsPost, questionsPost, questions_arry[questionIndex]['headline']),
       img: `images/svg-${questionIndex + 1}.svg`,
       headline: questions_arry[questionIndex]['headline'],
       imgStart: 'start'
