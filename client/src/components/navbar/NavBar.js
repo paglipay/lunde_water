@@ -103,7 +103,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
               </li>
               <li className='nav-item'>
                 <Link
-                  to='/services'
+                  to='/homepagelayout'
                   className='nav-links services'
                   onClick={closeMobileMenu}
                 >

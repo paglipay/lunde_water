@@ -37,10 +37,10 @@ function Answers(props) {
                 return (
                     <Segment key={i}>
                         <span>
-                            {/* <Icon name='edit' style={{ float: 'right' }} onClick={() => {
+                            {props.qIndex > i ? <Icon name='edit' style={{ float: 'right' }} onClick={() => {
                                 props.setQIndex(i)
                                 props.history.push('/placeorder')
-                            }} style={{ float: 'right', cursor: "pointer" }} /> */}
+                            }} style={{ float: 'right', cursor: "pointer" }} /> : null}
                         </span>
                         
                         {props.qIndex === i ?

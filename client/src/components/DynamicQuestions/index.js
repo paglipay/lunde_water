@@ -69,10 +69,10 @@ function Display(props) {
                         <h1 style={{ textAlign: 'center' }}>{questions_keys[qIndex]}</h1>
                     </Grid.Column>
                     <Grid.Column width={5}>
-                        {qIndex < questions_keys.length - 1 ?
+                        {/* {qIndex < questions_keys.length - 1 ?
                             <Button onClick={() => setQIndex(qIndex + 1)} style={{ float: 'right' }} size='huge' primary>
                                 Next
-                            </Button> : null}
+                            </Button> : null} */}
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
