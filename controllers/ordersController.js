@@ -51,6 +51,25 @@ module.exports = {
             if (error) throw new Error(error);
             console.log(JSON.stringify(tsheets));
             console.log(response);
+
+            if (false) {
+                const customer = await stripe.customers.create({
+                    name: req.body['Profile'].fullname,
+                    email: "hijaziii@hotmail.com",
+                    address: {
+                        country: "US",
+                        line1: req.body['Profile'].address,
+                        line2: req.body['Profile'].address2,
+                        city: req.body['Profile'].city,
+                        state: req.body['Profile'].state,
+                        postal_code: req.body['Profile'].zip_code
+                    },
+                    description: 'My First Test Customer',
+                    phone: req.body['Profile'].phone
+                });
+                console.log(customer);
+            }
+
             try {
                 const stripeTest = await stripe.invoiceItems.create({
                     price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
@@ -66,12 +85,10 @@ module.exports = {
                 db.Order
                     .create({
                         customerId: 'cus_J6AITqKlaAglxk',
-                        // item: { tsheets },
                         item: { invoice, tsheets },
                         profile: req.body
                     })
                     .then(dbModel => {
-                        // console.log({ results: dbModel })
                         res.json({ results: dbModel })
                     })
                     .catch(err => {
