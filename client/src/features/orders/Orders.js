@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
 // import { fetchCollections, removeCollectionRequest, markCollectionAsActiveRequest } from '../../../redux'
 // import { createTodo } from './redux/actions'
-import { addTodoRequest } from './redux/thunks'
+import { addTodoRequest } from './redux/thunks';
+import { load } from "../invoice/redux/thunks";
 // import OrderForm from "../../components/orderform/OrderForm";
 import Layout from '../../components/semantic_ui/ResponsiveLayout/Layout1';
 import OrdersTable from '../../components/DynamicTable/DynamicTable';
+import Invoice from '../../components/invoice/Invoice';
 import {
     Grid,
     Header,
@@ -60,7 +62,7 @@ function OrdersDisplay(props) {
             <span>
                 <Link to='/register'>
                     {/* <Label style={{ float: 'right' }}> */}
-                        <Icon name='edit' style={{ float: 'right' }}/>
+                    <Icon name='edit' style={{ float: 'right' }} />
                     {/* </Label> */}
                 </Link>
             </span>
@@ -84,7 +86,7 @@ function OrdersDisplay(props) {
                 <span>
                     <Link to='/profile'>
                         {/* <Label style={{ float: 'right' }}> */}
-                            <Icon name='edit' style={{ float: 'right' }}/>
+                        <Icon name='edit' style={{ float: 'right' }} />
                         {/* </Label> */}
                     </Link>
 
@@ -108,11 +110,11 @@ function OrdersDisplay(props) {
                 <span>
                     <Link to='/questionaire2'>
                         {/* <Label style={{ float: 'right' }}> */}
-                            <Icon name='edit'style={{ float: 'right' }} />
+                        <Icon name='edit' style={{ float: 'right' }} />
                         {/* </Label> */}
                     </Link><Link to='/questionaire'>
                         {/* <Label style={{ float: 'right' }}> */}
-                            <Icon name='edit' style={{ float: 'right' }}/>
+                        <Icon name='edit' style={{ float: 'right' }} />
                         {/* </Label> */}
                     </Link></span>
                 <span><Header as='h2'><Icon name='question circle' />Your Answers</Header></span>
@@ -140,6 +142,10 @@ function OrdersDisplay(props) {
                     props.addTodoRequest({ id: 'test' })
                 }}>Press</Button> */}
             </Segment>
+            <Segment>
+                <Invoice {...props} />
+                <Button onClick={() => { console.log("Submit"); }}>Submit</Button>
+            </Segment>
         </Layout>
 
     );
@@ -152,13 +158,15 @@ const mapStateToProps = state => {
         orders: state.orders,
         customeranswers: state.customeranswers,
         profile: state.profile,
-        register: state.register
+        register: state.register,
+        invoices: state.invoices
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         addTodoRequest: (obj) => dispatch(addTodoRequest(obj)),
+        loadInvoices: (obj) => dispatch(load(obj)),
         //     fetchCollections: () => dispatch(fetchCollections()),
         //   onRemovePressed: id => dispatch(removeCollectionRequest(id)), 
         //   onActivatePressed: id => dispatch(markCollectionAsActiveRequest(id)),

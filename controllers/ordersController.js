@@ -1,22 +1,13 @@
+const Stripe = require("stripe");
+const config = require('../config/default.json')
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || config["STRIPE_SECRET_KEY"])
 const db = require("../models");
-const consolidateQIndexes = (data) => {
-    let results = {}
-    const resArry = []
-    Object.keys(data).forEach((prop, i) => {
-        if (results.hasOwnProperty(data[prop].qIndex) === false) { results[data[prop].qIndex] = [] }
-        results[data[prop].qIndex].push({ question: prop, answer: data[prop].answer })
-        console.log('results:', results)
-        resArry.push({ question: prop, answer: data[prop].answer })
-    })
-    return resArry
-}
-
-
+const tsheets_token = process.env.TSHEETS_BEARER_TOKEN || config["TSHEETS_BEARER_TOKEN"]
+const request = require("request");
 module.exports = {
     findAll: function (req, res) {
         db.Order
             .find(req.query)
-            // .find({ ...req.query, user_id: req.userId }) fillter by users
             .sort({ date: -1 })
             .then(dbModel => res.json({ results: dbModel }))
             .catch(err => res.status(422).json(err));
@@ -27,29 +18,72 @@ module.exports = {
             .then(dbModel => res.json({ results: dbModel }))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
+    create: async (req, res) => {
         console.log('create:', req.body)
-        // res.json({ results: consolidateQIndexes(req.body) })
+        // try {
+        const tsheet_body = {
+            "data":
+                [
+                    {
+                        "schedule_calendar_id": "294591",
+                        "start": `${req.body['Orders'].date}T${req.body['Orders'].prefered_time_delivery.split('-')[0]}:00:00+00:00`,  //"2021-03-06T19:00:00+00:00",
+                        "end": `${req.body['Orders'].date}T${req.body['Orders'].prefered_time_delivery.split('-')[1]}:00:00+00:00`, //"2021-03-06T20:00:00+00:00",
+                        "title": `FROM ${req.body['Profile'].fullname}`,
+                        "assigned_user_ids": ["1282174"],
+                        "all_day": false
+                    }
+                ]
+        }
+        console.log('tsheet_body: ', tsheet_body)
+        var options = {
+            method: 'POST',
+            url: 'https://rest.tsheets.com/api/v1/schedule_events',
+            headers:
+            {
+                'Authorization': tsheets_token,
+                'Content-Type': 'application/json',
+            },
+            body: tsheet_body,
+            json: true
+        };
 
-        db.Order
-            .create({
-                // stuff: consolidateQIndexes(req.body)
-                customerId: '603c357135eb5413c0fe18a0',
-                item: req.body
+        request(options, async function (error, response, tsheets) {
+            if (error) throw new Error(error);
+            console.log(JSON.stringify(tsheets));
+            console.log(response);
+            try {
+                const stripeTest = await stripe.invoiceItems.create({
+                    price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
+                    customer: 'cus_J6AITqKlaAglxk'
+                });
+                console.log(stripeTest);
+                const invoice = await stripe.invoices.create({
+                    customer: 'cus_J6AITqKlaAglxk',
+                    collection_method: 'send_invoice',
+                    days_until_due: 30,
+                });
 
-            })
-            // .then(({ _id }) => db.customerId.findOneAndUpdate({ email: req.body.order },
-            //     { $push: { Orders: _id } }, { new: true }))
-            .then(dbModel => {
-                console.log({ results: dbModel })
-                res.json({ results: dbModel })
-            })
-            .catch(err => {
-                console.log(err)
-                res.status(422).json(err)
-            });
+                db.Order
+                    .create({
+                        customerId: 'cus_J6AITqKlaAglxk',
+                        // item: { tsheets },
+                        item: { invoice, tsheets },
+                        profile: req.body
+                    })
+                    .then(dbModel => {
+                        // console.log({ results: dbModel })
+                        res.json({ results: dbModel })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        res.status(422).json(err)
+                    });
+            }
+            catch (err) {
+                res.status(500).json({ statusCode: 500, message: err.message });
+            }
+        });
     },
-
 
     update: function (req, res) {
         db.Order

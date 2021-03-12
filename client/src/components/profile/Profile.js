@@ -15,7 +15,7 @@ function Profile(props) {
     }else{
         console.log('Submit', questionsPost)            
         props.addAnswersRequest(questionsPost)
-        props.history.push('/orders')
+        // props.history.push('/reviewcomplete')
     }
   }
   homeObjOne.onClickBack = () => {

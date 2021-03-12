@@ -5,6 +5,7 @@ const ordersSchema = new Schema({
     customerId: { type: String, required: false },
     InvoiceId: { type: String, required: false },
     item: { type: Object, required: false },
+    profile: { type: Object, required: false },
     date: { type: String, required: false }
 
 });

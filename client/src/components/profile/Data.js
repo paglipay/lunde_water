@@ -8,51 +8,55 @@ const questions = [
   //   }
   // },
   {
-    question: 'Full Name', type: "text"
+    question: 'Full Name', type: "text", id: "fullname"
   },
   {
-    question: 'Street Address', type: "text"
+    question: 'Phone Number', type: "text", id: "phone"
   },
   {
-    question: 'Street Address2', type: "text"
+    question: 'Street Address', type: "text", id: "address"
   },
   {
-    question: 'City', type: "text"
+    question: 'Street Address2', type: "text", id: "address2"
   },
   {
-    question: 'State', type: "text"
+    question: 'City', type: "text", id: "city"
   },
   {
-    question: 'Zip Code', type: "text"
+    question: 'State', type: "text", id: "state"
+  },
+  {
+    question: 'Zip Code', type: "text", id: "zip_code"
   }
 ]
 const questions2 = [
   {
-    question: 'Height', type: "text"
+    question: 'Height', type: "text", id: "height"
   },
   {
-    question: 'Weight', type: "text"
+    question: 'Weight', type: "text", id: "weight"
   },
   {
-    question: 'Gender', type: "select", options: [
+    question: 'Gender', type: "select", id: "gender", 
+    options: [
       { value: 'Male', id: 'male' },
       { value: 'Female', id: 'female' },
       { value: 'Other', id: 'other' }
     ]
   },
   {
-    question: 'Please Specify', type: "textarea", condition: { property: "Gender", value: ['other'] }
+    question: 'Please Specify', type: "textarea", id: "specify", condition: { property: "Gender", value: ['other'] }
   }
 ]
 const questions3 = [
   {
-    question: 'Hobbies', type: "text"
+    question: 'Hobbies', type: "text", id: "hobbies"
   },
   {
-    question: 'Talents', type: "text"
+    question: 'Talents', type: "text", id: "talents"
   },
   {
-    question: 'Favorites', type: "text"
+    question: 'Favorites', type: "text", id: "favorites"
   },
 ]
 

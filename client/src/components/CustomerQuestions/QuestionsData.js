@@ -26,7 +26,7 @@ const questions3 = [
     condition: { property: "Do we need to enter the gated property at all (if there’s even a gate)?", value: ['Yes'] }
   },
   {
-    question: 'If so, Please Enter Code.',
+    question: 'If so, Please Enter Code',
     type: "text",
     condition: { property: "Are there any gate codes, padlock combinations or other barriers to property entry that we need to know about?", value: ['Yes'] }
   },
@@ -36,6 +36,7 @@ const questions4 = [
   { question: 'Do we fill your water tank by connecting to a hydrant or by connecting directly to the tank through the top hole or a valve that is connected to the tank?', type: "textarea" },
   { question: 'How close can our tanker truck get to the tank or hydrant?', type: "text" },
 ]
+
 
 export const questions_arry = [
   { headline: 'Time for a Delivery?', questions: questions1 },

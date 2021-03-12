@@ -8,17 +8,24 @@ function Register(props) {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
+<<<<<<< HEAD
   //const [formData, setFormData] = useState({})
+=======
+>>>>>>> main
 
   homeObjOne.onClick = () => {
     if (questions_arry.length > questionIndex + 1) {
       setQuestionIndex(questionIndex + 1)
+<<<<<<< HEAD
     }else{
         //console.log('Submit', questionsPost)  
         //setFormData(restructureQuestionsForPost(questionsPost));        
 
+=======
+    }else{   
+>>>>>>> main
         props.register(restructureQuestionsForPost(questionsPost));
-        props.history.push('/orders');
+        props.history.push('/profile');
     }
   }
   

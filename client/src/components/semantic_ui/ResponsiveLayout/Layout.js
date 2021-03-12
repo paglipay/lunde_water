@@ -70,6 +70,7 @@ const ResponsiveLayout = (props) => (
                             <Card.Header>Recent Activity</Card.Header>
                         </Card.Content>
                         <Card.Content>
+                        {props.right_side} 
                             {/* <Feed>
                                 <Feed.Event>
                                     <Feed.Label image='/images/avatar/small/jenny.jpg' />

@@ -1,29 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { fetchCollections, removeCollectionRequest, markCollectionAsActiveRequest } from '../../../redux'
-// import { createTodo } from './redux/actions'
-import { addAnswersRequest } from './redux/thunks'
-import ProfileDisplay from '../../components/profile/Profile'
+import ProfileDisplay from '../../components/profile'
+import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 
 function Profile(props) {
-    console.log('Questionaire props:', props)
+
+    console.log('Profile props:', props)
     return (
-        < ProfileDisplay {...props}/>
+        < ProfileDisplay {...props} 
+        homeObjOne={homeObjOne} 
+        array_of_questions_arry={array_of_questions_arry} 
+        questions_keys={questions_keys} 
+        // customerId="604292b444c6f014e89326ef"
+        />
     )
 }
 
 const mapStateToProps = state => {
     return {
-        orders: state.orders
+        profile: state.profile
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        addAnswersRequest: (obj) => dispatch(addAnswersRequest(obj)),
-        //     fetchCollections: () => dispatch(fetchCollections()),
-        //   onRemovePressed: id => dispatch(removeCollectionRequest(id)), 
-        //   onActivatePressed: id => dispatch(markCollectionAsActiveRequest(id)),
     }
 }
 
