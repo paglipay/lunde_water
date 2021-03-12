@@ -54,7 +54,7 @@ function Answers(props) {
                             </>)
                         }
                         {
-                            // props.location.pathname !== '/placeorder' &&
+                            props.location.pathname !== '/placeorder' &&
                                 props.questions.results && props.questions.results[data[i]] ? displayResults(consolidateQIndexes(props.questions.results && props.questions.results[data[i]] ? props.questions.results[data[i]] : {})) : <p></p>}
                     </Segment>
                 )

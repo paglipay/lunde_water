@@ -11,6 +11,9 @@ const questions = [
     question: 'Full Name', type: "text", id: "fullname"
   },
   {
+    question: 'Phone Number', type: "text", id: "phone"
+  },
+  {
     question: 'Street Address', type: "text", id: "address"
   },
   {

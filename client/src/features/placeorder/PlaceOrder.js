@@ -18,7 +18,7 @@ function PlaceOrder(props) {
 
 const mapStateToProps = state => {
     return {
-        placeorder: state.placeorder
+        questions: state.questions
     }
 }
 

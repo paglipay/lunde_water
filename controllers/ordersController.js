@@ -29,7 +29,7 @@ module.exports = {
                         "start": `${req.body['Orders'].date}T${req.body['Orders'].prefered_time_delivery.split('-')[0]}:00:00+00:00`,  //"2021-03-06T19:00:00+00:00",
                         "end": `${req.body['Orders'].date}T${req.body['Orders'].prefered_time_delivery.split('-')[1]}:00:00+00:00`, //"2021-03-06T20:00:00+00:00",
                         "title": `FROM ${req.body['Profile'].fullname}`,
-                        "assigned_user_ids":["1282174"],
+                        "assigned_user_ids": ["1282174"],
                         "all_day": false
                     }
                 ]
@@ -50,37 +50,38 @@ module.exports = {
         request(options, async function (error, response, tsheets) {
             if (error) throw new Error(error);
             console.log(JSON.stringify(tsheets));
-            // console.log(response);
-            //     try {
-            //         const stripeTest = await stripe.invoiceItems.create({
-            //             price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
-            //             customer: 'cus_IuYYhZhxyoNkai'
-            //         });
-            //         console.log(stripeTest);
-            //         const invoice = await stripe.invoices.create({
-            //             customer: 'cus_IuYYhZhxyoNkai',
-            //             collection_method: 'send_invoice',
-            //             days_until_due: 30,
-            //         });
-            db.Order
-                .create({
-                    customerId: 'cus_IuYYhZhxyoNkai',
-                    item: { tsheets },
-                    // item: { invoice, body },
-                    profile: req.body
-                })
-                .then(dbModel => {
-                    // console.log({ results: dbModel })
-                    res.json({ results: dbModel })
-                })
-                .catch(err => {
-                    console.log(err)
-                    res.status(422).json(err)
+            console.log(response);
+            try {
+                const stripeTest = await stripe.invoiceItems.create({
+                    price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
+                    customer: 'cus_J6AITqKlaAglxk'
                 });
-            // }
-            // catch (err) {
-            //     res.status(500).json({ statusCode: 500, message: err.message });
-            // }
+                console.log(stripeTest);
+                const invoice = await stripe.invoices.create({
+                    customer: 'cus_J6AITqKlaAglxk',
+                    collection_method: 'send_invoice',
+                    days_until_due: 30,
+                });
+
+                db.Order
+                    .create({
+                        customerId: 'cus_J6AITqKlaAglxk',
+                        // item: { tsheets },
+                        item: { invoice, tsheets },
+                        profile: req.body
+                    })
+                    .then(dbModel => {
+                        // console.log({ results: dbModel })
+                        res.json({ results: dbModel })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        res.status(422).json(err)
+                    });
+            }
+            catch (err) {
+                res.status(500).json({ statusCode: 500, message: err.message });
+            }
         });
     },
 

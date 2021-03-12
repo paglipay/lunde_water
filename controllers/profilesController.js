@@ -1,19 +1,8 @@
 const config = require('../config/default.json')
 const db = require("../models");
-// const restructureQuestionsForPost = (data) => {
-//     let state = {}
-//     Object.keys(data).forEach(d => {
-//         console.log(data[d])
-//         Object.keys(data[d]).forEach((q) => {
-//             console.log(q)
-//             state = {
-//                 ...state,
-//                 [data[d][q].id ? data[d][q].id : q]: data[d][q].answer,
-//             };
-//         })
-//     })
-//     return state
-// }
+const Stripe = require("stripe");
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || config["STRIPE_SECRET_KEY"])
+
 module.exports = {
     findAll: function (req, res) {
         db.Profile
@@ -29,12 +18,31 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: async (req, res) => {
-        console.log('create:', req.body)
-        // console.log('restructureQuestionsForPost(req.body):', restructureQuestionsForPost(req.body))
+        console.log('profile create:', req.body)
+
+
+
+        const customer = await stripe.customers.create({
+            name: req.body["Profile"]['Full Name']['answer'],
+            email: "hijaziii@hotmail.com",
+            address: {
+                country: "US",
+                line1: req.body["Profile"]['Street Address']['answer'],
+                line2: req.body["Profile"]['Street Address2']['answer'],
+                city: req.body["Profile"]['City']['answer'],
+                state: req.body["Profile"]['State']['answer'],
+                postal_code: req.body["Profile"]['Zip Code']['answer']
+            },
+            description: 'My First Test Customer',
+            phone: "3233233234"
+        });
+
+        console.log(customer);
+
         db.Profile
             .create({
                 customerId: 'cus_IuYYhZhxyoNkai',
-                // item: { invoice, body },
+                item: { stripe: customer },
                 app_data: req.body,
                 // post_data: {'fake':'restructureQuestionsForPost(req.body)'}
             })

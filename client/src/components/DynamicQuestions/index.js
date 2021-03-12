@@ -16,9 +16,9 @@ function Display(props) {
     const [customerId, setCustomerId] = useState()
     const [qIndex, setQIndex] = useState(0)
     const idOptions = [
-        { key: "604a7848bd133e2284171b5a", value: "604a7848bd133e2284171b5a", text: "604a7848bd133e2284171b5a" },
-        { key: "604a7e645503c10d542af03e", value: "604a7e645503c10d542af03e", text: "604a7e645503c10d542af03e" },
-        { key: "604a884365bc1d07400c4684", value: "604a884365bc1d07400c4684", text: "604a884365bc1d07400c4684" },
+        { key: "604a9cca8ea73722c407a9d1", value: "604a9cca8ea73722c407a9d1", text: "604a9cca8ea73722c407a9d1" },
+        { key: "604aa122a5649a26486360c8", value: "604aa122a5649a26486360c8", text: "604aa122a5649a26486360c8" },
+        { key: "604ab4b401f8d820f0d6e7cc", value: "604ab4b401f8d820f0d6e7cc", text: "604ab4b401f8d820f0d6e7cc" },
 //604a884365bc1d07400c4684
     ]
 
