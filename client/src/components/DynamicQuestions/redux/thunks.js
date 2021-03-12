@@ -1,7 +1,8 @@
 import {
     createAnswers,
     createPost,
-    postSuccess
+    postSuccess,
+    profilesSuccess
 } from './actions';
 import axios from 'axios'
 
@@ -49,6 +50,21 @@ export const getAnswersById = (text, key) => async dispatch => {
             console.log('response.data.results: ', data)
             // dispatch(postSuccess(data, key));            
             dispatch(createAnswers(data.results.app_data[key], key));
+        })
+        .catch((e) => {
+            console.log('catch', e)
+            dispatch(displayAlert(e))
+        })
+}
+
+export const getProfiles = (text, key) => async dispatch => {
+    console.log('getProfiles text: ', text, key)
+    axios
+        .get(`/api/profiles`)
+        .then(async response => {
+            const data = response.data
+            console.log('response.data.results: ', data)
+            dispatch(profilesSuccess(data.results, key));
         })
         .catch((e) => {
             console.log('catch', e)

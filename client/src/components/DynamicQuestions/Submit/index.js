@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { connect } from 'react-redux'
 import { postAnswers, getAnswersById } from '../redux/thunks'
-import { Button, Checkbox, Select } from 'semantic-ui-react'
+import { Button, Checkbox, Segment } from 'semantic-ui-react'
 
 function Submit(props) {
 
@@ -10,29 +9,50 @@ function Submit(props) {
 
     const handleClick = (e) => {
         e.preventDefault()
-        console.log('handleClick: ', props.questions.post_data)
-        // props.postAnswers(props.questions.results, 'profiles')
-        // props.postAnswers(props.questions.post_data, 'orders')
-
         props.location.pathname === '/placeorder' && props.history.push('/reviewcomplete')
-        props.location.pathname === '/reviewcomplete' && props.postAnswers(props.questions.post_data, 'orders') && props.history.push('/orders')
-        props.location.pathname === '/profile' && props.postAnswers(props.questions.results, 'profiles') && props.history.push('/orders')
-        // props.location.pathname !== '/reviewcomplete' ? props.history.push('/orders') : props.history.push('/reviewcomplete')
-        
-
+        props.location.pathname === '/reviewcomplete' && props.postAnswers({ ...props.questions.post_data, userId: props.auth.user._id }, 'orders') && props.history.push('/orders')
+        props.location.pathname === '/profile' && props.postAnswers({ ...props.questions.results, userId: props.auth.user._id }, 'profiles') && props.history.push('/orders')
     }
     return (
-        <>
+        <Segment>
             <Button onClick={(e) => handleClick(e)} color={checked ? 'green' : 'disabled'}>Submit</Button>
             {' '}
-            <Checkbox onClick={() => setChecked(!checked)} label='I agree to the Terms and Conditions' />
-        </>
+            <Segment>
+                <Checkbox onClick={() => {
+                    props.location.pathname === '/profile' &&
+                        ['Profile', 'Customer Questions']
+                            .map(e => props.questions.results &&
+                                props.questions.results[e] &&
+                                Object.keys(props.questions.results[e]).length !== 0 ?
+                                true : false)
+                            .every((e) => e) && setChecked(!checked)
+
+                    props.location.pathname === '/placeorder' &&
+                        ['Profile', 'Orders', 'Customer Questions']
+                            .map(e => props.questions.results &&
+                                props.questions.results[e] &&
+                                Object.keys(props.questions.results[e]).length !== 0 ?
+                                true : false)
+                            .every((e) => e) && setChecked(!checked)
+
+                    props.location.pathname === '/reviewcomplete' &&
+                        ['Profile', 'Orders', 'Customer Questions']
+                            .map(e => props.questions.results &&
+                                props.questions.results[e] &&
+                                Object.keys(props.questions.results[e]).length !== 0 ?
+                                true : false)
+                            .every((e) => e) && setChecked(!checked)
+
+                }} label='I agree to the Terms and Conditions' />
+            </Segment>
+        </Segment>
     )
 }
 
 const mapStateToProps = state => {
     return {
         questions: state.questions,
+        auth: state.auth,
     }
 }
 
