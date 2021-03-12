@@ -46,10 +46,10 @@ function Answers(props) {
                         {props.qIndex === i ?
                             (<span><Header>
                                 {/* <Image src='/images/avatar/small/elliot.jpg' size='medium' circular /> */}
-                                {props.questions.results && props.questions.results[data[i]] && props.questions.results[data[i]] != {} ? <Icon circular name="check" /> : <Icon circular name="exclamation triangle" />}
+                                {props.questions.results && props.questions.results[data[i]] && Object.keys(props.questions.results[data[i]]).length !== 0 ? <Icon circular name="check" /> : <Icon circular name="exclamation triangle" />}
                                 {e}
                             </Header></span>) : (<>
-                                {props.questions.results && props.questions.results[data[i]] && props.questions.results[data[i]] != {} ? <Icon circular name="check" /> : <Icon circular name="exclamation triangle" />}
+                                {props.questions.results && props.questions.results[data[i]] && Object.keys(props.questions.results[data[i]]).length !== 0 ? <Icon circular name="check" /> : <Icon circular name="exclamation triangle" />}
                                 {e}
                             </>)
                         }

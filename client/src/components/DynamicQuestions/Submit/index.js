@@ -15,17 +15,21 @@ function Submit(props) {
         // props.postAnswers(props.questions.post_data, 'orders')
 
         props.location.pathname === '/placeorder' && props.history.push('/reviewcomplete')
-        props.location.pathname === '/reviewcomplete' && props.postAnswers({...props.questions.post_data, userId:props.auth.user._id}, 'orders') && props.history.push('/orders')
-        props.location.pathname === '/profile' && props.postAnswers({...props.questions.results, userId:props.auth.user._id}, 'profiles') && props.history.push('/orders')
+        props.location.pathname === '/reviewcomplete' && props.postAnswers({ ...props.questions.post_data, userId: props.auth.user._id }, 'orders') && props.history.push('/orders')
+        props.location.pathname === '/profile' && props.postAnswers({ ...props.questions.results, userId: props.auth.user._id }, 'profiles') && props.history.push('/orders')
         // props.location.pathname !== '/reviewcomplete' ? props.history.push('/orders') : props.history.push('/reviewcomplete')
-        
+
 
     }
     return (
         <>
             <Button onClick={(e) => handleClick(e)} color={checked ? 'green' : 'disabled'}>Submit</Button>
             {' '}
-            <Checkbox onClick={() => setChecked(!checked)} label='I agree to the Terms and Conditions' />
+            <Checkbox onClick={() => {
+                const allGood = ['Profile', 'Orders', 'Customer Questions'].map(e => props.questions.results && props.questions.results[e] && Object.keys(props.questions.results[e]).length !== 0 ? true : false) 
+                allGood.every((e) => e) && setChecked(!checked)
+
+            }} label='I agree to the Terms and Conditions' />
         </>
     )
 }
