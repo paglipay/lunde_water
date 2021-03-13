@@ -71,8 +71,11 @@ function DynamicQuestions(props) {
 
   return (
     <>
-      { props.match.path === '/reviewcomplete' ? (<Layout contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Answers {...props} data={['Profile']} />
-        <Submit {...props} /></>}>
+      { (props.match.path === '/reviewcomplete' || props.match.path === '/orders') ? (<Layout {...props} activeStep={props.match.path === '/orders' ? 2 : 1} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Answers {...props} data={['Profile']} />
+
+        {props.match.path !== '/orders' && <Submit {...props} />}
+
+      </>}>
         <Answers {...props}
           data={[
             'Orders',
@@ -80,15 +83,15 @@ function DynamicQuestions(props) {
         />
         <br /><br />
       </Layout>) : (<>
-          <Layout2a {...props} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<>
-            {/* <Submit {...props} /> */}
-            <Answers {...props}
-              data={props.questions_keys}
-            /></>}>
-            {homeObjOneD.description}
+        <Layout2a {...props} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<>
+          {/* <Submit {...props} /> */}
+          <Answers {...props}
+            data={props.questions_keys}
+          /></>}>
+          {homeObjOneD.description}
 
-          </Layout2a>
-        </>)
+        </Layout2a>
+      </>)
       }
     </>
   );
