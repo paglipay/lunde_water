@@ -26,19 +26,6 @@ function Display(props) {
     }, [props.auth])
 
     useEffect(() => {
-        props.questions &&
-            props.questions.profiles &&
-            props.questions.profiles.profiles.length > 0 &&
-            props.addAnswersToPost(props.questions.profiles.profiles[props.questions.profiles.profiles.length - 1].item.stripe.id, 'stripeCustId')
-
-        props.questions &&
-            props.questions.profiles &&
-            props.questions.profiles.profiles.length > 0 &&
-            setCustomerId(props.questions.profiles.profiles[props.questions.profiles.profiles.length - 1]['_id'])
-
-    }, [props.questions.profiles])
-
-    useEffect(() => {
         console.log('qIndex: ', qIndex)
         if (customerId) {
             // props.getAnswersById(customerId, 'Register')
@@ -55,11 +42,22 @@ function Display(props) {
             props.questions.profiles.profiles.map(e => {
                 return {
                     value: e['_id'],
-                    text: `${e['app_data']['Profile']['Street Address'].answer} - ${e['app_data']['Profile']['Full Name'].answer}`,
+                    text: `${e['app_data']['Profile']['Street Address'] ? e['app_data']['Profile']['Street Address'].answer : ''} - ${e['app_data']['Profile']['Full Name'] ? e['app_data']['Profile']['Full Name'].answer : ''}`,
                     key: e['_id']
                 }
             })
         setIdOptions(profiles)
+
+        props.questions &&
+            props.questions.profiles &&
+            props.questions.profiles.profiles.length > 0 &&
+            props.addAnswersToPost(props.questions.profiles.profiles[props.questions.profiles.profiles.length - 1].item.stripe.id, 'stripeCustId')
+
+        props.questions &&
+            props.questions.profiles &&
+            props.questions.profiles.profiles.length > 0 &&
+            setCustomerId(props.questions.profiles.profiles[props.questions.profiles.profiles.length - 1]['_id'])
+
     }, [props.questions.profiles])
 
     const adminModeDisplay = (<>
