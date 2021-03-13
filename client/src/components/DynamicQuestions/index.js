@@ -26,6 +26,11 @@ function Display(props) {
     }, [props.auth])
 
     useEffect(() => {
+        props.questions.profiles && props.questions.profiles.profiles && props.addAnswersToPost(props.questions.profiles.profiles[0].item.stripe.id,'stripeCustId')
+        props.questions.profiles && props.questions.profiles.profiles && setCustomerId(props.questions.profiles.profiles[0]['_id'])
+    }, [props.questions.profiles])
+
+    useEffect(() => {
         console.log('qIndex: ', qIndex)
         if (customerId) {
             // props.getAnswersById(customerId, 'Register')
@@ -56,8 +61,12 @@ function Display(props) {
         }} primary>
             Get
             </Button>
-        <Select placeholder='Select' onChange={(e, { value }) => setCustomerId(value)} options={idOptions} />
-        
+        <Select placeholder='Select' onChange={(e, { value }) => {
+            setCustomerId(value)
+            // console.log('props.questions.profiles.profiles', props.questions.profiles.profiles.find(e => e._id === value).item.stripe.id)
+            props.addAnswersToPost(props.questions.profiles.profiles.find(e => e._id === value).item.stripe.id,'stripeCustId')
+        }} options={idOptions} />
+
         <Container>
             <Grid columns={2} stackable>
                 <Grid.Row columns={3}>

@@ -51,11 +51,15 @@ module.exports = {
             if (error) throw new Error(error);
             console.log(JSON.stringify(tsheets));
             console.log(response);
+            
+            let customer = {}
+            if (req.body['stripeCustId']) {
+                customer = { id: req.body['stripeCustId'] }
 
-            if (false) {
-                const customer = await stripe.customers.create({
+            } else {
+                customer = await stripe.customers.create({
                     name: req.body['Profile'].fullname,
-                    email: "hijaziii@hotmail.com",
+                    email: req.body['Profile'].email,
                     address: {
                         country: "US",
                         line1: req.body['Profile'].address,
@@ -73,18 +77,18 @@ module.exports = {
             try {
                 const stripeTest = await stripe.invoiceItems.create({
                     price: 'price_1IINwILvJwjuOr0RbAHrmUyh',
-                    customer: 'cus_J6AITqKlaAglxk'
+                    customer: customer.id
                 });
                 console.log(stripeTest);
                 const invoice = await stripe.invoices.create({
-                    customer: 'cus_J6AITqKlaAglxk',
+                    customer: customer.id,
                     collection_method: 'send_invoice',
                     days_until_due: 30,
                 });
 
                 db.Order
                     .create({
-                        customerId: 'cus_J6AITqKlaAglxk',
+                        // customerId: customer.id,
                         item: { invoice, tsheets },
                         profile: req.body
                     })

@@ -24,7 +24,7 @@ module.exports = {
 
         const customer = await stripe.customers.create({
             name: req.body["Profile"]['Full Name'] ? req.body["Profile"]['Full Name']['answer'] : '',
-            email: "hijaziii@hotmail.com",
+            email: req.body["Profile"]['Email'] ? req.body["Profile"]['Email']['answer'] : '',
             address: {
                 country: "US",
                 line1: req.body["Profile"]['Street Address'] ? req.body["Profile"]['Street Address']['answer'] : '',
@@ -41,7 +41,7 @@ module.exports = {
 
         db.Profile
             .create({
-                customerId: 'cus_IuYYhZhxyoNkai',
+                // customerId: 'cus_IuYYhZhxyoNkai',
                 item: { stripe: customer },
                 app_data: req.body,
                 // post_data: {'fake':'restructureQuestionsForPost(req.body)'}
