@@ -8,7 +8,8 @@ import {
     Checkbox,
     Container,
     Grid,
-    Select
+    Select,
+    Sidebar
 } from 'semantic-ui-react'
 
 function Display(props) {
@@ -35,18 +36,25 @@ function Display(props) {
     }, [customerId])
 
     useEffect(() => {
-        const profiles = props.questions &&
-            props.questions.profiles &&
-            props.questions.profiles.profiles &&
-            props.questions.profiles.profiles.map(e => {
+        const profiles = props.questions.results.profiles &&
+            props.questions.results.profiles.map(e => {
                 return {
                     value: e['_id'],
-                    text: `${e['app_data']['Profile']['Street Address'].answer} - ${e['app_data']['Profile']['Full Name'].answer}`,
+                    text: `${e['app_data']['Profile']['Street Address'] ? e['app_data']['Profile']['Street Address'].answer : ''} - ${e['app_data']['Profile']['Full Name'] ? e['app_data']['Profile']['Full Name'].answer : ''}`,
                     key: e['_id']
                 }
             })
         setIdOptions(profiles)
-    }, [props.questions.profiles])
+
+            props.questions.results.profiles &&
+            props.questions.results.profiles.length > 0 &&
+            props.addAnswersToPost(props.questions.results.profiles[props.questions.results.profiles.length - 1].item.stripe.id, 'stripeCustId')
+
+            props.questions.results.profiles &&
+            props.questions.results.profiles.length > 0 &&
+            setCustomerId(props.questions.results.profiles[props.questions.results.profiles.length - 1]['_id'])
+
+    }, [props.questions.results.profiles])
 
     const adminModeDisplay = (<>
         <h1>Employee Administration Mode:</h1>
@@ -55,7 +63,12 @@ function Display(props) {
         }} primary>
             Get
             </Button>
-        <Select placeholder='Select' onChange={(e, { value }) => setCustomerId(value)} options={idOptions} />
+        <Select placeholder='Select' onChange={(e, { value }) => {
+            setCustomerId(value)
+            // console.log('props.questions.results.profiles', props.questions.results.profiles.find(e => e._id === value).item.stripe.id)
+            props.addAnswersToPost(props.questions.results.profiles.find(e => e._id === value).item.stripe.id, 'stripeCustId')
+        }} options={idOptions} />
+
         <Container>
             <Grid columns={2} stackable>
                 <Grid.Row columns={3}>
