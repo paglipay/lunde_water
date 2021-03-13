@@ -64,7 +64,7 @@ export const getProfiles = (text, key) => async dispatch => {
         .then(async response => {
             const data = response.data
             console.log('response.data.results: ', data)
-            dispatch(profilesSuccess(data.results, key));
+            dispatch(createAnswers(data.results, key));
         })
         .catch((e) => {
             console.log('catch', e)

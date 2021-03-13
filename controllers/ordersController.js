@@ -20,7 +20,6 @@ module.exports = {
     },
     create: async (req, res) => {
         console.log('create:', req.body)
-        // try {
         const tsheet_body = {
             "data":
                 [
@@ -51,7 +50,7 @@ module.exports = {
             if (error) throw new Error(error);
             console.log(JSON.stringify(tsheets));
             console.log(response);
-            
+
             let customer = {}
             if (req.body['stripeCustId']) {
                 customer = { id: req.body['stripeCustId'] }
@@ -93,7 +92,7 @@ module.exports = {
                         profile: req.body
                     })
                     .then(dbModel => {
-                        res.json({ results: dbModel })
+                        res.json(dbModel)
                     })
                     .catch(err => {
                         console.log(err)

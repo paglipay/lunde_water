@@ -31,13 +31,13 @@ const output = (state = initialState, action) => {
                 post_success: { ...state.post_success, [key]: data },
             };
         }
-        case GET_PROFILES: {
-            const { data, key } = payload;
-            return {
-                ...state,
-                profiles: { ...state.profiles, [key]: data },
-            };
-        }
+        // case GET_PROFILES: {
+        //     const { data, key } = payload;
+        //     return {
+        //         ...state,
+        //         profiles: { ...state.profiles, [key]: data },
+        //     };
+        // }
         default:
             return state;
     }

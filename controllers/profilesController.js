@@ -19,9 +19,6 @@ module.exports = {
     },
     create: async (req, res) => {
         console.log('profile create:', req.body)
-
-
-
         const customer = await stripe.customers.create({
             name: req.body["Profile"]['Full Name'] ? req.body["Profile"]['Full Name']['answer'] : '',
             email: req.body["Profile"]['Email'] ? req.body["Profile"]['Email']['answer'] : '',
@@ -37,18 +34,13 @@ module.exports = {
             phone: req.body["Profile"]['Phone Number'] ? req.body["Profile"]['Phone Number']['answer'] : ''
         });
 
-        console.log(customer);
-
         db.Profile
             .create({
-                // customerId: 'cus_IuYYhZhxyoNkai',
                 item: { stripe: customer },
                 app_data: req.body,
-                // post_data: {'fake':'restructureQuestionsForPost(req.body)'}
             })
             .then(dbModel => {
-                // console.log({ results: dbModel })
-                res.json({ results: dbModel })
+                res.json(dbModel)
             })
             .catch(err => {
                 console.log(err)
