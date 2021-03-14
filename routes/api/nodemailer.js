@@ -1,9 +1,9 @@
 const router     = require('express').Router();
 const nodemailer = require('nodemailer');
-const config     = require('config');
+const config     = process.env.NODE_ENV === 'production' || require('config');
 
-const MAIL_USER = config.get('MAIL_USER');
-const MAIL_PASS = config.get('MAIL_PASS');
+const MAIL_USER = process.env.MAIL_USER || config.get('MAIL_USER');
+const MAIL_PASS = process.env.MAIL_PASS || config.get('MAIL_PASS');
 
 router.post('/', (req, res, next) => {
    let transporter = nodemailer.createTransport({

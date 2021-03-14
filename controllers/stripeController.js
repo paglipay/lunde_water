@@ -1,5 +1,5 @@
 const Stripe = require("stripe");
-const config = require('../config/default.json')
+const config = process.env.NODE_ENV === 'production' || require('../config/default.json')
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || config["STRIPE_SECRET_KEY"])
 
 module.exports = {
