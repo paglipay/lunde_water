@@ -1,5 +1,5 @@
 const jwt       = require('jsonwebtoken');
-const config    = require('config');
+const config    = process.env.NODE_ENV === 'production' || require('config');
 
 
 module.exports = function (req, res, next) {
@@ -13,7 +13,7 @@ module.exports = function (req, res, next) {
 
   // Verify token
   try {
-    jwt.verify(token, config.get('jwtSecret'), (error, decoded) => {
+    jwt.verify(token, process.env.jwtSecret || config.get('jwtSecret'), (error, decoded) => {
       if (error) {
         return res.status(401).json({ msg: 'Token is not valid' });
       } else {

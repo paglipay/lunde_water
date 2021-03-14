@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const auth = require('../../middleware/auth');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+const config = process.env.NODE_ENV === 'production' || require('config');
 
 const User = require('../../models/User');
 
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      process.env.jwtSecret || config.get('jwtSecret'),
       { expiresIn: '5 days' },
       (err, token) => {
         if (err) throw err;
