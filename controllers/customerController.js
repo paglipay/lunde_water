@@ -1,16 +1,4 @@
 const db = require("../models");
-const consolidateQIndexes = (data) => {
-    let results = {}
-    const resArry = []
-    Object.keys(data).forEach((prop, i) => {
-        if (results.hasOwnProperty(data[prop].qIndex) === false) { results[data[prop].qIndex] = [] }
-        results[data[prop].qIndex].push({ question: prop, answer: data[prop].answer })
-        console.log('results:', results)
-        resArry.push({ question: prop, answer: data[prop].answer })
-    })
-    return resArry
-}
-
 
 module.exports = {
     findAll: function (req, res) {
@@ -29,11 +17,8 @@ module.exports = {
     },
     create: function (req, res) {
         console.log('create:', req.body)
-        // res.json({ results: consolidateQIndexes(req.body) })
-
         db.Customer
             .create({
-                // stuff: consolidateQIndexes(req.body)
                 username: req.body.username,
                 email: req.body.email
 
