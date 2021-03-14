@@ -4,8 +4,6 @@ import ProfileDisplay from '../../components/profile'
 import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 
 function Profile(props) {
-
-    console.log('Profile props:', props)
     return (
         < ProfileDisplay {...props} 
         homeObjOne={homeObjOne} 

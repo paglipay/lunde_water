@@ -1,12 +1,5 @@
 
 const questions = [
-  // {
-  //   name: 'Press',
-  //   type: "button", 
-  //   onClick: () => {
-  //     console.log('Pressed', document.querySelector('input[name="Full Name"]').value)
-  //   }
-  // },
   {
     question: 'Full Name', type: "text", id: "fullname"
   },

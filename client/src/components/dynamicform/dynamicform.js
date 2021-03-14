@@ -1,10 +1,7 @@
 import { Form } from 'react-bootstrap';
 import {
   Button,
-  Card,
   Dropdown,
-  Image,
-  Icon
 } from 'semantic-ui-react'
 
 import DTF from '../DynamicTable/DynamicTableForm'
@@ -65,7 +62,7 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
                 />
               <Form.Text className="">
                 Please enter a memorable answer.
-                            </Form.Text>
+              </Form.Text>
             </Form.Group>
             <br />
           </>)
@@ -75,7 +72,6 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
               <Form.Control as="select" name={q.question} onChange={(e) => {
-                console.log(e.target.name, e.target.value)
                 setPostData({ ...postData, [e.target.name]: { answer: e.target.value, qIndex, id: q.id } })
               }}>
                 <option>Default select</option>
@@ -83,7 +79,7 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
               </Form.Control>
               <Form.Text className="">
                 Please enter a memorable answer.
-                            </Form.Text>
+              </Form.Text>
             </Form.Group>
             <br />
           </>)

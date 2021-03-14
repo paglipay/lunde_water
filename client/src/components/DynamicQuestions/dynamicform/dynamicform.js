@@ -7,109 +7,10 @@ import {
   Icon
 } from 'semantic-ui-react'
 
+import DTable from '../DynamicTable/DynamicTable'
 import DTF from '../DynamicTable/DynamicTableForm'
-
-// const isValidZip = (zip) => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
-
-const CardExampleCard = () => (
-  <Card>
-    <Image src='/images/avatar/large/elliot.jpg' wrapped ui={false} />
-    <Card.Content>
-      <Card.Header>Matthew</Card.Header>
-      <Card.Meta>
-        <span className='date'>Joined in 2015</span>
-      </Card.Meta>
-      <Card.Description>
-        Matthew is a musician living in Nashville.
-        </Card.Description>
-    </Card.Content>
-    <Card.Content extra>
-      <a>
-        <Icon name='user' />
-          22 Friends
-        </a>
-    </Card.Content>
-  </Card>
-)
-
-const CardExampleGroups = () => (
-  <Card.Group>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='/images/avatar/large/steve.jpg'
-        />
-        <Card.Header>Steve Sanders</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
-        <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-            </Button>
-          <Button basic color='red'>
-            Decline
-            </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='/images/avatar/large/molly.png'
-        />
-        <Card.Header>Molly Thomas</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Molly wants to add you to the group <strong>musicians</strong>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-            </Button>
-          <Button basic color='red'>
-            Decline
-            </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    <Card>
-      <Card.Content>
-        <Image
-          floated='right'
-          size='mini'
-          src='/images/avatar/large/jenny.jpg'
-        />
-        <Card.Header>Jenny Lawrence</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>
-          Jenny requested permission to view your contact details
-          </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green'>
-            Approve
-            </Button>
-          <Button basic color='red'>
-            Decline
-            </Button>
-        </div>
-      </Card.Content>
-    </Card>
-  </Card.Group>
-)
-
-
+import SubmitButton from '../DynamicQuestions/Submit'
+import DForm from './DForm'
 export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0, elRefs) => <>
   <Form>
     {questions.map((q, i) => {
@@ -127,7 +28,7 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
                 name={`${q.question}`}
                 key={`${q.question}_yes`}
                 type="radio"
-                id={`default-radio`}
+                id={`default-radio_yes`}
                 label={`Yes`}
                 checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'Yes'}
               />
@@ -140,10 +41,28 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
                 key={`${q.question}_no`}
                 type="radio"
                 label={`No`}
-                id={`default-radio`}
+                id={`default-radio_no`}
                 checked={(postData[q.question] && postData[q.question].answer ? postData[q.question].answer : null) === 'No'}
               />
 
+              <Form.Text className="">
+                Please enter a memorable answer.
+                            </Form.Text>
+            </Form.Group>
+            <br />
+          </>)
+        }
+        else if (q.type === 'table') {
+          return (<>
+            <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
+              <Form.Label>{q.question} </Form.Label>
+              <DTable headers={['key','text', 'value']} data={
+                [
+                  { key: '8:00', text: '8:00', value: '8:00' },
+                  { key: '10:00', text: '10:00', value: '10:00' },
+                ]} 
+                />
+                <DForm />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>
@@ -155,9 +74,14 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-              <Dropdown placeholder='Skills' fluid multiple selection options={[{ key: 'angular', text: 'Angular', value: 'angular' },
-              { key: 'css', text: 'CSS', value: 'css' },
-              { key: 'design', text: 'Graphic Design', value: 'design' },]} />
+              <Dropdown onChange={(e, { value }) => console.log('Dropdown: ', value)} placeholder='Skills' fluid multiple selection options={
+                [
+                  { key: '8:00', text: '8:00', value: '8:00' },
+                  { key: '10:00', text: '10:00', value: '10:00' },
+                  // { key: '12:00', text: '12:00', value: '12:00' },
+                  // { key: '12:00', text: '12:00', value: '12:00' },
+                ]} 
+                />
               <Form.Text className="">
                 Please enter a memorable answer.
                             </Form.Text>
@@ -183,12 +107,12 @@ export const dynamicForm = (props, questions, setPostData, postData, qIndex = 0,
             <br />
           </>)
         }
-        else if (q.type === 'select_cards') {
+        else if (q.type === 'submit_button') {
           return (<>
             <Form.Group controlId={`formBasicUsername${q.question}${i}`}>
               <Form.Label>{q.question} </Form.Label>
-
-              {q.options.map(e => CardExampleGroups())}
+              <br />
+              <SubmitButton {...props} />
 
               <Form.Text className="">
                 Please enter a memorable answer.

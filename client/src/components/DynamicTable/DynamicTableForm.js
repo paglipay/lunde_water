@@ -7,8 +7,7 @@ import {
     Button,
     Container,
     Divider,
-    Grid,
-    Header,
+    Grid
 } from 'semantic-ui-react'
 
 const restructureForTable = (data) => {
@@ -97,8 +96,6 @@ function DynamicTableForm(props) {
             headline: questionsArry[questionIndex]['headline'],
             imgStart: 'start'
         })
-        console.log('questionsArry', questionsArry)
-        console.log('questionsPost: ', questionsPost)
     }, [questionIndex, questionsPost, questionsArry]);
 
     const feedToSelf = () => {

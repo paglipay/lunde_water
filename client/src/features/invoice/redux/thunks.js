@@ -14,7 +14,6 @@ export const load = () => async dispatch => {
         .then(response => {
             // response.data is the invoices
             const configs = response.data
-            console.log('response.data.results: ', configs)
             dispatch(loadsSuccess({ payload: response.data }))
         })
         .catch(error => {
