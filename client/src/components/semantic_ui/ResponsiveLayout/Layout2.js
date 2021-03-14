@@ -29,64 +29,36 @@ const style = {
 
 const ResponsiveLayout = (props) => (
     <Container>
-
         <Container style={style.last}>
-            {/* <Step.Group fluid>
-                <Step icon='question circle' title='Questions' description='Answer to the best of your ability.' />
-                <Step
-                    active
-                    icon='dollar'
-                    title='Review / Complete'
-                    description='Confirm for accuracy.'
-                />
-                <Step
-                    disabled
-                    icon='info circle'
-                    title='Order has been Placed'
-                    description='For your records'
-                />
-            </Step.Group> */}
-
             <Step.Group fluid>
-                {
-
-                    [
-                        { icon: 'question circle', title: 'Questions', description: 'Answer to the best of your ability.' },
-                        { icon: 'dollar', title: 'Review / Complete', description: 'Confirm for accuracy.' },
-                        { icon: 'info circle', title: 'Order has been Placed', description: 'For your records' },
-                    ].map((e, i) => (i == props.activeStep ? <Step
-                        active
-                        icon={e['icon']}
-                        title={e['title']}
-                        description={e['description']}
-                    /> : <Step
-                            icon={e['icon']}
-                            title={e['title']}
-                            description={e['description']}
-                        />))}
+                {[
+                    { icon: 'question circle', title: 'Questions', description: 'Answer to the best of your ability.' },
+                    { icon: 'dollar', title: 'Review / Complete', description: 'Confirm for accuracy.' },
+                    { icon: 'info circle', title: 'Order has been Placed', description: 'For your records' },
+                ].map((e, i) => (<Step
+                    active={i == props.activeStep}
+                    disabled={i > props.activeStep}
+                    icon={e['icon']}
+                    title={e['title']}
+                    description={e['description']}
+                />))}
             </Step.Group>
         </Container>
-
         <Grid columns={2} stackable>
             <Grid.Row columns={2}>
                 <Grid.Column width={12}>
-
                     {props.children}
                     {props.questionIndex !== 0 ?
                         <Button onClick={props.onClickBack}>
                             Back
-                                    </Button> : null}
+                        </Button> : null}
                     {true ? null : (
                         <Button onClick={props.onClick}>
                             {props.buttonLabel}
                         </Button>)}
-
                 </Grid.Column>
                 <Grid.Column width={4}>
-
                     {props.right_side}
-
-
                 </Grid.Column>
             </Grid.Row>
         </Grid>

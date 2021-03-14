@@ -8,8 +8,7 @@ import {
     Checkbox,
     Container,
     Grid,
-    Select,
-    Sidebar
+    Select
 } from 'semantic-ui-react'
 
 function Display(props) {
@@ -26,7 +25,6 @@ function Display(props) {
     }, [props.auth])
 
     useEffect(() => {
-        console.log('qIndex: ', qIndex)
         if (customerId) {
             // props.getAnswersById(customerId, 'Register')
             props.getAnswersById(customerId, 'Profile')
@@ -46,11 +44,11 @@ function Display(props) {
             })
         setIdOptions(profiles)
 
-            props.questions.results.profiles &&
+        props.questions.results.profiles &&
             props.questions.results.profiles.length > 0 &&
             props.addAnswersToPost(props.questions.results.profiles[props.questions.results.profiles.length - 1].item.stripe.id, 'stripeCustId')
 
-            props.questions.results.profiles &&
+        props.questions.results.profiles &&
             props.questions.results.profiles.length > 0 &&
             setCustomerId(props.questions.results.profiles[props.questions.results.profiles.length - 1]['_id'])
 
@@ -65,7 +63,6 @@ function Display(props) {
             </Button>
         <Select placeholder='Select' onChange={(e, { value }) => {
             setCustomerId(value)
-            // console.log('props.questions.results.profiles', props.questions.results.profiles.find(e => e._id === value).item.stripe.id)
             props.addAnswersToPost(props.questions.results.profiles.find(e => e._id === value).item.stripe.id, 'stripeCustId')
         }} options={idOptions} />
 
@@ -94,7 +91,8 @@ function Display(props) {
 
     return (
         <>
-            {((props.location.pathname === '/placeorder' || props.location.pathname === '/profile') && props.auth.user) && <Checkbox label='Employee Admin Mode' onChange={() => setAdminMode(!adminMode)} />}
+            {((props.location.pathname === '/placeorder' || props.location.pathname === '/profile') && props.auth.user) &&
+                <Checkbox label='Employee Admin Mode' onChange={() => setAdminMode(!adminMode)} />}
             {adminMode && adminModeDisplay}
             <DynamicQuestions {...props} qIndex={qIndex} setQIndex={setQIndex} customerId={customerId} />
         </>

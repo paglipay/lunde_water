@@ -17,7 +17,6 @@ import Services from '../features/services/Services';
 import HomepageLayout from '../components/semantic_ui/HomepageLayout/HomepageLayout';
 import ResponsiveLayout from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout1';
 import ResponsiveLayout2 from '../components/semantic_ui/ResponsiveLayout/ResponsiveLayout2';
-import DTF from '../components/DynamicTable/DynamicTableForm';
 import HeroSections from '../features/herosections/HeroSections';
 import Invoice from '../features/invoice/Invoice';
 
@@ -62,7 +61,6 @@ const App = () => {
               <Route exact path='/orderform' component={OrderForm} />
               <Route exact path='/orders' component={Orders} />
               <Route exact path='/services' component={Services} />
-              <Route exact path='/dtf' component={DTF} />
               <Route exact path='/invoice' component={Invoice} />
             </Switch>
           </div>

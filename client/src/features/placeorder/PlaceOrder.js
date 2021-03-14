@@ -4,8 +4,6 @@ import PlaceOrderDisplay from '../../components/profile'
 import { homeObjOne, array_of_questions_arry, questions_keys } from './Data';
 
 function PlaceOrder(props) {
-
-    console.log('PlaceOrder props:', props)
     return (
         < PlaceOrderDisplay {...props} 
         homeObjOne={homeObjOne} 

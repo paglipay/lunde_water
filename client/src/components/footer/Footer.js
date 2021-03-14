@@ -1,14 +1,13 @@
 import React from 'react';
 import './Footer.css';
-import { Button } from '../button/Button';
 import { Link } from 'react-router-dom';
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaTwitter,
-  FaLinkedin
-} from 'react-icons/fa';
+// import {
+//   FaFacebook,
+//   FaInstagram,
+//   FaYoutube,
+//   FaTwitter,
+//   FaLinkedin
+// } from 'react-icons/fa';
 import { MdInvertColors } from 'react-icons/md';
 
 function Footer() {

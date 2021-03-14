@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createRef } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import Layout from '../semantic_ui/ResponsiveLayout/Layout2';
 import Layout2a from '../semantic_ui/ResponsiveLayout/Layout2a';
 import { dynamicForm } from '../dynamicform/dynamicform'
@@ -13,8 +13,6 @@ function DynamicQuestions(props) {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
-  const contextRef = createRef()
-
 
   homeObjOne.onClick = () => {
     if (arrayOfQuestionsArry[props.qIndex].length > questionIndex + 1) {
@@ -42,7 +40,6 @@ function DynamicQuestions(props) {
   }
 
   useEffect(() => {
-    console.log('questionsPost: ', questionsPost)
     setHomeObjOneD({
       ...homeObjOne,
       questionIndex,
@@ -71,12 +68,12 @@ function DynamicQuestions(props) {
 
   return (
     <>
-      { (props.match.path === '/reviewcomplete' || props.match.path === '/orders') ? (<Layout {...props} activeStep={props.match.path === '/orders' ? 2 : 1} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Answers {...props} data={['Profile']} />
+      { (props.match.path === '/reviewcomplete' || props.match.path === '/orders') ? (<Layout {...props} activeStep={props.match.path === '/orders' ? 2 : 1} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<><Answers key='a1' {...props} data={['Profile']} />
 
         {props.match.path !== '/orders' && <Submit {...props} />}
 
       </>}>
-        <Answers {...props}
+        <Answers key='a2' {...props}
           data={[
             'Orders',
             'Customer Questions']}
@@ -85,7 +82,7 @@ function DynamicQuestions(props) {
       </Layout>) : (<>
         <Layout2a {...props} contextRef={createRef} key={props.qIndex} {...homeObjOneD} right_side={<>
           {/* <Submit {...props} /> */}
-          <Answers {...props}
+          <Answers key='a3' {...props}
             data={props.questions_keys}
           /></>}>
           {homeObjOneD.description}
