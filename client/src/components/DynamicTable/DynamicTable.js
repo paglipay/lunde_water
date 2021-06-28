@@ -4,8 +4,19 @@ import {
     Table,
     Button
 } from 'semantic-ui-react'
-
-function DynamicTable({ data = [], headers=[] }) {
+const recursiveSearch = (obj, searchKey, results = []) => {
+    const r = results;
+    Object.keys(obj).forEach((key) => {
+        const value = obj[key];
+        if (key === searchKey && typeof value !== "object") {
+            r.push(value);
+        } else if (typeof value === "object") {
+            recursiveSearch(value, searchKey, r);
+        }
+    });
+    return r;
+};
+function DynamicTable({ data = [], headers = [] }) {
     console.log('DynamicTable(data): ', data)
     const headerProps = headers
     const tableData = data
@@ -29,7 +40,7 @@ function DynamicTable({ data = [], headers=[] }) {
                                 {/* <Table.Cell><Button>Delete</Button></Table.Cell> */}
                                 {/* <Table.Cell>{e.results['_id']}TEST</Table.Cell> */}
                                 {/* <Table.Cell>{e.results['stuff'] && e.results['stuff'].map(e => <>{e.question}<br/>{e.answer}<br/><br/></>)}</Table.Cell>      */}
-                                {headerProps.map(c => <Table.HeaderCell>{JSON.stringify(r[c])}</Table.HeaderCell>)}
+                                {headerProps.map(c => <Table.HeaderCell>{JSON.stringify(recursiveSearch(r, c))}</Table.HeaderCell>)}
                             </Table.Row>)
                     }
                     )

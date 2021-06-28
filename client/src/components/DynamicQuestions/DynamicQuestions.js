@@ -14,7 +14,7 @@ function DynamicQuestions(props) {
   const [homeObjOneD, setHomeObjOneD] = useState(homeObjOne)
   const [questionsPost, setQuestionsPost] = useState({})
 
-  homeObjOne.onClick = () => {
+  const onClick = () => {
     if (arrayOfQuestionsArry[props.qIndex].length > questionIndex + 1) {
       setQuestionIndex(questionIndex + 1)
     } else {
@@ -31,7 +31,7 @@ function DynamicQuestions(props) {
     }
   }
 
-  homeObjOne.onClickBack = () => {
+  const onClickBack = () => {
     if (questionIndex !== 0) {
       setQuestionIndex(questionIndex - 1)
     } else {
@@ -46,6 +46,8 @@ function DynamicQuestions(props) {
       buttonLabel: arrayOfQuestionsArry[props.qIndex].length === questionIndex + 1 ? 'Review / Complete' : 'Next',
       description: dynamicForm(props, arrayOfQuestionsArry[props.qIndex][questionIndex]['questions'], setQuestionsPost, questionsPost, arrayOfQuestionsArry[props.qIndex][questionIndex]['headline']),
       headline: arrayOfQuestionsArry[props.qIndex][questionIndex]['headline'],
+      onClick,
+      onClickBack
     })
   }, [questionIndex, questionsPost]);
 
